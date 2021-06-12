@@ -6,3 +6,12 @@
 //
 
 import Foundation
+import UIKit
+
+protocol ModeledCell{
+    
+    associatedtype modelType
+    
+    func config(_ model: modelType)
+    
+}

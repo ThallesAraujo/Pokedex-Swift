@@ -1,0 +1,14 @@
+platform :ios, '14.0'
+use_frameworks!
+
+def common_pods
+  pod 'Alamofire'
+  pod 'RxAlamofire'
+  pod 'Kingfisher', '~> 4.0'
+  pod 'RxSwift', '6.2.0'
+  pod 'RxCocoa', '6.2.0'
+end
+
+target 'Pokedex-Swift' do
+  common_pods
+end

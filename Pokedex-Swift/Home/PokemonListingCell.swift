@@ -6,12 +6,25 @@
 //
 
 import UIKit
+import Foundation
 
-class PokemonListingCell: UITableViewCell {
+class PokemonListingCell: UITableViewCell, ModeledCell {
+    
+    typealias modelType = Pokemon
+    
 
+    @IBOutlet weak var pokemonImage: UIImageView!
+    @IBOutlet weak var lblPokemonName: UILabel!
+    
+    static let identifier = "pokemonListingCell"
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    func config(_ model: Pokemon) {
+        self.lblPokemonName.text = model.name
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
