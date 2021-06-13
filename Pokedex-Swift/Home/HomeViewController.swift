@@ -53,8 +53,7 @@ class HomeViewController: UIViewController {
     }
     
     func configureListing(){
-        viewModel.listData.drive(pokemonListingTableView.disconnect().rx.items(cellIdentifier: PokemonListingCell.identifier, cellType: PokemonListingCell.self)){ _, element, cell in
-            
+        viewModel.listData.drive(pokemonListingTableView.disconnect().rx.items(cellIdentifier: PokemonListingCell.identifier, cellType: PokemonListingCell.self)){ index, element, cell in
             cell.config(element)
             
         }.disposed(by: disposeBag)

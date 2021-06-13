@@ -52,5 +52,25 @@ class HomeService{
         
     }
     
+    static func getPokemon(fromURL url: String) -> Observable<Pokemon>{
+        
+        guard let endpoint = URL.init(string: url) else{
+            return Observable.never()
+        }
+        let request = URLRequest.init(url: endpoint)
+        return RxAlamofire.requestData(request).debug().catch { error in
+            print(error)
+            return Observable.never()
+        }.map { (response, data) in
+            print("Status Resposta: \(response.statusCode)")
+            
+            //TODO: Tratamento de erros
+            let decoder = JSONDecoder()
+            let pokemon = try decoder.decode(Pokemon.self, from: data)
+            return pokemon
+        }.asObservable()
+        
+    }
+    
    
 }

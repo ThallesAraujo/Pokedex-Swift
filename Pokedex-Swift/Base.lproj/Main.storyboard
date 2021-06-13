@@ -30,17 +30,19 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z7a-dj-Se2">
                                                     <rect key="frame" x="4" y="4" width="390" height="127"/>
                                                     <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="iig-nt-5tZ">
-                                                            <rect key="frame" x="8" y="8" width="374" height="111"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="iig-nt-5tZ">
+                                                            <rect key="frame" x="16" y="16" width="358" height="95"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mRc-H7-4ol">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="111" height="111"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="95" height="95"/>
+                                                                    <color key="tintColor" systemColor="secondarySystemFillColor"/>
                                                                     <constraints>
+                                                                        <constraint firstAttribute="height" constant="100" id="f89-GO-fPu"/>
                                                                         <constraint firstAttribute="width" secondItem="mRc-H7-4ol" secondAttribute="height" multiplier="1:1" id="lgo-tD-Cq5"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="HrI-UK-TpN">
-                                                                    <rect key="frame" x="127" y="0.0" width="247" height="29"/>
+                                                                    <rect key="frame" x="119" y="0.0" width="239" height="29"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WiY-nC-xiC">
                                                                             <rect key="frame" x="0.0" y="0.0" width="65" height="29"/>
@@ -55,10 +57,10 @@
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="bottom" secondItem="iig-nt-5tZ" secondAttribute="bottom" constant="8" id="BmW-ok-eYt"/>
-                                                        <constraint firstItem="iig-nt-5tZ" firstAttribute="leading" secondItem="Z7a-dj-Se2" secondAttribute="leading" constant="8" id="Vlk-u4-LIQ"/>
-                                                        <constraint firstAttribute="trailing" secondItem="iig-nt-5tZ" secondAttribute="trailing" constant="8" id="exh-RG-bz6"/>
-                                                        <constraint firstItem="iig-nt-5tZ" firstAttribute="top" secondItem="Z7a-dj-Se2" secondAttribute="top" constant="8" id="ifu-ik-g8a"/>
+                                                        <constraint firstAttribute="bottom" secondItem="iig-nt-5tZ" secondAttribute="bottom" constant="16" id="BmW-ok-eYt"/>
+                                                        <constraint firstItem="iig-nt-5tZ" firstAttribute="leading" secondItem="Z7a-dj-Se2" secondAttribute="leading" constant="16" id="Vlk-u4-LIQ"/>
+                                                        <constraint firstAttribute="trailing" secondItem="iig-nt-5tZ" secondAttribute="trailing" constant="16" id="exh-RG-bz6"/>
+                                                        <constraint firstItem="iig-nt-5tZ" firstAttribute="top" secondItem="Z7a-dj-Se2" secondAttribute="top" constant="16" id="ifu-ik-g8a"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -128,6 +130,9 @@
     <resources>
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondarySystemFillColor">
+            <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
