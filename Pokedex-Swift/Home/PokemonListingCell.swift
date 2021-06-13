@@ -10,9 +10,8 @@ import Foundation
 
 class PokemonListingCell: UITableViewCell, ModeledCell {
     
-    typealias modelType = Pokemon
+    typealias modelType = Result
     
-
     @IBOutlet weak var pokemonImage: UIImageView!
     @IBOutlet weak var lblPokemonName: UILabel!
     
@@ -23,7 +22,7 @@ class PokemonListingCell: UITableViewCell, ModeledCell {
         // Initialization code
     }
     
-    func config(_ model: Pokemon) {
+    func config(_ model: Result) {
         self.lblPokemonName.text = model.name
     }
 

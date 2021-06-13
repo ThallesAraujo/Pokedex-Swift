@@ -12,15 +12,25 @@ class PokemonListingViewModel{
     
     let searchText = BehaviorRelay<String>(value: "")
     
-    
-    lazy var data: Driver<[Pokemon]> = {
+    lazy var searchData: Driver<[Result]> = {
         return self.searchText.asObservable()
             .flatMapLatest(PokemonListingViewModel.pokemonsFor)
             .asDriver(onErrorJustReturn: [])
     }()
     
-    static func pokemonsFor(_ idOrName: String) -> Observable<[Pokemon]> {
+    lazy var listData: Driver<[Result]> = {
+        return PokemonListingViewModel.getPokemons().asDriver(onErrorJustReturn: [])
+    }()
+    
+    
+    static func pokemonsFor(_ idOrName: String) -> Observable<[Result]> {
         return HomeService.getPokemonResults(idOrName)
     }
+    
+    static func getPokemons() -> Observable<[Result]>{
+        return HomeService.getPokemonsList()
+    }
+    
+    
     
 }
