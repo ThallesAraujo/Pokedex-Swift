@@ -30,8 +30,12 @@ class HomeViewController: UIViewController {
     
     func configureSearchController(){
         searchController.obscuresBackgroundDuringPresentation = false
-        searchBar.showsCancelButton = true
-        searchBar.placeholder = "Pesquisar por nome ou ID"
+        //searchBar.showsCancelButton = true
+        
+        UITextField.appearance().defaultTextAttributes = [.font: UIFont.init(name: "Oxygen-Regular", size: 14), .foregroundColor: UIColor.init(named: "TitleColor")]
+        UITextField.appearance().attributedPlaceholder = NSAttributedString.init(string: "Pesquisar por nome ou ID", attributes: [.font: UIFont.init(name: "Oxygen-Regular", size: 14), .foregroundColor: UIColor.init(named: "TitleColor")])
+        searchBar.searchTextField.backgroundColor = UIColor.init(named: "SecondaryBackgroundColor")
+
         navigationItem.searchController = searchController
         definesPresentationContext = true
     }

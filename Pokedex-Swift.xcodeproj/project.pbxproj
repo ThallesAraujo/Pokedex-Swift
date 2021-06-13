@@ -23,6 +23,14 @@
 		6FB4E77B26751A5D008B2414 /* PokemonListingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4E77A26751A5D008B2414 /* PokemonListingViewModel.swift */; };
 		6FB4E77D26751EF2008B2414 /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4E77C26751EF2008B2414 /* HomeService.swift */; };
 		6FB4E78026751F85008B2414 /* APIURLS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4E77F26751F85008B2414 /* APIURLS.swift */; };
+		6FFE5958267683AC0098642E /* Quicksand-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6FFE5953267683AB0098642E /* Quicksand-Light.ttf */; };
+		6FFE5959267683AC0098642E /* Quicksand-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6FFE5954267683AB0098642E /* Quicksand-Medium.ttf */; };
+		6FFE595A267683AC0098642E /* Quicksand-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6FFE5955267683AB0098642E /* Quicksand-Bold.ttf */; };
+		6FFE595B267683AC0098642E /* Quicksand-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6FFE5956267683AC0098642E /* Quicksand-SemiBold.ttf */; };
+		6FFE595C267683AC0098642E /* Quicksand-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6FFE5957267683AC0098642E /* Quicksand-Regular.ttf */; };
+		6FFE5960267683BA0098642E /* Oxygen-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6FFE595D267683B90098642E /* Oxygen-Bold.ttf */; };
+		6FFE5961267683BA0098642E /* Oxygen-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6FFE595E267683B90098642E /* Oxygen-Light.ttf */; };
+		6FFE5962267683BA0098642E /* Oxygen-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6FFE595F267683BA0098642E /* Oxygen-Regular.ttf */; };
 		D9A3B94930AF81FAAD61880C /* Pods_Pokedex_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21262B9E44A1BA6862AC928B /* Pods_Pokedex_Swift.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +56,14 @@
 		6FB4E77A26751A5D008B2414 /* PokemonListingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListingViewModel.swift; sourceTree = "<group>"; };
 		6FB4E77C26751EF2008B2414 /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
 		6FB4E77F26751F85008B2414 /* APIURLS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIURLS.swift; sourceTree = "<group>"; };
+		6FFE5953267683AB0098642E /* Quicksand-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Light.ttf"; sourceTree = "<group>"; };
+		6FFE5954267683AB0098642E /* Quicksand-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Medium.ttf"; sourceTree = "<group>"; };
+		6FFE5955267683AB0098642E /* Quicksand-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Bold.ttf"; sourceTree = "<group>"; };
+		6FFE5956267683AC0098642E /* Quicksand-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-SemiBold.ttf"; sourceTree = "<group>"; };
+		6FFE5957267683AC0098642E /* Quicksand-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Regular.ttf"; sourceTree = "<group>"; };
+		6FFE595D267683B90098642E /* Oxygen-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oxygen-Bold.ttf"; sourceTree = "<group>"; };
+		6FFE595E267683B90098642E /* Oxygen-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oxygen-Light.ttf"; sourceTree = "<group>"; };
+		6FFE595F267683BA0098642E /* Oxygen-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oxygen-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +107,7 @@
 		6F48391926750E9500EA7760 /* Pokedex-Swift */ = {
 			isa = PBXGroup;
 			children = (
+				6FFE59522676838A0098642E /* Fonts */,
 				6FB4E77E26751F64008B2414 /* APIUtils */,
 				6FB4E77526751727008B2414 /* Protocols */,
 				6FB4E7702675133E008B2414 /* Extensions */,
@@ -142,6 +159,21 @@
 				6FB4E77F26751F85008B2414 /* APIURLS.swift */,
 			);
 			path = APIUtils;
+			sourceTree = "<group>";
+		};
+		6FFE59522676838A0098642E /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				6FFE595D267683B90098642E /* Oxygen-Bold.ttf */,
+				6FFE595E267683B90098642E /* Oxygen-Light.ttf */,
+				6FFE595F267683BA0098642E /* Oxygen-Regular.ttf */,
+				6FFE5955267683AB0098642E /* Quicksand-Bold.ttf */,
+				6FFE5953267683AB0098642E /* Quicksand-Light.ttf */,
+				6FFE5954267683AB0098642E /* Quicksand-Medium.ttf */,
+				6FFE5957267683AC0098642E /* Quicksand-Regular.ttf */,
+				6FFE5956267683AC0098642E /* Quicksand-SemiBold.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		A043F87C30D0FCCF30D7375F /* Pods */ = {
@@ -212,9 +244,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FFE5960267683BA0098642E /* Oxygen-Bold.ttf in Resources */,
+				6FFE5962267683BA0098642E /* Oxygen-Regular.ttf in Resources */,
 				6F48392726750E9600EA7760 /* LaunchScreen.storyboard in Resources */,
+				6FFE595A267683AC0098642E /* Quicksand-Bold.ttf in Resources */,
 				6F48392426750E9600EA7760 /* Assets.xcassets in Resources */,
+				6FFE595C267683AC0098642E /* Quicksand-Regular.ttf in Resources */,
 				6F48392226750E9500EA7760 /* Main.storyboard in Resources */,
+				6FFE5958267683AC0098642E /* Quicksand-Light.ttf in Resources */,
+				6FFE595B267683AC0098642E /* Quicksand-SemiBold.ttf in Resources */,
+				6FFE5959267683AC0098642E /* Quicksand-Medium.ttf in Resources */,
+				6FFE5961267683BA0098642E /* Oxygen-Light.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

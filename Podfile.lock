@@ -17,6 +17,7 @@ PODS:
   - SDWebImage/Core (5.11.1)
   - SDWebImageSVGCoder (1.6.0):
     - SDWebImage/Core (~> 5.6)
+  - UIImageColors (2.1.0)
 
 DEPENDENCIES:
   - Alamofire
@@ -26,6 +27,7 @@ DEPENDENCIES:
   - RxCocoa (= 6.2.0)
   - RxSwift (= 6.2.0)
   - SDWebImageSVGCoder
+  - UIImageColors
 
 SPEC REPOS:
   trunk:
@@ -38,6 +40,7 @@ SPEC REPOS:
     - RxSwift
     - SDWebImage
     - SDWebImageSVGCoder
+    - UIImageColors
 
 SPEC CHECKSUMS:
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
@@ -49,7 +52,8 @@ SPEC CHECKSUMS:
   RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SDWebImageSVGCoder: 020cc0f1ab0ef8ca63a9365c03421d67aa3d4a46
+  UIImageColors: d2ef3b0877d203cbb06489eeb78ea8b7788caabe
 
-PODFILE CHECKSUM: 84274a9941f5714077474c607dfdf63d98280ee6
+PODFILE CHECKSUM: 4a2bfdcc09e1725d604fa3a95e68661b2e4f4e39
 
 COCOAPODS: 1.10.1

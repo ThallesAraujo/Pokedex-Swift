@@ -3,10 +3,22 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Oxygen-Bold.ttf">
+            <string>Oxygen-Bold</string>
+        </array>
+        <array key="Quicksand-Bold.ttf">
+            <string>Quicksand-Bold</string>
+        </array>
+        <array key="Quicksand-Regular.ttf">
+            <string>Quicksand-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Home-->
         <scene sceneID="tne-QT-ifu">
@@ -16,9 +28,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lFE-gG-fPk">
+                            <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lFE-gG-fPk">
                                 <rect key="frame" x="8" y="88" width="398" height="774"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="pokemonListingCell" rowHeight="135" id="AW6-1g-5mh" customClass="PokemonListingCell" customModule="Pokedex_Swift" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="24.5" width="398" height="135"/>
@@ -42,24 +56,43 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="HrI-UK-TpN">
-                                                                    <rect key="frame" x="119" y="0.0" width="239" height="29"/>
+                                                                    <rect key="frame" x="119" y="0.0" width="239" height="45.5"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WiY-nC-xiC">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="65" height="29"/>
-                                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
-                                                                            <color key="textColor" systemColor="systemBlueColor"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
+                                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Vlt-f6-TJF">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="56" height="45.5"/>
+                                                                            <subviews>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WiY-nC-xiC">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="56" height="25"/>
+                                                                                    <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="20"/>
+                                                                                    <color key="textColor" name="TitleColor"/>
+                                                                                    <nil key="highlightedColor"/>
+                                                                                </label>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-----" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="87w-As-Vx9">
+                                                                                    <rect key="frame" x="0.0" y="25" width="26.5" height="20.5"/>
+                                                                                    <fontDescription key="fontDescription" name="Oxygen-Bold" family="Oxygen" pointSize="16"/>
+                                                                                    <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                                                    <nil key="highlightedColor"/>
+                                                                                </label>
+                                                                            </subviews>
+                                                                        </stackView>
                                                                     </subviews>
                                                                 </stackView>
                                                             </subviews>
                                                         </stackView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OkO-3g-oHK">
+                                                            <rect key="frame" x="359.5" y="74" width="22.5" height="45"/>
+                                                            <fontDescription key="fontDescription" name="Quicksand-Bold" family="Quicksand" pointSize="36"/>
+                                                            <color key="textColor" name="SecondaryTitleColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                                    <color key="backgroundColor" name="SecondaryBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="iig-nt-5tZ" secondAttribute="bottom" constant="16" id="BmW-ok-eYt"/>
+                                                        <constraint firstAttribute="trailing" secondItem="OkO-3g-oHK" secondAttribute="trailing" constant="8" id="O5Y-vb-1MR"/>
                                                         <constraint firstItem="iig-nt-5tZ" firstAttribute="leading" secondItem="Z7a-dj-Se2" secondAttribute="leading" constant="16" id="Vlk-u4-LIQ"/>
                                                         <constraint firstAttribute="trailing" secondItem="iig-nt-5tZ" secondAttribute="trailing" constant="16" id="exh-RG-bz6"/>
+                                                        <constraint firstAttribute="bottom" secondItem="OkO-3g-oHK" secondAttribute="bottom" constant="8" id="eyx-Nv-5o9"/>
                                                         <constraint firstItem="iig-nt-5tZ" firstAttribute="top" secondItem="Z7a-dj-Se2" secondAttribute="top" constant="16" id="ifu-ik-g8a"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
@@ -70,7 +103,7 @@
                                                             <color key="value" systemColor="tertiarySystemBackgroundColor"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                            <real key="value" value="1"/>
+                                                            <real key="value" value="0.0"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
@@ -82,8 +115,12 @@
                                                 <constraint firstAttribute="bottom" secondItem="Z7a-dj-Se2" secondAttribute="bottom" constant="4" id="fGT-bN-eb2"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
+                                            <outlet property="cardView" destination="Z7a-dj-Se2" id="hz8-75-TYr"/>
+                                            <outlet property="lblID" destination="OkO-3g-oHK" id="2Ah-vh-kwW"/>
                                             <outlet property="lblPokemonName" destination="WiY-nC-xiC" id="8AO-cZ-mM2"/>
+                                            <outlet property="lblTypes" destination="87w-As-Vx9" id="xjs-6V-ung"/>
                                             <outlet property="pokemonImage" destination="mRc-H7-4ol" id="mrF-a6-I45"/>
                                         </connections>
                                     </tableViewCell>
@@ -91,7 +128,7 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="MainBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="lFE-gG-fPk" secondAttribute="trailing" constant="8" id="1p8-9i-fiA"/>
                             <constraint firstItem="lFE-gG-fPk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Lv4-62-tuH"/>
@@ -116,6 +153,16 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="zfY-Qg-KTs">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" name="MainBackgroundColor"/>
+                        <color key="barTintColor" name="MainBackgroundColor"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Quicksand-SemiBold" family="Quicksand" pointSize="18"/>
+                            <color key="textColor" name="TitleColor"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <fontDescription key="fontDescription" name="Quicksand-Medium" family="Quicksand" pointSize="28"/>
+                            <color key="textColor" name="TitleColor"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -128,17 +175,23 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="secondarySystemBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="MainBackgroundColor">
+            <color red="0.84705882352941175" green="1" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SecondaryBackgroundColor">
+            <color red="0.16470588235294117" green="0.43529411764705883" blue="0.42352941176470588" alpha="0.20456549031844992" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SecondaryTitleColor">
+            <color red="0.23529411764705882" green="0.61960784313725492" blue="0.60784313725490191" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TitleColor">
+            <color red="0.23529411764705882" green="0.61960784313725492" blue="0.58431372549019611" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="secondarySystemFillColor">
             <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tertiarySystemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

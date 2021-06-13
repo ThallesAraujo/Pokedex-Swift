@@ -15,16 +15,30 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pokeball" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="96d-Ow-Zqm">
+                                <rect key="frame" x="84.5" y="330.5" width="245" height="245"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="245" id="AFE-Ck-SOF"/>
+                                    <constraint firstAttribute="width" constant="245" id="slW-SV-tdV"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="96d-Ow-Zqm" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="fMJ-W9-Ru7"/>
+                            <constraint firstItem="96d-Ow-Zqm" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="z4e-HI-LLg"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="21.739130434782609" y="98.4375"/>
         </scene>
     </scenes>
     <resources>
+        <image name="pokeball" width="511.9849853515625" height="511.9840087890625"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
