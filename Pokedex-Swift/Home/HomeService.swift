@@ -52,6 +52,24 @@ class HomeService{
         
     }
     
+    static func getNextPage(offset: Int, limit: Int) -> Observable<[Result]>{
+        
+        return RxAlamofire.requestData(APIUrls.getNextPage(offset, limit)).debug().catch { error in
+            print(error)
+            return Observable.never()
+        }.map { (response, data) -> [Result] in
+            print("Status Resposta: \(response.statusCode)")
+            print("Página -> Offset: \(offset) | limit: \(limit)")
+            
+            //TODO: Tratamento de erros
+            let decoder = JSONDecoder()
+            let page = try decoder.decode(Page.self, from: data)
+            return page.results
+            
+        }.asObservable()
+        
+    }
+    
     static func getPokemon(fromURL url: String) -> Observable<Pokemon>{
         
         guard let endpoint = URL.init(string: url) else{

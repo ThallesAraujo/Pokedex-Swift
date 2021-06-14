@@ -56,19 +56,19 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="HrI-UK-TpN">
-                                                                    <rect key="frame" x="119" y="0.0" width="239" height="45.5"/>
+                                                                    <rect key="frame" x="119" y="0.0" width="239" height="42.5"/>
                                                                     <subviews>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Vlt-f6-TJF">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="56" height="45.5"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="54" height="42.5"/>
                                                                             <subviews>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WiY-nC-xiC">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="56" height="25"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="54" height="23.5"/>
                                                                                     <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="20"/>
                                                                                     <color key="textColor" name="TitleColor"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-----" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="87w-As-Vx9">
-                                                                                    <rect key="frame" x="0.0" y="25" width="26.5" height="20.5"/>
+                                                                                    <rect key="frame" x="0.0" y="23.5" width="31.5" height="19"/>
                                                                                     <fontDescription key="fontDescription" name="Oxygen-Bold" family="Oxygen" pointSize="16"/>
                                                                                     <color key="textColor" systemColor="secondaryLabelColor"/>
                                                                                     <nil key="highlightedColor"/>
@@ -80,7 +80,7 @@
                                                             </subviews>
                                                         </stackView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OkO-3g-oHK">
-                                                            <rect key="frame" x="359.5" y="74" width="22.5" height="45"/>
+                                                            <rect key="frame" x="361.5" y="77" width="20.5" height="42"/>
                                                             <fontDescription key="fontDescription" name="Quicksand-Bold" family="Quicksand" pointSize="36"/>
                                                             <color key="textColor" name="SecondaryTitleColor"/>
                                                             <nil key="highlightedColor"/>

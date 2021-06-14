@@ -8,11 +8,11 @@ import Foundation
 // MARK: - Page
 class Page: Codable {
     let count: Int
-    let next: String
-    let previous: JSONNull?
+    let next: String?
+    let previous: String?
     let results: [Result]
 
-    init(count: Int, next: String, previous: JSONNull?, results: [Result]) {
+    init(count: Int, next: String?, previous: String?, results: [Result]) {
         self.count = count
         self.next = next
         self.previous = previous

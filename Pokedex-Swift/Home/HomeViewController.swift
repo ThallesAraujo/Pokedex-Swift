@@ -20,20 +20,44 @@ class HomeViewController: UIViewController {
     var viewModel = PokemonListingViewModel()
     let disposeBag = DisposeBag()
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.getPokemonsList()
         configureSearchController()
         self.configureListing()
         searchBar.rx.text.orEmpty.bind(to: viewModel.searchText).disposed(by: disposeBag)
         self.configureSearchObservable()
+        self.configureAutoLoading()
+    }
+    
+    func configureAutoLoading() {
+        
+        self.pokemonListingTableView.rx.contentOffset
+                    .map { $0.y }
+            .bind(onNext: { offset in
+                
+                if ((self.pokemonListingTableView.contentSize.height > 0) && (self.pokemonListingTableView.contentSize.height - offset <= 600)){
+                    self.viewModel.getNextPage().subscribe(onNext: {nextResults in
+                        
+                        var appended = self.viewModel.listData.value
+                        appended.append(contentsOf: nextResults)
+                        
+                        self.viewModel.listData.accept(appended)
+                        self.viewModel.offset = self.viewModel.offset + 20
+                        
+                        
+                    })
+                    self.viewModel.offset = self.viewModel.offset + 20
+                }
+            }).disposed(by: disposeBag)
     }
     
     func configureSearchController(){
         searchController.obscuresBackgroundDuringPresentation = false
-        //searchBar.showsCancelButton = true
-        
-        UITextField.appearance().defaultTextAttributes = [.font: UIFont.init(name: "Oxygen-Regular", size: 14), .foregroundColor: UIColor.init(named: "TitleColor")]
-        UITextField.appearance().attributedPlaceholder = NSAttributedString.init(string: "Pesquisar por nome ou ID", attributes: [.font: UIFont.init(name: "Oxygen-Regular", size: 14), .foregroundColor: UIColor.init(named: "TitleColor")])
+        UITextField.appearance().defaultTextAttributes = [.font: UIFont.init(name: "Oxygen-Regular", size: 14)!, .foregroundColor: UIColor.init(named: "TitleColor")!]
+        UITextField.appearance().attributedPlaceholder = NSAttributedString.init(string: "Pesquisar por nome ou ID", attributes: [.font: UIFont.init(name: "Oxygen-Regular", size: 14)!, .foregroundColor: UIColor.init(named: "TitleColor")!])
         searchBar.searchTextField.backgroundColor = UIColor.init(named: "SecondaryBackgroundColor")
 
         navigationItem.searchController = searchController
@@ -57,7 +81,7 @@ class HomeViewController: UIViewController {
     }
     
     func configureListing(){
-        viewModel.listData.drive(pokemonListingTableView.disconnect().rx.items(cellIdentifier: PokemonListingCell.identifier, cellType: PokemonListingCell.self)){ index, element, cell in
+        viewModel.listData.asDriver().drive(pokemonListingTableView.disconnect().rx.items(cellIdentifier: PokemonListingCell.identifier, cellType: PokemonListingCell.self)){ index, element, cell in
             cell.config(element)
             
         }.disposed(by: disposeBag)

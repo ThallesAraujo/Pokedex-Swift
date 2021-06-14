@@ -17,7 +17,7 @@ extension UIImageView{
         
         if let urlImage = URL.init(string: url){
             self.sd_imageTransition = .fade
-            self.sd_setImage(with: urlImage, placeholderImage: UIImage.init(named: "image_placeholder"), options: [.forceTransition, .fromCacheOnly])
+            self.sd_setImage(with: urlImage, placeholderImage: UIImage.init(named: "image_placeholder"), options: [.forceTransition])
         }
     }
     

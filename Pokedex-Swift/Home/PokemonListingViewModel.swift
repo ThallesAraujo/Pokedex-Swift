@@ -18,17 +18,25 @@ class PokemonListingViewModel{
             .asDriver(onErrorJustReturn: [])
     }()
     
-    lazy var listData: Driver<[Result]> = {
-        return PokemonListingViewModel.getPokemons().asDriver(onErrorJustReturn: [])
-    }()
+    var limit = 20
+    var offset = 20
     
+    var disposeBag = DisposeBag()
+    
+    var listData: BehaviorRelay<[Result]> = BehaviorRelay<[Result]>.init(value: [])
+    
+    func getNextPage() -> Observable<[Result]> {
+        return HomeService.getNextPage(offset: offset, limit: limit)
+    }
     
     static func pokemonsFor(_ idOrName: String) -> Observable<[Result]> {
         return HomeService.getPokemonResults(idOrName)
     }
     
-    static func getPokemons() -> Observable<[Result]>{
-        return HomeService.getPokemonsList()
+    func getPokemonsList(){
+        HomeService.getPokemonsList().subscribe(onNext: {list in
+            self.listData.accept(list)
+        }).disposed(by: disposeBag)
     }
     
     

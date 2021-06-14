@@ -19,6 +19,7 @@ enum APIUrls: URLRequestConvertible {
     case destroyUser(String)
     case getPokemons
     case getPokemon(String)
+    case getNextPage(Int, Int)
 
     var method: Alamofire.HTTPMethod {
         switch self {
@@ -42,6 +43,8 @@ enum APIUrls: URLRequestConvertible {
             return "/pokemon"
         case .getPokemon(let idOrName):
             return "/pokemon/\(idOrName)"
+        case .getNextPage(_, _):
+            return "/pokemon"
         case .createUser:
             return "/pokemon"
         case .readUser(let username):
@@ -65,6 +68,8 @@ enum APIUrls: URLRequestConvertible {
             urlRequest = try URLEncoding.default.encode(urlRequest, with: parameters)
         case .updateUser(_, let parameters):
             urlRequest = try URLEncoding.default.encode(urlRequest, with: parameters)
+        case .getNextPage(let offset, let limit):
+            urlRequest = try URLEncoding.default.encode(urlRequest, with: ["offset": offset, "limit": limit])
         default:
             break
         }
