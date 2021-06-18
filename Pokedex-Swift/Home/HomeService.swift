@@ -23,14 +23,17 @@ class HomeService{
         }.map { (response, data) -> [Result] in
             print("Status Resposta: \(response.statusCode)")
             
-            //TODO: Tratamento de erros
-            let decoder = JSONDecoder()
-            let pokemon = try decoder.decode(Pokemon.self, from: data)
-            
-            let result = Result.init(name: pokemon.name, url: "https://pokeapi.co/api/v2/pokemon/\(pokemon.name)")
-            
-            return [result]
-            
+            do{
+                //TODO: Tratamento de erros
+                let decoder = JSONDecoder()
+                let pokemon = try decoder.decode(Pokemon.self, from: data)
+                
+                let result = Result.init(name: pokemon.name, url: "https://pokeapi.co/api/v2/pokemon/\(pokemon.name)")
+                
+                return [result]
+            }catch{
+                return []
+            }
             
         }.asObservable()
     }

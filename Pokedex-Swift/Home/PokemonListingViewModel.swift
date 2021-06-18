@@ -10,13 +10,9 @@ import RxCocoa
 
 class PokemonListingViewModel{
     
-    let searchText = BehaviorRelay<String>(value: "")
+    let searchText = BehaviorRelay<String?>(value: "")
     
-    lazy var searchData: Driver<[Result]> = {
-        return self.searchText.asObservable()
-            .flatMapLatest(PokemonListingViewModel.pokemonsFor)
-            .asDriver(onErrorJustReturn: [])
-    }()
+    var searchData: BehaviorRelay<[Result]> = BehaviorRelay<[Result]>.init(value: [])
     
     var limit = 20
     var offset = 20
@@ -25,12 +21,14 @@ class PokemonListingViewModel{
     
     var listData: BehaviorRelay<[Result]> = BehaviorRelay<[Result]>.init(value: [])
     
-    func getNextPage() -> Observable<[Result]> {
-        return HomeService.getNextPage(offset: offset, limit: limit)
+    func getPokemonsResults(_ idOrName: String){
+        HomeService.getPokemonResults(idOrName).subscribe(onNext:{results in
+            self.searchData.accept(results)
+        }).disposed(by: disposeBag)
     }
     
-    static func pokemonsFor(_ idOrName: String) -> Observable<[Result]> {
-        return HomeService.getPokemonResults(idOrName)
+    func getNextPage() -> Observable<[Result]> {
+        return HomeService.getNextPage(offset: offset, limit: limit)
     }
     
     func getPokemonsList(){

@@ -174,18 +174,19 @@
             <point key="canvasLocation" x="131.8840579710145" y="116.51785714285714"/>
         </scene>
     </scenes>
+    <color key="tintColor" name="TitleColor"/>
     <resources>
         <namedColor name="MainBackgroundColor">
-            <color red="0.84705882352941175" green="1" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.84700000286102295" green="1" blue="0.98400002717971802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SecondaryBackgroundColor">
-            <color red="0.16470588235294117" green="0.43529411764705883" blue="0.42352941176470588" alpha="0.20456549031844992" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.16500000655651093" green="0.43500000238418579" blue="0.42399999499320984" alpha="0.20499999821186066" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SecondaryTitleColor">
-            <color red="0.23529411764705882" green="0.61960784313725492" blue="0.60784313725490191" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23499999940395355" green="0.62000000476837158" blue="0.60799998044967651" alpha="0.30000001192092896" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="TitleColor">
-            <color red="0.23529411764705882" green="0.61960784313725492" blue="0.58431372549019611" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23499999940395355" green="0.62000000476837158" blue="0.58399999141693115" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>

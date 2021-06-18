@@ -21,12 +21,17 @@ class Page: Codable {
 }
 
 // MARK: - Result
-class Result: Codable {
+class Result: Codable, Equatable {
+    
     let name: String
     let url: String
 
     init(name: String, url: String) {
         self.name = name
         self.url = url
+    }
+    
+    static func == (lhs: Result, rhs: Result) -> Bool {
+        return lhs.url == rhs.url
     }
 }

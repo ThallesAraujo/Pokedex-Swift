@@ -40,7 +40,7 @@
     <resources>
         <image name="ic_launchscreen" width="511.9849853515625" height="511.9840087890625"/>
         <namedColor name="MainBackgroundColor">
-            <color red="0.84705882352941175" green="1" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.84700000286102295" green="1" blue="0.98400002717971802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
