@@ -7,24 +7,24 @@ import Foundation
 
 // MARK: - Pokemon
 class Pokemon: Codable {
-    let abilities: [Ability]
-    let baseExperience: Int
-    let forms: [Species]
-    let gameIndices: [GameIndex]
-    let height: Int
-    let heldItems: [JSONAny]
-    let id: Int
-    let isDefault: Bool
-    let locationAreaEncounters: String
-    let moves: [Move]
-    let name: String
-    let order: Int
-    let pastTypes: [JSONAny]
-    let species: Species
-    let sprites: Sprites
-    let stats: [Stat]
-    let types: [TypeElement]
-    let weight: Int
+    let abilities: [Ability]?
+    let baseExperience: Int?
+    let forms: [Species]?
+    let gameIndices: [GameIndex]?
+    let height: Int?
+    let heldItems: [HeldItem]?
+    let id: Int?
+    let isDefault: Bool?
+    let locationAreaEncounters: String?
+    let moves: [Move]?
+    let name: String?
+    let order: Int?
+    let pastTypes: [JSONAny]?
+    let species: Species?
+    let sprites: Sprites?
+    let stats: [Stat]?
+    let types: [TypeElement]?
+    let weight: Int?
 
     enum CodingKeys: String, CodingKey {
         case abilities
@@ -41,7 +41,7 @@ class Pokemon: Codable {
         case species, sprites, stats, types, weight
     }
 
-    init(abilities: [Ability], baseExperience: Int, forms: [Species], gameIndices: [GameIndex], height: Int, heldItems: [JSONAny], id: Int, isDefault: Bool, locationAreaEncounters: String, moves: [Move], name: String, order: Int, pastTypes: [JSONAny], species: Species, sprites: Sprites, stats: [Stat], types: [TypeElement], weight: Int) {
+    init(abilities: [Ability]?, baseExperience: Int?, forms: [Species]?, gameIndices: [GameIndex]?, height: Int?, heldItems: [HeldItem]?, id: Int?, isDefault: Bool?, locationAreaEncounters: String?, moves: [Move]?, name: String?, order: Int?, pastTypes: [JSONAny]?, species: Species?, sprites: Sprites?, stats: [Stat]?, types: [TypeElement]?, weight: Int?) {
         self.abilities = abilities
         self.baseExperience = baseExperience
         self.forms = forms
@@ -65,9 +65,9 @@ class Pokemon: Codable {
 
 // MARK: - Ability
 class Ability: Codable {
-    let ability: Species
-    let isHidden: Bool
-    let slot: Int
+    let ability: Species?
+    let isHidden: Bool?
+    let slot: Int?
 
     enum CodingKeys: String, CodingKey {
         case ability
@@ -75,7 +75,7 @@ class Ability: Codable {
         case slot
     }
 
-    init(ability: Species, isHidden: Bool, slot: Int) {
+    init(ability: Species?, isHidden: Bool?, slot: Int?) {
         self.ability = ability
         self.isHidden = isHidden
         self.slot = slot
@@ -84,10 +84,10 @@ class Ability: Codable {
 
 // MARK: - Species
 class Species: Codable {
-    let name: String
-    let url: String
+    let name: String?
+    let url: String?
 
-    init(name: String, url: String) {
+    init(name: String?, url: String?) {
         self.name = name
         self.url = url
     }
@@ -95,31 +95,58 @@ class Species: Codable {
 
 // MARK: - GameIndex
 class GameIndex: Codable {
-    let gameIndex: Int
-    let version: Species
+    let gameIndex: Int?
+    let version: Species?
 
     enum CodingKeys: String, CodingKey {
         case gameIndex = "game_index"
         case version
     }
 
-    init(gameIndex: Int, version: Species) {
+    init(gameIndex: Int?, version: Species?) {
         self.gameIndex = gameIndex
+        self.version = version
+    }
+}
+
+// MARK: - HeldItem
+class HeldItem: Codable {
+    let item: Species?
+    let versionDetails: [VersionDetail]?
+
+    enum CodingKeys: String, CodingKey {
+        case item
+        case versionDetails = "version_details"
+    }
+
+    init(item: Species?, versionDetails: [VersionDetail]?) {
+        self.item = item
+        self.versionDetails = versionDetails
+    }
+}
+
+// MARK: - VersionDetail
+class VersionDetail: Codable {
+    let rarity: Int?
+    let version: Species?
+
+    init(rarity: Int?, version: Species?) {
+        self.rarity = rarity
         self.version = version
     }
 }
 
 // MARK: - Move
 class Move: Codable {
-    let move: Species
-    let versionGroupDetails: [VersionGroupDetail]
+    let move: Species?
+    let versionGroupDetails: [VersionGroupDetail]?
 
     enum CodingKeys: String, CodingKey {
         case move
         case versionGroupDetails = "version_group_details"
     }
 
-    init(move: Species, versionGroupDetails: [VersionGroupDetail]) {
+    init(move: Species?, versionGroupDetails: [VersionGroupDetail]?) {
         self.move = move
         self.versionGroupDetails = versionGroupDetails
     }
@@ -127,8 +154,8 @@ class Move: Codable {
 
 // MARK: - VersionGroupDetail
 class VersionGroupDetail: Codable {
-    let levelLearnedAt: Int
-    let moveLearnMethod, versionGroup: Species
+    let levelLearnedAt: Int?
+    let moveLearnMethod, versionGroup: Species?
 
     enum CodingKeys: String, CodingKey {
         case levelLearnedAt = "level_learned_at"
@@ -136,7 +163,7 @@ class VersionGroupDetail: Codable {
         case versionGroup = "version_group"
     }
 
-    init(levelLearnedAt: Int, moveLearnMethod: Species, versionGroup: Species) {
+    init(levelLearnedAt: Int?, moveLearnMethod: Species?, versionGroup: Species?) {
         self.levelLearnedAt = levelLearnedAt
         self.moveLearnMethod = moveLearnMethod
         self.versionGroup = versionGroup
@@ -145,20 +172,20 @@ class VersionGroupDetail: Codable {
 
 // MARK: - GenerationV
 class GenerationV: Codable {
-    let blackWhite: Sprites
+    let blackWhite: Sprites?
 
     enum CodingKeys: String, CodingKey {
         case blackWhite = "black-white"
     }
 
-    init(blackWhite: Sprites) {
+    init(blackWhite: Sprites?) {
         self.blackWhite = blackWhite
     }
 }
 
 // MARK: - GenerationIv
 class GenerationIv: Codable {
-    let diamondPearl, heartgoldSoulsilver, platinum: Sprites
+    let diamondPearl, heartgoldSoulsilver, platinum: Sprites?
 
     enum CodingKeys: String, CodingKey {
         case diamondPearl = "diamond-pearl"
@@ -166,7 +193,7 @@ class GenerationIv: Codable {
         case platinum
     }
 
-    init(diamondPearl: Sprites, heartgoldSoulsilver: Sprites, platinum: Sprites) {
+    init(diamondPearl: Sprites?, heartgoldSoulsilver: Sprites?, platinum: Sprites?) {
         self.diamondPearl = diamondPearl
         self.heartgoldSoulsilver = heartgoldSoulsilver
         self.platinum = platinum
@@ -175,14 +202,14 @@ class GenerationIv: Codable {
 
 // MARK: - Versions
 class Versions: Codable {
-    let generationI: GenerationI
-    let generationIi: GenerationIi
-    let generationIii: GenerationIii
-    let generationIv: GenerationIv
-    let generationV: GenerationV
-    let generationVi: [String: GenerationVi]
-    let generationVii: GenerationVii
-    let generationViii: GenerationViii
+    let generationI: GenerationI?
+    let generationIi: GenerationIi?
+    let generationIii: GenerationIii?
+    let generationIv: GenerationIv?
+    let generationV: GenerationV?
+    let generationVi: [String: GenerationVi]?
+    let generationVii: GenerationVii?
+    let generationViii: GenerationViii?
 
     enum CodingKeys: String, CodingKey {
         case generationI = "generation-i"
@@ -195,7 +222,7 @@ class Versions: Codable {
         case generationViii = "generation-viii"
     }
 
-    init(generationI: GenerationI, generationIi: GenerationIi, generationIii: GenerationIii, generationIv: GenerationIv, generationV: GenerationV, generationVi: [String: GenerationVi], generationVii: GenerationVii, generationViii: GenerationViii) {
+    init(generationI: GenerationI?, generationIi: GenerationIi?, generationIii: GenerationIii?, generationIv: GenerationIv?, generationV: GenerationV?, generationVi: [String: GenerationVi]?, generationVii: GenerationVii?, generationViii: GenerationViii?) {
         self.generationI = generationI
         self.generationIi = generationIi
         self.generationIii = generationIii
@@ -209,14 +236,8 @@ class Versions: Codable {
 
 // MARK: - Sprites
 class Sprites: Codable {
-    let backDefault: String
-    let backFemale: JSONNull?
-    let backShiny: String
-    let backShinyFemale: JSONNull?
-    let frontDefault: String
-    let frontFemale: JSONNull?
-    let frontShiny: String
-    let frontShinyFemale: JSONNull?
+    let backDefault, backFemale, backShiny, backShinyFemale: String?
+    let frontDefault, frontFemale, frontShiny, frontShinyFemale: String?
     let other: Other?
     let versions: Versions?
     let animated: Sprites?
@@ -233,7 +254,7 @@ class Sprites: Codable {
         case other, versions, animated
     }
 
-    init(backDefault: String, backFemale: JSONNull?, backShiny: String, backShinyFemale: JSONNull?, frontDefault: String, frontFemale: JSONNull?, frontShiny: String, frontShinyFemale: JSONNull?, other: Other?, versions: Versions?, animated: Sprites?) {
+    init(backDefault: String?, backFemale: String?, backShiny: String?, backShinyFemale: String?, frontDefault: String?, frontFemale: String?, frontShiny: String?, frontShinyFemale: String?, other: Other?, versions: Versions?, animated: Sprites?) {
         self.backDefault = backDefault
         self.backFemale = backFemale
         self.backShiny = backShiny
@@ -250,14 +271,14 @@ class Sprites: Codable {
 
 // MARK: - GenerationI
 class GenerationI: Codable {
-    let redBlue, yellow: RedBlue
+    let redBlue, yellow: RedBlue?
 
     enum CodingKeys: String, CodingKey {
         case redBlue = "red-blue"
         case yellow
     }
 
-    init(redBlue: RedBlue, yellow: RedBlue) {
+    init(redBlue: RedBlue?, yellow: RedBlue?) {
         self.redBlue = redBlue
         self.yellow = yellow
     }
@@ -265,7 +286,7 @@ class GenerationI: Codable {
 
 // MARK: - RedBlue
 class RedBlue: Codable {
-    let backDefault, backGray, frontDefault, frontGray: String
+    let backDefault, backGray, frontDefault, frontGray: String?
 
     enum CodingKeys: String, CodingKey {
         case backDefault = "back_default"
@@ -274,7 +295,7 @@ class RedBlue: Codable {
         case frontGray = "front_gray"
     }
 
-    init(backDefault: String, backGray: String, frontDefault: String, frontGray: String) {
+    init(backDefault: String?, backGray: String?, frontDefault: String?, frontGray: String?) {
         self.backDefault = backDefault
         self.backGray = backGray
         self.frontDefault = frontDefault
@@ -284,9 +305,9 @@ class RedBlue: Codable {
 
 // MARK: - GenerationIi
 class GenerationIi: Codable {
-    let crystal, gold, silver: Crystal
+    let crystal, gold, silver: Crystal?
 
-    init(crystal: Crystal, gold: Crystal, silver: Crystal) {
+    init(crystal: Crystal?, gold: Crystal?, silver: Crystal?) {
         self.crystal = crystal
         self.gold = gold
         self.silver = silver
@@ -295,7 +316,7 @@ class GenerationIi: Codable {
 
 // MARK: - Crystal
 class Crystal: Codable {
-    let backDefault, backShiny, frontDefault, frontShiny: String
+    let backDefault, backShiny, frontDefault, frontShiny: String?
 
     enum CodingKeys: String, CodingKey {
         case backDefault = "back_default"
@@ -304,7 +325,7 @@ class Crystal: Codable {
         case frontShiny = "front_shiny"
     }
 
-    init(backDefault: String, backShiny: String, frontDefault: String, frontShiny: String) {
+    init(backDefault: String?, backShiny: String?, frontDefault: String?, frontShiny: String?) {
         self.backDefault = backDefault
         self.backShiny = backShiny
         self.frontDefault = frontDefault
@@ -314,8 +335,8 @@ class Crystal: Codable {
 
 // MARK: - GenerationIii
 class GenerationIii: Codable {
-    let emerald: Emerald
-    let fireredLeafgreen, rubySapphire: Crystal
+    let emerald: Emerald?
+    let fireredLeafgreen, rubySapphire: Crystal?
 
     enum CodingKeys: String, CodingKey {
         case emerald
@@ -323,7 +344,7 @@ class GenerationIii: Codable {
         case rubySapphire = "ruby-sapphire"
     }
 
-    init(emerald: Emerald, fireredLeafgreen: Crystal, rubySapphire: Crystal) {
+    init(emerald: Emerald?, fireredLeafgreen: Crystal?, rubySapphire: Crystal?) {
         self.emerald = emerald
         self.fireredLeafgreen = fireredLeafgreen
         self.rubySapphire = rubySapphire
@@ -332,14 +353,14 @@ class GenerationIii: Codable {
 
 // MARK: - Emerald
 class Emerald: Codable {
-    let frontDefault, frontShiny: String
+    let frontDefault, frontShiny: String?
 
     enum CodingKeys: String, CodingKey {
         case frontDefault = "front_default"
         case frontShiny = "front_shiny"
     }
 
-    init(frontDefault: String, frontShiny: String) {
+    init(frontDefault: String?, frontShiny: String?) {
         self.frontDefault = frontDefault
         self.frontShiny = frontShiny
     }
@@ -347,10 +368,7 @@ class Emerald: Codable {
 
 // MARK: - GenerationVi
 class GenerationVi: Codable {
-    let frontDefault: String
-    let frontFemale: JSONNull?
-    let frontShiny: String
-    let frontShinyFemale: JSONNull?
+    let frontDefault, frontFemale, frontShiny, frontShinyFemale: String?
 
     enum CodingKeys: String, CodingKey {
         case frontDefault = "front_default"
@@ -359,7 +377,7 @@ class GenerationVi: Codable {
         case frontShinyFemale = "front_shiny_female"
     }
 
-    init(frontDefault: String, frontFemale: JSONNull?, frontShiny: String, frontShinyFemale: JSONNull?) {
+    init(frontDefault: String?, frontFemale: String?, frontShiny: String?, frontShinyFemale: String?) {
         self.frontDefault = frontDefault
         self.frontFemale = frontFemale
         self.frontShiny = frontShiny
@@ -369,15 +387,15 @@ class GenerationVi: Codable {
 
 // MARK: - GenerationVii
 class GenerationVii: Codable {
-    let icons: DreamWorld
-    let ultraSunUltraMoon: GenerationVi
+    let icons: DreamWorld?
+    let ultraSunUltraMoon: GenerationVi?
 
     enum CodingKeys: String, CodingKey {
         case icons
         case ultraSunUltraMoon = "ultra-sun-ultra-moon"
     }
 
-    init(icons: DreamWorld, ultraSunUltraMoon: GenerationVi) {
+    init(icons: DreamWorld?, ultraSunUltraMoon: GenerationVi?) {
         self.icons = icons
         self.ultraSunUltraMoon = ultraSunUltraMoon
     }
@@ -385,15 +403,15 @@ class GenerationVii: Codable {
 
 // MARK: - DreamWorld
 class DreamWorld: Codable {
-    let frontDefault: String
-    let frontFemale: JSONNull?
+    let frontDefault: String?
+    let frontFemale: String?
 
     enum CodingKeys: String, CodingKey {
         case frontDefault = "front_default"
         case frontFemale = "front_female"
     }
 
-    init(frontDefault: String, frontFemale: JSONNull?) {
+    init(frontDefault: String?, frontFemale: String?) {
         self.frontDefault = frontDefault
         self.frontFemale = frontFemale
     }
@@ -401,24 +419,24 @@ class DreamWorld: Codable {
 
 // MARK: - GenerationViii
 class GenerationViii: Codable {
-    let icons: DreamWorld
+    let icons: DreamWorld?
 
-    init(icons: DreamWorld) {
+    init(icons: DreamWorld?) {
         self.icons = icons
     }
 }
 
 // MARK: - Other
 class Other: Codable {
-    let dreamWorld: DreamWorld
-    let officialArtwork: OfficialArtwork
+    let dreamWorld: DreamWorld?
+    let officialArtwork: OfficialArtwork?
 
     enum CodingKeys: String, CodingKey {
         case dreamWorld = "dream_world"
         case officialArtwork = "official-artwork"
     }
 
-    init(dreamWorld: DreamWorld, officialArtwork: OfficialArtwork) {
+    init(dreamWorld: DreamWorld?, officialArtwork: OfficialArtwork?) {
         self.dreamWorld = dreamWorld
         self.officialArtwork = officialArtwork
     }
@@ -426,28 +444,28 @@ class Other: Codable {
 
 // MARK: - OfficialArtwork
 class OfficialArtwork: Codable {
-    let frontDefault: String
+    let frontDefault: String?
 
     enum CodingKeys: String, CodingKey {
         case frontDefault = "front_default"
     }
 
-    init(frontDefault: String) {
+    init(frontDefault: String?) {
         self.frontDefault = frontDefault
     }
 }
 
 // MARK: - Stat
 class Stat: Codable {
-    let baseStat, effort: Int
-    let stat: Species
+    let baseStat, effort: Int?
+    let stat: Species?
 
     enum CodingKeys: String, CodingKey {
         case baseStat = "base_stat"
         case effort, stat
     }
 
-    init(baseStat: Int, effort: Int, stat: Species) {
+    init(baseStat: Int?, effort: Int?, stat: Species?) {
         self.baseStat = baseStat
         self.effort = effort
         self.stat = stat
@@ -456,10 +474,10 @@ class Stat: Codable {
 
 // MARK: - TypeElement
 class TypeElement: Codable {
-    let slot: Int
-    let type: Species
+    let slot: Int?
+    let type: Species?
 
-    init(slot: Int, type: Species) {
+    init(slot: Int?, type: Species?) {
         self.slot = slot
         self.type = type
     }

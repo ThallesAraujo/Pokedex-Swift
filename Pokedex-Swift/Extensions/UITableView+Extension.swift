@@ -19,16 +19,31 @@ extension UITableView{
     }
     
     //Baseado em https://blog.kulman.sk/simple-bindable-no-data-placeholder/
-    func showEmptyView(){
-        let emptyView = EmptyView.init(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
+    func showEmptyView(title: String? = "", description: String? = "", showReload: Bool? = true, reloadClosure: (() -> Void)? = nil){
+        let emptyView = ErrorView.init(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
         emptyView.sizeToFit()
-        self.isScrollEnabled = false
+        
+        if let title = title, !title.isEmpty{
+            emptyView.lblTitle.text = title
+        }
+        
+        if let description = description, !description.isEmpty{
+            emptyView.lblDescription.text = description
+        }
+        
+        if let showReload = showReload, !showReload{
+            emptyView.btnRetry.isHidden = true
+        }
+        
+        emptyView.retryClosure = reloadClosure
+        
+        //self.isScrollEnabled = false
         self.backgroundView = emptyView
         self.backgroundView?.isHidden = false
     }
     
     func hideEmptyView(){
-        self.isScrollEnabled = true
+        //self.isScrollEnabled = true
         self.backgroundView = nil
         self.backgroundView?.isHidden = true
     }

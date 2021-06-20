@@ -9,7 +9,8 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class HomeViewController: UIViewController, UISearchBarDelegate {
+class HomeViewController: UIViewController, ReloadableViewController, UISearchBarDelegate {
+    var retryView: ErrorView?
     
     @IBOutlet weak var pokemonListingTableView: UITableView!
     let searchController = UISearchController(searchResultsController: nil)
@@ -23,6 +24,10 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
     let spinner = ActivityIndicator()
     
     
+    func reload() {
+        viewModel.getPokemonsList()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.getPokemonsList()
@@ -32,6 +37,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
         self.configureSearchObservable()
         self.configureAutoLoading()
         self.configureLoading()
+        self.configureErrorObserver()
     }
     
     func configureLoading(){
@@ -39,29 +45,51 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
         self.spinner.asDriver().drive(UIApplication.shared.rx.isNetworkActivityIndicatorVisible).disposed(by: disposeBag)
     }
     
+    func configureErrorObserver(){
+        //let showError = Observable.combineLatest(self.viewModel.listData, self.viewModel.searchData).map({$0.count <= 0 && $1.count <= 0})
+        self.viewModel.errorHasOccurred.bind(to: self.pokemonListingTableView.rx.showError(reloadClosure: {
+            self.viewModel.getPokemonsList()
+        })).disposed(by: disposeBag)
+        
+        self.viewModel.errorHasOccurred.subscribe(onNext:{hasError in
+            if hasError{
+                self.viewModel.listData.accept([])
+                self.viewModel.searchData.accept([])
+            }
+        }).disposed(by: disposeBag)
+    }
+    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.viewModel.getPokemonsList()
         self.configureListing()
-        Observable.of(false).bind(to: self.pokemonListingTableView.rx.isEmpty()).disposed(by: disposeBag)
+        Observable.of(false).bind(to: self.pokemonListingTableView.rx.showError()).disposed(by: disposeBag)
+        self.viewModel.offset = 20
     }
     
     func configureAutoLoading() {
         
-        self.pokemonListingTableView.rx.contentOffset
+        
+        
+        self.pokemonListingTableView.rx.contentOffset.distinctUntilChanged()
                     .map { $0.y }
             .bind(onNext: {[weak self] offset in
                 
                 guard let weakself = self else{return}
                 let contentSize = weakself.pokemonListingTableView.contentSize.height
                 
-                if ((contentSize > 0) && (contentSize - offset <= 600)){
-                    weakself.viewModel.getNextPage().subscribe(onNext: { [weak self] nextResults in
+                if ((contentSize > 0) && (contentSize - offset <= 450)){
+                    weakself.viewModel.getNextPage().distinctUntilChanged().timeout(.seconds(3), scheduler: MainScheduler.instance).subscribe(onNext: { [weak self] nextResults in
                         guard let weakself = self else{return}
                         var appended = weakself.viewModel.listData.value
-                        appended.append(contentsOf: nextResults)
-                        weakself.viewModel.listData.accept(appended)
-                        weakself.viewModel.offset = weakself.viewModel.offset + 20
+                        let appendedSet = Set(appended)
+                        let nextSet = Set(nextResults)
+                        
+                        if !nextSet.isSubset(of: appendedSet){
+                            appended.append(contentsOf: nextResults)
+                            weakself.viewModel.listData.accept(appended)
+                            weakself.viewModel.offset = weakself.viewModel.offset + 20
+                        }
                     }).disposed(by: weakself.disposeBag)
-                    weakself.viewModel.offset = weakself.viewModel.offset + 20
                 }
             }).disposed(by: disposeBag)
     }
@@ -101,32 +129,21 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
     
     func configureLoadSearchData(){
         self.viewModel.searchData.distinctUntilChanged().asDriver(onErrorJustReturn: []).drive(self.pokemonListingTableView.disconnect().rx.items(cellIdentifier: PokemonListingCell.identifier, cellType: PokemonListingCell.self)){ _, element, cell in
+            print("Encontrado: \(element.name)")
             cell.config(element)
         }.disposed(by: self.disposeBag)
         
-        viewModel.searchData.map({$0.count <= 0}).bind(to: self.pokemonListingTableView.rx.isEmpty()).disposed(by: disposeBag)
+        let hasErrorSearch = Observable.combineLatest(self.viewModel.searchData, self.viewModel.searchText).map({$0.count <= 0 && !($1?.isEmpty ?? false)})
+        
+       hasErrorSearch.bind(to: self.pokemonListingTableView.rx.showError(title: "Nenhum resultado encontrado", description: "Não foi encontrado nenhum resultado para sua pesquisa", showReload: false)).disposed(by: disposeBag)
     }
     
-    func configureEmptyView(isVisible: Bool){
-        
-        let emptyView = EmptyView.init(frame:self.pokemonListingTableView.frame)
-        emptyView.tag = -9999
-        if isVisible{
-            self.pokemonListingTableView.addSubview(emptyView)
-        }else{
-            for view in self.pokemonListingTableView.subviews{
-                if view.tag == -9999{
-                    view.removeFromSuperview()
-                    view.isHidden = true
-                }
-            }
-        }
-    }
     
     func configureListing(){
         viewModel.listData.asDriver(onErrorJustReturn: []).drive(pokemonListingTableView.disconnect().rx.items(cellIdentifier: PokemonListingCell.identifier, cellType: PokemonListingCell.self)){index, element, cell in
             cell.config(element)
         }.disposed(by: disposeBag)
+        
     }
     
     

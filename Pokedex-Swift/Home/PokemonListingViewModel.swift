@@ -21,18 +21,20 @@ class PokemonListingViewModel{
     
     var listData: BehaviorRelay<[Result]> = BehaviorRelay<[Result]>.init(value: [])
     
+    var errorHasOccurred: BehaviorRelay<Bool> = BehaviorRelay<Bool>.init(value: false)
+    
     func getPokemonsResults(_ idOrName: String){
-        HomeService.getPokemonResults(idOrName).subscribe(onNext:{results in
+        HomeService.getPokemonResults(idOrName, errorBinder: self.errorHasOccurred).subscribe(onNext:{results in
             self.searchData.accept(results)
         }).disposed(by: disposeBag)
     }
     
     func getNextPage() -> Observable<[Result]> {
-        return HomeService.getNextPage(offset: offset, limit: limit)
+        return HomeService.getNextPage(offset: offset, limit: limit, errorBinder: self.errorHasOccurred)
     }
     
     func getPokemonsList(){
-        HomeService.getPokemonsList().subscribe(onNext: {list in
+        HomeService.getPokemonsList(errorBinder: self.errorHasOccurred).subscribe(onNext: {list in
             self.listData.accept(list)
         }).disposed(by: disposeBag)
     }

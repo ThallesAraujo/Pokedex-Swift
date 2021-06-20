@@ -25,7 +25,8 @@ extension UIImageView{
         self.kf.setImage(with: URL.init(string: url), placeholder: UIImage.init(named: "image_placeholder"), options: [.forceRefresh], progressBlock: nil) { image, error, cache, url in
             view.backgroundColor = image?.getColors()?.primary
         }
-        
-       
     }
+    
+    
+    
 }

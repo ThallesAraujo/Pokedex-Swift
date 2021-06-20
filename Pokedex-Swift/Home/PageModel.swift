@@ -21,7 +21,11 @@ class Page: Codable {
 }
 
 // MARK: - Result
-class Result: Codable, Equatable {
+class Result: Codable, Equatable, Hashable {
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(url)
+    }
     
     let name: String
     let url: String

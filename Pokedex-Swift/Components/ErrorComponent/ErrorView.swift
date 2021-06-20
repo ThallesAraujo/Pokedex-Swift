@@ -7,9 +7,14 @@
 
 import UIKit
 
-class EmptyView: UIView {
+class ErrorView: UIView {
 
     @IBOutlet var contentView: UIView!
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var lblDescription: UILabel!
+    @IBOutlet weak var btnRetry: UIButton!
+    
+    var retryClosure: (() -> Void)?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -22,10 +27,16 @@ class EmptyView: UIView {
     }
     
     private func commonInit(){
-        Bundle.main.loadNibNamed("EmptyView", owner: self, options: nil)
+        Bundle.main.loadNibNamed("ErrorView", owner: self, options: nil)
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+    }
+    
+    @IBAction func didTapRetry(_ sender: Any) {
+        if let retry = self.retryClosure{
+            retry()
+        }
     }
     
 }
