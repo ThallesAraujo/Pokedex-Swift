@@ -6,12 +6,12 @@
 //
 
 import Foundation
-import RxAlamofire
 import Alamofire
 
 enum APIUrls: URLRequestConvertible {
     
     static let baseURLString = "https://pokeapi.co/api/v2"
+    static let getPokemonURL = "https://pokeapi.co/api/v2/pokemon/"
 
     case createUser([String: AnyObject])
     case readUser(String)

@@ -11,9 +11,7 @@ import RxCocoa
 import RxSwift
 import UIImageColors
 
-class PokemonListingCell: UITableViewCell, ModeledCell {
-    
-    typealias modelType = Result
+class PokemonListingCell: UITableViewCell {
     
     @IBOutlet weak var pokemonImage: UIImageView!
     @IBOutlet weak var lblPokemonName: UILabel!
@@ -21,13 +19,7 @@ class PokemonListingCell: UITableViewCell, ModeledCell {
     @IBOutlet weak var lblTypes: UILabel!
     @IBOutlet weak var lblID: UILabel!
     
-    var pokemon: Pokemon?{
-        didSet{
-            let imageUrl = pokemon?.sprites?.other?.dreamWorld?.frontDefault ?? pokemon?.sprites?.frontDefault ?? ""
-            self.pokemonImage.setImage(fromURL: imageUrl)
-            self.endConfig()
-        }
-    }
+    var pokemon: Pokemon?
     
     let disposeBag = DisposeBag()
     
@@ -40,9 +32,6 @@ class PokemonListingCell: UITableViewCell, ModeledCell {
     
     private func endConfig(){
         self.lblID.text = "\(self.pokemon?.id ?? 0)"
-        
-    
-        
         self.lblTypes.text = "\(self.pokemon?.types?.map({ $0.type?.name ?? ""}).joined(separator: ", ") ?? "")"
     }
     
@@ -51,9 +40,18 @@ class PokemonListingCell: UITableViewCell, ModeledCell {
         
         let pokemonFetched = HomeService.getPokemon(fromURL: model.url)
         
-        pokemonFetched.subscribe(onNext: { value in
+        let dispatcher = DispatchGroup()
+        dispatcher.enter()
+        pokemonFetched.observe(on: ConcurrentDispatchQueueScheduler(qos: .background)).subscribe(onNext: { value in
             self.pokemon = value
+            dispatcher.leave()
         }).disposed(by: disposeBag)
+        
+        dispatcher.notify(queue: .main, execute: {
+            let imageUrl = self.pokemon?.sprites?.other?.dreamWorld?.frontDefault ?? self.pokemon?.sprites?.frontDefault ?? ""
+            self.pokemonImage.setImage(fromURL: imageUrl)
+            self.endConfig()
+        })
         
         
     }

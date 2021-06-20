@@ -10,33 +10,27 @@ import RxSwift
 import RxCocoa
 import RxAlamofire
 
-
-class HomeService{
+class HomeService: Service{
     
     static func getPokemonResults (_ idOrName: String, errorBinder: BehaviorRelay<Bool>) -> Observable<[Result]>{
         guard !idOrName.isEmpty else{
             return Observable.empty()
         }
         
-        URLCache.shared.removeAllCachedResponses()
+        if !isConnected(){
+            errorBinder.accept(true)
+        }
+        
         return RxAlamofire.requestData(APIUrls.getPokemon(idOrName)).debug().catch { error in
             print(error)
             errorBinder.accept(true)
-            
             return Observable.from([])
         }.map { (response, data) -> [Result] in
-            print("Status Resposta: \(response.statusCode)")
-            
-            if let JSONString = String(data: data, encoding: String.Encoding.utf8) {
-               print("JSON: \(JSONString)")
-            }
-            
             do{
                 let decoder = JSONDecoder()
                 
                 let pokemon = try decoder.decode(Pokemon.self, from: data)
-                
-                let result = Result.init(name: pokemon.name ?? "", url: "https://pokeapi.co/api/v2/pokemon/\(pokemon.name ?? "")")
+                let result = Result.init(name: pokemon.name ?? "", url: APIUrls.getPokemonURL+(pokemon.name ?? ""))
                 errorBinder.accept(false)
                 return [result]
             }catch{
@@ -49,16 +43,14 @@ class HomeService{
     
     static func getPokemonsList(errorBinder: BehaviorRelay<Bool>) -> Observable<[Result]>{
         
-        URLCache.shared.removeAllCachedResponses()
+        if !isConnected(){
+            errorBinder.accept(true)
+        }
         
         return RxAlamofire.requestData(APIUrls.getPokemons).debug().catch { error in
-            print("Error ocurred \(error)")
             errorBinder.accept(true)
             return Observable.from([])
         }.map { (response, data) -> [Result] in
-            print("Status Resposta: \(response.statusCode)")
-            
-            //TODO: Tratamento de erros
             let decoder = JSONDecoder()
             let page = try decoder.decode(Page.self, from: data)
             errorBinder.accept(false)
@@ -70,16 +62,14 @@ class HomeService{
     
     static func getNextPage(offset: Int, limit: Int, errorBinder: BehaviorRelay<Bool>) -> Observable<[Result]>{
         
-        URLCache.shared.removeAllCachedResponses()
+        if !isConnected(){
+            errorBinder.accept(true)
+        }
         
         return RxAlamofire.requestData(APIUrls.getNextPage(offset, limit)).debug().catch { error in
             errorBinder.accept(true)
             return Observable.from([])
         }.map { (response, data) -> [Result] in
-            print("Status Resposta: \(response.statusCode)")
-            print("Página -> Offset: \(offset) | limit: \(limit)")
-            
-            //TODO: Tratamento de erros
             let decoder = JSONDecoder()
             let page = try decoder.decode(Page.self, from: data)
             errorBinder.accept(false)
@@ -95,13 +85,10 @@ class HomeService{
             return Observable.empty()
         }
         let request = URLRequest.init(url: endpoint)
-        return RxAlamofire.requestData(request).debug().catch { error in
+        return RxAlamofire.requestData(request).debug().timeout(.seconds(3), scheduler: MainScheduler.instance).catch { error in
             print(error)
             return Observable.never()
         }.map { (response, data) in
-            print("Status Resposta: \(response.statusCode)")
-            
-            //TODO: Tratamento de erros
             let decoder = JSONDecoder()
             let pokemon = try decoder.decode(Pokemon.self, from: data)
             return pokemon

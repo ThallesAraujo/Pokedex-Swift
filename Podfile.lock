@@ -1,7 +1,5 @@
 PODS:
   - Alamofire (5.4.1)
-  - AlamofireImage (4.2.0):
-    - Alamofire (~> 5.4)
   - Kingfisher (4.10.1)
   - RxAlamofire (6.1.1):
     - RxAlamofire/Core (= 6.1.1)
@@ -21,7 +19,6 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
-  - AlamofireImage (~> 4.1)
   - Kingfisher (~> 4.0)
   - RxAlamofire
   - RxCocoa (= 6.2.0)
@@ -32,7 +29,6 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
-    - AlamofireImage
     - Kingfisher
     - RxAlamofire
     - RxCocoa
@@ -44,7 +40,6 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
-  AlamofireImage: 34a2d90b0e5fe6a5605f85ae4b7b01e784c60192
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   RxAlamofire: beb75a1c452d0de225651db4903f5d29d034a620
   RxCocoa: 4baf94bb35f2c0ab31bc0cb9f1900155f646ba42
@@ -54,6 +49,6 @@ SPEC CHECKSUMS:
   SDWebImageSVGCoder: 020cc0f1ab0ef8ca63a9365c03421d67aa3d4a46
   UIImageColors: d2ef3b0877d203cbb06489eeb78ea8b7788caabe
 
-PODFILE CHECKSUM: 4a2bfdcc09e1725d604fa3a95e68661b2e4f4e39
+PODFILE CHECKSUM: 7ed7edccd79f58264423130ec43c79dcb6cb3bc4
 
 COCOAPODS: 1.10.1

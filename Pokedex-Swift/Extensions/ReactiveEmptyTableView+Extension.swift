@@ -21,5 +21,6 @@ extension Reactive where Base: UITableView{
                     tableView.hideEmptyView()
                 }
             }
-        }
+    }
+    
 }

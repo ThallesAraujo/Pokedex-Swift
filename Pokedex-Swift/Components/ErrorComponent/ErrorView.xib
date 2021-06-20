@@ -34,26 +34,26 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="error" translatesAutoresizingMaskIntoConstraints="NO" id="1Pt-PS-pxG">
-                    <rect key="frame" x="87" y="76" width="250" height="250"/>
+                    <rect key="frame" x="87" y="76" width="250" height="150"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="250" id="TuK-2D-4tJ"/>
+                        <constraint firstAttribute="height" constant="150" id="TuK-2D-4tJ"/>
                         <constraint firstAttribute="width" constant="250" id="sa2-0t-a3Y"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ops!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ypl-lL-6Ex">
-                    <rect key="frame" x="24" y="350" width="376" height="30"/>
+                    <rect key="frame" x="24" y="250" width="376" height="30"/>
                     <fontDescription key="fontDescription" name="Quicksand-Medium" family="Quicksand" pointSize="24"/>
                     <color key="textColor" name="TitleColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ocorreu um erro inesperado. Tente novamente mais tarde." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQp-8Q-3Zp">
-                    <rect key="frame" x="24" y="404" width="376" height="45.5"/>
+                    <rect key="frame" x="24" y="304" width="376" height="45.5"/>
                     <fontDescription key="fontDescription" name="Oxygen-Regular" family="Oxygen" pointSize="18"/>
                     <color key="textColor" systemColor="secondaryLabelColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="12I-mT-a18">
-                    <rect key="frame" x="24" y="481.5" width="376" height="52"/>
+                    <rect key="frame" x="24" y="381.5" width="376" height="52"/>
                     <color key="backgroundColor" name="TitleColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="52" id="M96-ZL-P2H"/>

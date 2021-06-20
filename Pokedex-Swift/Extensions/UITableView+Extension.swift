@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-
+import RxSwift
 
 extension UITableView{
     
@@ -46,6 +46,17 @@ extension UITableView{
         //self.isScrollEnabled = true
         self.backgroundView = nil
         self.backgroundView?.isHidden = true
+    }
+    
+    func rx_hasReachedTheBottom() -> Observable<Bool>{
+        return self.rx.contentOffset.distinctUntilChanged()
+            .map({totalOffset -> Bool in
+                let offset = totalOffset.y
+                let contentSize = self.contentSize.height
+                return (contentSize > 0) && (contentSize - offset <= 450)
+            })
+            
+        
     }
     
 }
