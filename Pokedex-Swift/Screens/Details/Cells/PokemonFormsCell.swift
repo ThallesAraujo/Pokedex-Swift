@@ -12,9 +12,9 @@ class PokemonFormsCell: UITableViewCell, Storyboarded, UICollectionViewDelegate,
     
     @IBOutlet weak var formsList: UICollectionView!
     
-    var forms: [Species]?
+    var forms: [Chain]?
     
-    func config(forms: [Species]?){
+    func config(forms: [Chain]?){
         
         self.forms = forms
         formsList.delegate = self
@@ -28,7 +28,7 @@ class PokemonFormsCell: UITableViewCell, Storyboarded, UICollectionViewDelegate,
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PokemonAbilityCell.identifier, for: indexPath) as? PokemonAbilityCell{
-            cell.lblAbilityName.text = forms?[indexPath.row].name
+            cell.lblAbilityName.text = forms?[indexPath.row].species?.name
             return cell
         }else{
             return PokemonAbilityCell()

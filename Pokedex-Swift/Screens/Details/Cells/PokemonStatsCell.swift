@@ -46,4 +46,5 @@ class PokemonStatsCell: UITableViewCell, Storyboarded, UICollectionViewDelegate,
     
     
     
+    
 }

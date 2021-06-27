@@ -7,16 +7,14 @@
 
 import Foundation
 import UIKit
+import RxSwift
+import RxCocoa
+import RxDataSources
 
 class PokemonDetailsViewController: UIViewController, Storyboarded, UITableViewDelegate, UITableViewDataSource{
     
     @IBOutlet weak var tableView: UITableView!
     var pokemon: Pokemon?
-    
-    override func viewDidLoad() {
-        self.tableView.reloadData()
-        self.title = pokemon?.name?.capitalized
-    }
     
     let indexPathHeights: [CGFloat] = [
         274,
@@ -24,8 +22,17 @@ class PokemonDetailsViewController: UIViewController, Storyboarded, UITableViewD
         50,
         228,
         100,
-        200
+        100
     ]
+    
+    let viewModel = EvolutionsViewModel()
+    let disposeBag = DisposeBag()
+    
+    override func viewDidLoad() {
+        self.tableView.reloadData()
+        self.title = "(#\(pokemon?.id ?? 0)) \(pokemon?.name?.capitalized ?? "")"
+        viewModel.getEvolutions(id: pokemon?.id ?? 0)
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -70,7 +77,15 @@ class PokemonDetailsViewController: UIViewController, Storyboarded, UITableViewD
             }
         }else{
             if let cell = tableView.dequeueReusableCell(withIdentifier: PokemonFormsCell.identifier) as? PokemonFormsCell{
-                cell.config(forms: pokemon?.forms)
+                
+                viewModel.evolution.subscribe(onNext: { evolution in
+                    if let chain = evolution?.chain{
+                        var evolutionChain = self.flattenChain(chain: chain)
+                        evolutionChain.removeAll(where: {$0.species?.name == self.pokemon?.name})
+                        cell.config(forms: evolutionChain)
+                    }
+                }).disposed(by: disposeBag)
+                
                 return cell
             }else{
                 return PokemonFormsCell()
@@ -86,7 +101,25 @@ class PokemonDetailsViewController: UIViewController, Storyboarded, UITableViewD
         return indexPathHeights[indexPath.row]
     }
     
+
+    func flattenChain(chain: Chain) -> [Chain]{
+        
+        
+        var chains: [Chain] = []
+        
+        if let evolutions = chain.evolvesTo, evolutions.count > 0{
+            chains.append(chain)
+            chains.append(contentsOf: flattenChain(chain: evolutions[0]))
+            chains.append(contentsOf: evolutions[0].evolvesTo ?? [])
+        }else{
+            chains.append(chain)
+        }
+        
+        return chains.withoutDuplicates()
+        
+    }
     
+
     
 }
 
