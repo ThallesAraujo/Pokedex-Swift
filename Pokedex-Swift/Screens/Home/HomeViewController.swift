@@ -35,9 +35,25 @@ class HomeViewController: UIViewController, ReloadableViewController, UISearchBa
         searchBar.rx.text.orEmpty.bind(to: viewModel.searchText).disposed(by: disposeBag)
         self.configureAutoLoading()
         self.configureErrorObserver()
+        configureModelSelect()
     }
     
   
+    
+    func configureModelSelect(){
+        
+        self.pokemonListingTableView.rx.itemSelected.subscribe(onNext: { indexPath in
+            if let navigation = self.navigationController, let vc = UIStoryboard.init(name: "Main", bundle: .main).instantiateViewController(identifier: PokemonDetailsViewController.identifier) as? PokemonDetailsViewController, let cell = self.pokemonListingTableView.cellForRow(at: indexPath) as? PokemonListingCell{
+                vc.pokemon = cell.pokemon
+                
+                navigation.navigationItem.largeTitleDisplayMode = .always
+                navigation.pushViewController(vc, animated: true)
+                
+            }
+        }).disposed(by: disposeBag)
+        
+    }
+    
     func configureErrorObserver(){
         self.viewModel.errorHasOccurred.bind(to: self.pokemonListingTableView.rx.showError(reloadClosure: {
             self.viewModel.getPokemonsList()

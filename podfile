@@ -7,6 +7,7 @@ def common_pods
   pod 'Kingfisher', '~> 4.0'
   pod 'RxSwift', '6.2.0'
   pod 'RxCocoa', '6.2.0'
+  pod 'RxDataSources'
   pod 'SDWebImageSVGCoder'
   pod 'UIImageColors'
 end

@@ -7,7 +7,7 @@ import Foundation
 
 // MARK: - Pokemon
 class Pokemon: Codable {
-    let abilities: [Ability]?
+    let abilities: [AbilityDTO]?
     let baseExperience: Int?
     let forms: [Species]?
     let gameIndices: [GameIndex]?
@@ -41,7 +41,7 @@ class Pokemon: Codable {
         case species, sprites, stats, types, weight
     }
 
-    init(abilities: [Ability]?, baseExperience: Int?, forms: [Species]?, gameIndices: [GameIndex]?, height: Int?, heldItems: [HeldItem]?, id: Int?, isDefault: Bool?, locationAreaEncounters: String?, moves: [Move]?, name: String?, order: Int?, pastTypes: [JSONAny]?, species: Species?, sprites: Sprites?, stats: [Stat]?, types: [TypeElement]?, weight: Int?) {
+    init(abilities: [AbilityDTO]?, baseExperience: Int?, forms: [Species]?, gameIndices: [GameIndex]?, height: Int?, heldItems: [HeldItem]?, id: Int?, isDefault: Bool?, locationAreaEncounters: String?, moves: [Move]?, name: String?, order: Int?, pastTypes: [JSONAny]?, species: Species?, sprites: Sprites?, stats: [Stat]?, types: [TypeElement]?, weight: Int?) {
         self.abilities = abilities
         self.baseExperience = baseExperience
         self.forms = forms
@@ -63,8 +63,28 @@ class Pokemon: Codable {
     }
 }
 
+extension Pokemon{
+    
+    func getImagesList() -> [String?]{
+
+        return [
+            self.sprites?.frontDefault,
+            self.sprites?.backDefault,
+            self.sprites?.frontFemale,
+            self.sprites?.backFemale,
+            self.sprites?.frontShiny,
+            self.sprites?.backShiny,
+            self.sprites?.frontShinyFemale,
+            self.sprites?.backShinyFemale
+        ]
+        
+    }
+    
+}
+
+
 // MARK: - Ability
-class Ability: Codable {
+class AbilityDTO: Codable {
     let ability: Species?
     let isHidden: Bool?
     let slot: Int?

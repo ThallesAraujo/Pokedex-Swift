@@ -27,6 +27,9 @@ extension UIImageView{
         }
     }
     
+    func kf_setImage(url: String){
+            self.kf.setImage(with: URL.init(string: url), placeholder: UIImage.init(named: "image_placeholder"), options: [.forceRefresh], progressBlock: nil, completionHandler: nil)
+        }
     
     
 }

@@ -11,7 +11,7 @@ import RxCocoa
 import RxSwift
 import UIImageColors
 
-class PokemonListingCell: UITableViewCell {
+class PokemonListingCell: UITableViewCell, Storyboarded {
     
     @IBOutlet weak var pokemonImage: UIImageView!
     @IBOutlet weak var lblPokemonName: UILabel!
@@ -22,8 +22,6 @@ class PokemonListingCell: UITableViewCell {
     var pokemon: Pokemon?
     
     let disposeBag = DisposeBag()
-    
-    static let identifier = "pokemonListingCell"
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,7 +34,7 @@ class PokemonListingCell: UITableViewCell {
     }
     
     func config(_ model: Result) {
-        self.lblPokemonName.text = model.name
+        self.lblPokemonName.text = model.name.capitalized
         
         let pokemonFetched = HomeService.getPokemon(fromURL: model.url)
         
