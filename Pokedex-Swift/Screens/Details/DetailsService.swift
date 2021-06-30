@@ -39,4 +39,22 @@ class DetailsService: Service{
         }.asObservable()
     }
     
+    
+    static func getAbility(fromURL url: String) -> Observable<Ability>{
+        
+        guard let endpoint = URL.init(string: url) else{
+            return Observable.empty()
+        }
+        let request = URLRequest.init(url: endpoint)
+        return RxAlamofire.requestData(request).debug().timeout(.seconds(3), scheduler: MainScheduler.instance).catch { error in
+            print(error)
+            return Observable.never()
+        }.map { (response, data) in
+            let decoder = JSONDecoder()
+            let ability = try decoder.decode(Ability.self, from: data)
+            return ability
+        }.asObservable()
+        
+    }
+    
 }

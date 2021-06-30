@@ -7,12 +7,16 @@
 
 import Foundation
 import UIKit
+import RxCocoa
+import RxSwift
 
 class PokemonAbilitiesCell: UITableViewCell, Storyboarded, UICollectionViewDelegate, UICollectionViewDataSource{
     
     @IBOutlet weak var abilitiesList: UICollectionView!
     
     var abilities: [AbilityDTO]?
+    
+    let disposeBag = DisposeBag()
     
     func config(abilities: [AbilityDTO]?){
         
@@ -35,4 +39,23 @@ class PokemonAbilitiesCell: UITableViewCell, Storyboarded, UICollectionViewDeleg
         }
     }
     
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let ability = self.abilities?[indexPath.row], let abilityUrl = ability.ability?.url {
+            let details = DetailsService.getAbility(fromURL: abilityUrl)
+            let keyWindow = UIApplication.shared.windows.first(where: {$0.isKeyWindow})
+            
+            details.subscribe(onNext: {detail in
+                let abilityName = ability.ability?.name ?? ""
+                
+                let message = detail.flavorTextEntries?.first(where: {$0.language?.name == "en"})?.flavorText ?? ""
+                
+                if !abilityName.isEmpty && !message.isEmpty{
+                    keyWindow?.rootViewController?.showAlert(title: abilityName.capitalized, message: message)
+                }
+                
+            }).disposed(by: disposeBag)
+            
+        }
+    }
 }
