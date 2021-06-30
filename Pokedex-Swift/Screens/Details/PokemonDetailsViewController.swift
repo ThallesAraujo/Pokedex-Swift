@@ -11,6 +11,10 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
+let typesCellId = "pokemonTypesCell"
+let pokemonEvolutionsCellId = "pokemonEvolutionsCell"
+let pokemonAbilitiesCellId = "pokemonAbilitiesCell"
+
 class PokemonDetailsViewController: UIViewController, Storyboarded, UITableViewDelegate, UITableViewDataSource{
     
     @IBOutlet weak var tableView: UITableView!
@@ -19,7 +23,7 @@ class PokemonDetailsViewController: UIViewController, Storyboarded, UITableViewD
     let indexPathHeights: [CGFloat] = [
         274,
         200,
-        50,
+        100,
         228,
         100,
         100
@@ -28,10 +32,12 @@ class PokemonDetailsViewController: UIViewController, Storyboarded, UITableViewD
     let viewModel = EvolutionsViewModel()
     let disposeBag = DisposeBag()
     
+    
     override func viewDidLoad() {
         self.tableView.reloadData()
         self.title = "(#\(pokemon?.id ?? 0)) \(pokemon?.name?.capitalized ?? "")"
         viewModel.getEvolutions(id: pokemon?.id ?? 0)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,8 +61,10 @@ class PokemonDetailsViewController: UIViewController, Storyboarded, UITableViewD
                 return PokemonImagesCell()
             }
         }else if indexPath.row == 2{
-            if let cell = tableView.dequeueReusableCell(withIdentifier: PokemonTypesCell.identifier) as? PokemonTypesCell{
-                cell.lblPokemonTypes.text = "Tipos: \(pokemon?.types?.compactMap({$0.type?.name}).joined(separator: ", ") ?? "")"
+            //Tipos
+            if let cell = tableView.dequeueReusableCell(withIdentifier:typesCellId) as? PokemonItemListCell{
+                cell.config(items: pokemon?.types?.compactMap({$0.type}))
+                //TODO: Did tap action
                 return cell
             }else{
                 return PokemonTypesCell()
@@ -69,20 +77,60 @@ class PokemonDetailsViewController: UIViewController, Storyboarded, UITableViewD
                 return PokemonStatsCell()
             }
         }else if indexPath.row == 4{
-            if let cell = tableView.dequeueReusableCell(withIdentifier: PokemonAbilitiesCell.identifier) as? PokemonAbilitiesCell{
-                cell.config(abilities: pokemon?.abilities)
+            if let cell = tableView.dequeueReusableCell(withIdentifier: pokemonAbilitiesCellId) as? PokemonItemListCell{
+                let items = pokemon?.abilities?.compactMap({$0.ability})
+                cell.config(items: items) {[weak self] indexPath in
+                    guard let weakself = self else{return}
+                    
+                    if let ability = weakself.pokemon?.abilities?[indexPath.row], let abilityUrl = ability.ability?.url {
+                        let details = DetailsService.getAbility(fromURL: abilityUrl)
+                        let keyWindow = UIApplication.shared.windows.first(where: {$0.isKeyWindow})
+                        
+                        details.subscribe(onNext: {detail in
+                            let abilityName = ability.ability?.name ?? ""
+                            
+                            let message = detail.flavorTextEntries?.first(where: {$0.language?.name == "en"})?.flavorText ?? ""
+                            
+                            if !abilityName.isEmpty && !message.isEmpty{
+                                keyWindow?.rootViewController?.showAlert(title: abilityName.capitalized, message: message)
+                            }
+                            
+                        }).disposed(by: weakself.disposeBag)
+                    }
+                }
                 return cell
             }else{
-                return PokemonAbilitiesCell()
+                return PokemonItemListCell()
             }
         }else{
-            if let cell = tableView.dequeueReusableCell(withIdentifier: PokemonFormsCell.identifier) as? PokemonFormsCell{
+            if let cell = tableView.dequeueReusableCell(withIdentifier: pokemonEvolutionsCellId) as? PokemonItemListCell{
                 
                 viewModel.evolution.subscribe(onNext: { evolution in
                     if let chain = evolution?.chain{
                         var evolutionChain = self.flattenChain(chain: chain)
                         evolutionChain.removeAll(where: {$0.species?.name == self.pokemon?.name})
-                        cell.config(forms: evolutionChain)
+                        cell.config(items: evolutionChain.compactMap({$0.species})) {[weak self] indexPath in
+                            
+                            guard let weakself = self else {return}
+                            
+                            let pokemonEvolution = evolutionChain[indexPath.row]
+                            if let pokemonEvolutionUrl = pokemonEvolution.species?.url{
+                                let fetchedPokemonEvolution = HomeService.getPokemon(fromURL: pokemonEvolutionUrl.replacingOccurrences(of: "-species", with: ""))
+                                fetchedPokemonEvolution.subscribe(onNext: {pokemon in
+                                    if let viewController = UIStoryboard.init(name: "Main", bundle: .main).instantiateViewController(identifier: PokemonDetailsViewController.identifier) as? PokemonDetailsViewController{
+                                        
+                                        let navigation = UINavigationController.init(rootViewController: viewController)
+                                        navigation.navigationBar.backgroundColor = UIColor.init(named: "MainBackgroundColor")
+                                        navigation.navigationBar.barTintColor = UIColor.init(named: "MainBackgroundColor")
+                                        navigation.navigationBar.largeTitleTextAttributes = [.font: UIFont.init(name: "Quicksand-SemiBold", size: 28.0), .foregroundColor: UIColor.init(named: "TitleColor")]
+                                        navigation.navigationBar.titleTextAttributes = [.font: UIFont.init(name: "Quicksand-Medium", size: 14.0), .foregroundColor: UIColor.init(named: "TitleColor")]
+                                        viewController.pokemon = pokemon
+                                        weakself.present(navigation, animated: true, completion: nil)
+                                        
+                                    }
+                                }).disposed(by: weakself.disposeBag)
+                            }
+                        }
                     }
                 }).disposed(by: disposeBag)
                 

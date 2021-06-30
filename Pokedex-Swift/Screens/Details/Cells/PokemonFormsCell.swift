@@ -27,11 +27,11 @@ class PokemonFormsCell: UITableViewCell, Storyboarded, UICollectionViewDelegate,
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PokemonAbilityCell.identifier, for: indexPath) as? PokemonAbilityCell{
-            cell.lblAbilityName.text = forms?[indexPath.row].species?.name
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PokemonItemCell.identifier, for: indexPath) as? PokemonItemCell{
+            cell.lblItemName.text = forms?[indexPath.row].species?.name
             return cell
         }else{
-            return PokemonAbilityCell()
+            return PokemonItemCell()
         }
     }
     
