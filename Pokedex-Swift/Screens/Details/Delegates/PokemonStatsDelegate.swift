@@ -1,5 +1,5 @@
 //
-//  PokemonStatsCell.swift
+//  PokemonStatsDelegate.swift
 //  Pokedex-Swift
 //
 //  Created by Thalles Araújo on 26/06/21.
@@ -8,18 +8,19 @@
 import Foundation
 import UIKit
 
-class PokemonStatsCell: UITableViewCell, Storyboarded, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+class PokemonStatsDelegate: NSObject, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
-    @IBOutlet weak var lblStats: UILabel!
-    @IBOutlet weak var statsCollectionView: UICollectionView!
+    var statsCollectionView: UICollectionView?{
+        didSet{
+            self.statsCollectionView?.delegate = self
+            self.statsCollectionView?.dataSource = self
+        }
+    }
     
-    var stats: [Stat]?
+    var stats: [Stat]? = []
     
     func config(stats: [Stat]?){
         self.stats = stats
-        self.statsCollectionView.delegate = self
-        self.statsCollectionView.dataSource = self
-        self.statsCollectionView.reloadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -44,6 +45,9 @@ class PokemonStatsCell: UITableViewCell, Storyboarded, UICollectionViewDelegate,
         return CGSize.init(width: 133, height: 152)
     }
     
+    func reloadData(){
+        self.statsCollectionView?.reloadData()
+    }
     
     
     

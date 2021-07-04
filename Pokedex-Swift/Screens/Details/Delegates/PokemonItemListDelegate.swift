@@ -1,5 +1,5 @@
 //
-//  PokemonAbilitiesCell.swift
+//  PokemonItemListDelegate.swift
 //  Pokedex-Swift
 //
 //  Created by Thalles Araújo on 26/06/21.
@@ -10,32 +10,37 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class PokemonItemListCell: UITableViewCell, Storyboarded, UICollectionViewDelegate, UICollectionViewDataSource{
+class PokemonItemListDelegate: NSObject, UICollectionViewDelegate, UICollectionViewDataSource{
     
-    @IBOutlet weak var itemsList: UICollectionView!
+    var itemsList: UICollectionView?{
+        didSet{
+            self.itemsList?.delegate = self
+            self.itemsList?.dataSource = self
+        }
+    }
     
     var items: [Species]?
     
     let disposeBag = DisposeBag()
     var didTapClosure:((IndexPath) -> Void)?
     
+    
     func config(items: [Species]?, didTapClosure: ((IndexPath) -> Void)? = nil){
         self.items = items
         self.didTapClosure = didTapClosure
-        itemsList.delegate = self
-        itemsList.dataSource = self
-        itemsList.reloadData()
+        itemsList?.reloadData()
     }
     
-    
+
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return items?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PokemonItemCell.identifier, for: indexPath) as? PokemonItemCell{
-            cell.lblItemName.text = items?[indexPath.row].name?.capitalized
+            cell.lblItemName.text = items?[indexPath.item].name?.capitalized
             return cell
         }else{
             return PokemonItemCell()

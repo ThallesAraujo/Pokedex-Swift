@@ -1,5 +1,5 @@
 //
-//  PokemonImagesCell.swift
+//  PokemonImagesDelegate.swift
 //  Pokedex-Swift
 //
 //  Created by Thalles Araújo on 26/06/21.
@@ -9,20 +9,16 @@ import Foundation
 import UIKit
 import Kingfisher
 
-class PokemonImagesCell: UITableViewCell, Storyboarded, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+class PokemonImagesDelegate: NSObject, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
-    @IBOutlet weak var pokemonImages: UICollectionView!
+    var imagesCollectionView: UICollectionView?{
+        didSet{
+            self.imagesCollectionView?.delegate = self
+            self.imagesCollectionView?.dataSource = self
+        }
+    }
     
     var images: [String?] = []
-    var currentPage: Int = 0
-    
-    
-    func config(images: [String?]){
-        self.images = images
-        pokemonImages.delegate = self
-        pokemonImages.dataSource = self
-        self.pokemonImages.reloadData()
-    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return images.count
@@ -42,6 +38,10 @@ class PokemonImagesCell: UITableViewCell, Storyboarded, UICollectionViewDelegate
         }else{
           return PokemonImageCell()
         }
+    }
+    
+    func reloadData(){
+        self.imagesCollectionView?.reloadData()
     }
     
 }

@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class EvolutionsViewModel{
+class DetailsViewModel{
     
     var evolution: BehaviorRelay<Evolution?> = BehaviorRelay.init(value: nil)
     

@@ -27,6 +27,10 @@ class DetailsService: Service{
             return Observable.from([])
         }.map { (response, data) -> Evolution? in
             do{
+                if let JSONString = String(data: data, encoding: String.Encoding.utf8) {
+                   print("Evolucoes: \(JSONString)")
+                }
+                
                 let decoder = JSONDecoder()
                 let evolution = try decoder.decode(Evolution.self, from: data)
                 errorBinder.accept(false)
