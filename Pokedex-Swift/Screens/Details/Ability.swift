@@ -15,7 +15,7 @@ class Ability: Codable {
     let isMainSeries: Bool?
     let name: String?
     let names: [Name]?
-    let PokemonDTO: [PokemonDTO]?
+    let pokemon: [PokemonDTO]?
 
     enum CodingKeys: String, CodingKey {
         case effectChanges = "effect_changes"
@@ -23,10 +23,10 @@ class Ability: Codable {
         case flavorTextEntries = "flavor_text_entries"
         case generation, id
         case isMainSeries = "is_main_series"
-        case name, names, PokemonDTO
+        case name, names, pokemon
     }
 
-    init(effectChanges: [EffectChange]?, effectEntries: [AbilityEffectEntry]?, flavorTextEntries: [FlavorTextEntry]?, generation: Generation?, id: Int?, isMainSeries: Bool?, name: String?, names: [Name]?, PokemonDTO: [PokemonDTO]?) {
+    init(effectChanges: [EffectChange]?, effectEntries: [AbilityEffectEntry]?, flavorTextEntries: [FlavorTextEntry]?, generation: Generation?, id: Int?, isMainSeries: Bool?, name: String?, names: [Name]?, pokemon: [PokemonDTO]?) {
         self.effectChanges = effectChanges
         self.effectEntries = effectEntries
         self.flavorTextEntries = flavorTextEntries
@@ -35,7 +35,7 @@ class Ability: Codable {
         self.isMainSeries = isMainSeries
         self.name = name
         self.names = names
-        self.PokemonDTO = PokemonDTO
+        self.pokemon = pokemon
     }
 }
 
@@ -127,17 +127,17 @@ class Name: Codable {
 // MARK: - PokemonDTO
 class PokemonDTO: Codable {
     let isHidden: Bool?
-    let PokemonDTO: Generation?
+    let pokemon: Generation?
     let slot: Int?
 
     enum CodingKeys: String, CodingKey {
         case isHidden = "is_hidden"
-        case PokemonDTO, slot
+        case pokemon, slot
     }
 
-    init(isHidden: Bool?, PokemonDTO: Generation?, slot: Int?) {
+    init(isHidden: Bool?, pokemon: Generation?, slot: Int?) {
         self.isHidden = isHidden
-        self.PokemonDTO = PokemonDTO
+        self.pokemon = pokemon
         self.slot = slot
     }
 }

@@ -33,10 +33,10 @@ class PokemonListingCell: UITableViewCell, Storyboarded {
         self.lblTypes.text = "\(self.pokemon?.types?.map({ $0.type?.name ?? ""}).joined(separator: ", ") ?? "")"
     }
     
-    func config(_ model: Result) {
-        self.lblPokemonName.text = model.name.capitalized
+    func config(_ model: Result?) {
+        self.lblPokemonName.text = model?.name.capitalized
         
-        let pokemonFetched = HomeService.getPokemon(fromURL: model.url)
+        let pokemonFetched = HomeService.getPokemon(fromURL: model?.url ?? "")
         
         let dispatcher = DispatchGroup()
         dispatcher.enter()

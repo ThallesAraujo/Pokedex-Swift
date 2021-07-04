@@ -14,7 +14,7 @@ import RxDataSources
 let typesCellId = "pokemonTypesCell"
 let pokemonEvolutionsCellId = "pokemonEvolutionsCell"
 let pokemonAbilitiesCellId = "pokemonAbilitiesCell"
-
+//TODO: error observer
 class PokemonDetailsViewController: UIViewController, Storyboarded, UITableViewDelegate, UITableViewDataSource{
     
     @IBOutlet weak var tableView: UITableView!
@@ -61,10 +61,30 @@ class PokemonDetailsViewController: UIViewController, Storyboarded, UITableViewD
                 return PokemonImagesCell()
             }
         }else if indexPath.row == 2{
-            //Tipos
             if let cell = tableView.dequeueReusableCell(withIdentifier:typesCellId) as? PokemonItemListCell{
                 cell.config(items: pokemon?.types?.compactMap({$0.type}))
-                //TODO: Did tap action
+                cell.didTapClosure = {[weak self] indexPath in
+                    guard let weakself = self else {return}
+                    
+                    if  let pokemonType = weakself.pokemon?.types?[indexPath.row].type, let pokemonTypeUrl = pokemonType.url{
+                        if let viewController = UIStoryboard.init(name: "Main", bundle: .main).instantiateViewController(identifier: TypePokemonsViewController.identifier) as? TypePokemonsViewController{
+                            
+                            let navigation = UINavigationController.init(rootViewController: viewController)
+                            navigation.navigationBar.backgroundColor = UIColor.init(named: "MainBackgroundColor")
+                            navigation.navigationBar.barTintColor = UIColor.init(named: "MainBackgroundColor")
+                            navigation.navigationBar.largeTitleTextAttributes = [.font: UIFont.init(name: "Quicksand-SemiBold", size: 28.0), .foregroundColor: UIColor.init(named: "TitleColor")]
+                            navigation.navigationBar.titleTextAttributes = [.font: UIFont.init(name: "Quicksand-Medium", size: 14.0), .foregroundColor: UIColor.init(named: "TitleColor")]
+                            viewController.title = pokemonType.name?.capitalized
+                            navigation.navigationBar.tintColor = UIColor.init(named: "TitleColor")
+                            
+                            let viewModel = TypePokemonsViewModel.init()
+                            viewModel.pokemonType = pokemonType
+                            viewController.viewModel = viewModel
+                            weakself.present(navigation, animated: true, completion: nil)
+                            
+                        }
+                    }
+                }
                 return cell
             }else{
                 return PokemonTypesCell()

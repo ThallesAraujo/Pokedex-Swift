@@ -35,6 +35,10 @@ class HomeViewController: UIViewController, ReloadableViewController, UISearchBa
         searchBar.rx.text.orEmpty.bind(to: viewModel.searchText).disposed(by: disposeBag)
         self.configureAutoLoading()
         self.configureErrorObserver()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         configureModelSelect()
     }
     
@@ -42,7 +46,7 @@ class HomeViewController: UIViewController, ReloadableViewController, UISearchBa
     
     func configureModelSelect(){
         
-        self.pokemonListingTableView.rx.itemSelected.subscribe(onNext: { indexPath in
+        self.pokemonListingTableView.rx.itemSelected.take(1).subscribe(onNext: { indexPath in
             if let navigation = self.navigationController, let vc = UIStoryboard.init(name: "Main", bundle: .main).instantiateViewController(identifier: PokemonDetailsViewController.identifier) as? PokemonDetailsViewController, let cell = self.pokemonListingTableView.cellForRow(at: indexPath) as? PokemonListingCell{
                 vc.pokemon = cell.pokemon
                 

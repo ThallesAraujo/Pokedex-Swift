@@ -113,6 +113,14 @@ class Species: Codable {
     }
 }
 
+extension Species{
+    
+    func asResult() -> Result{
+        return Result.init(name: self.name ?? "", url: self.url ?? "")
+    }
+    
+}
+
 // MARK: - GameIndex
 class GameIndex: Codable {
     let gameIndex: Int?

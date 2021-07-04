@@ -63,19 +63,19 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="HrI-UK-TpN">
-                                                                    <rect key="frame" x="119" y="0.0" width="239" height="45.5"/>
+                                                                    <rect key="frame" x="119" y="0.0" width="239" height="42.5"/>
                                                                     <subviews>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Vlt-f6-TJF">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="56" height="45.5"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="54" height="42.5"/>
                                                                             <subviews>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WiY-nC-xiC">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="56" height="25"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="54" height="23.5"/>
                                                                                     <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="20"/>
                                                                                     <color key="textColor" name="TitleColor"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-----" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="87w-As-Vx9">
-                                                                                    <rect key="frame" x="0.0" y="25" width="26.5" height="20.5"/>
+                                                                                    <rect key="frame" x="0.0" y="23.5" width="31.5" height="19"/>
                                                                                     <fontDescription key="fontDescription" name="Oxygen-Bold" family="Oxygen" pointSize="16"/>
                                                                                     <color key="textColor" systemColor="secondaryLabelColor"/>
                                                                                     <nil key="highlightedColor"/>
@@ -87,7 +87,7 @@
                                                             </subviews>
                                                         </stackView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OkO-3g-oHK">
-                                                            <rect key="frame" x="359.5" y="74" width="22.5" height="45"/>
+                                                            <rect key="frame" x="361.5" y="77" width="20.5" height="42"/>
                                                             <fontDescription key="fontDescription" name="Quicksand-Bold" family="Quicksand" pointSize="36"/>
                                                             <color key="textColor" name="SecondaryTitleColor"/>
                                                             <nil key="highlightedColor"/>
@@ -150,7 +150,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1042.0289855072465" y="116.51785714285714"/>
+            <point key="canvasLocation" x="1013" y="117"/>
         </scene>
         <!--Pokemon Details View Controller-->
         <scene sceneID="naw-qj-Qmu">
@@ -290,13 +290,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stats:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xus-Ug-2eE">
-                                                    <rect key="frame" x="24" y="15" width="350" height="20.5"/>
+                                                    <rect key="frame" x="24" y="15" width="350" height="19"/>
                                                     <fontDescription key="fontDescription" name="Oxygen-Bold" family="Oxygen" pointSize="16"/>
                                                     <color key="textColor" name="TitleColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jPp-qC-y2E">
-                                                    <rect key="frame" x="24" y="39.5" width="358" height="173.5"/>
+                                                    <rect key="frame" x="24" y="38" width="358" height="175"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QhT-9a-8yj">
                                                         <size key="itemSize" width="133" height="152"/>
@@ -306,7 +306,7 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="pokemonStatCell" id="F0I-QG-TdT" customClass="PokemonStatCell" customModule="Pokedex_Swift" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="11" width="133" height="152"/>
+                                                            <rect key="frame" x="0.0" y="11.5" width="133" height="152"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="IBz-AQ-dsJ">
                                                                 <rect key="frame" x="0.0" y="0.0" width="133" height="152"/>
@@ -316,13 +316,13 @@
                                                                         <rect key="frame" x="16" y="16" width="101" height="120"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stat" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ueY-Cb-18I">
-                                                                                <rect key="frame" x="37.5" y="0.0" width="26" height="18"/>
+                                                                                <rect key="frame" x="38" y="0.0" width="25.5" height="16.5"/>
                                                                                 <fontDescription key="fontDescription" name="Oxygen-Regular" family="Oxygen" pointSize="14"/>
                                                                                 <color key="textColor" name="TitleColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yzK-Bg-j88">
-                                                                                <rect key="frame" x="26" y="42" width="49.5" height="50"/>
+                                                                                <rect key="frame" x="28.5" y="43" width="44.5" height="47"/>
                                                                                 <fontDescription key="fontDescription" name="Quicksand-Bold" family="Quicksand" pointSize="40"/>
                                                                                 <color key="textColor" name="TitleColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -385,13 +385,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Habilidades" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yOq-pV-3ae">
-                                                    <rect key="frame" x="28" y="19" width="342" height="20.5"/>
+                                                    <rect key="frame" x="28" y="19" width="342" height="19"/>
                                                     <fontDescription key="fontDescription" name="Oxygen-Bold" family="Oxygen" pointSize="16"/>
                                                     <color key="textColor" name="TitleColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4FO-oO-2Qc">
-                                                    <rect key="frame" x="28" y="47.5" width="362" height="58.5"/>
+                                                    <rect key="frame" x="28" y="46" width="362" height="60"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ZA9-hQ-CcZ">
                                                         <size key="itemSize" width="128" height="34"/>
@@ -401,7 +401,7 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="pokemonItemCell" id="fJe-D8-982" customClass="PokemonItemCell" customModule="Pokedex_Swift" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="12.5" width="128" height="34"/>
+                                                            <rect key="frame" x="0.0" y="13" width="128" height="34"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Wmb-2D-IKk">
                                                                 <rect key="frame" x="0.0" y="0.0" width="128" height="34"/>
@@ -461,13 +461,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tipos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="86I-4S-NtU">
-                                                    <rect key="frame" x="28" y="19" width="342" height="20.5"/>
+                                                    <rect key="frame" x="28" y="19" width="342" height="19"/>
                                                     <fontDescription key="fontDescription" name="Oxygen-Bold" family="Oxygen" pointSize="16"/>
                                                     <color key="textColor" name="TitleColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zwo-kP-utl">
-                                                    <rect key="frame" x="28" y="47.5" width="362" height="58.5"/>
+                                                    <rect key="frame" x="28" y="46" width="362" height="60"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="an0-Wf-6Eq">
                                                         <size key="itemSize" width="128" height="34"/>
@@ -477,7 +477,7 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="pokemonItemCell" id="s1F-VH-oWy" customClass="PokemonItemCell" customModule="Pokedex_Swift" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="12.5" width="128" height="34"/>
+                                                            <rect key="frame" x="0.0" y="13" width="128" height="34"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="byA-yG-PG2">
                                                                 <rect key="frame" x="0.0" y="0.0" width="128" height="34"/>
@@ -537,13 +537,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Evoluções" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t58-IC-kcd">
-                                                    <rect key="frame" x="28" y="19" width="342" height="20.5"/>
+                                                    <rect key="frame" x="28" y="19" width="342" height="19"/>
                                                     <fontDescription key="fontDescription" name="Oxygen-Bold" family="Oxygen" pointSize="16"/>
                                                     <color key="textColor" name="TitleColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="x0V-br-wqu">
-                                                    <rect key="frame" x="28" y="47.5" width="362" height="58.5"/>
+                                                    <rect key="frame" x="28" y="46" width="362" height="60"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="r1y-iZ-NUo">
                                                         <size key="itemSize" width="128" height="34"/>
@@ -553,7 +553,7 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="pokemonItemCell" id="gwV-9C-TIG" customClass="PokemonItemCell" customModule="Pokedex_Swift" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="12.5" width="128" height="34"/>
+                                                            <rect key="frame" x="0.0" y="13" width="128" height="34"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="hQ8-Pb-8WP">
                                                                 <rect key="frame" x="0.0" y="0.0" width="128" height="34"/>
@@ -628,7 +628,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w4z-d7-G81" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1895.6521739130437" y="116.51785714285714"/>
+            <point key="canvasLocation" x="2096" y="58"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="u82-RO-jJ9">
@@ -657,6 +657,131 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dJp-kY-Pkb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="131.8840579710145" y="116.51785714285714"/>
+        </scene>
+        <!--TypePokemons-->
+        <scene sceneID="c3q-JR-Sw5">
+            <objects>
+                <viewController storyboardIdentifier="typePokemonsViewController" title="TypePokemons" useStoryboardIdentifierAsRestorationIdentifier="YES" id="j5M-dC-I1d" customClass="TypePokemonsViewController" customModule="Pokedex_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9N8-OW-kkb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wrM-1i-qxE">
+                                <rect key="frame" x="8" y="44" width="398" height="818"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="pokemonListingCell" rowHeight="135" id="mzK-QQ-l2B" customClass="PokemonListingCell" customModule="Pokedex_Swift" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="24.5" width="398" height="135"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mzK-QQ-l2B" id="lPA-ma-5hK">
+                                            <rect key="frame" x="0.0" y="0.0" width="398" height="135"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nz0-pn-wGA">
+                                                    <rect key="frame" x="4" y="4" width="390" height="127"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="xOp-r3-anO">
+                                                            <rect key="frame" x="16" y="16" width="358" height="95"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Q8p-dK-hSj">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="95" height="95"/>
+                                                                    <color key="tintColor" systemColor="secondarySystemFillColor"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="100" id="fug-GE-UiQ"/>
+                                                                        <constraint firstAttribute="width" secondItem="Q8p-dK-hSj" secondAttribute="height" multiplier="1:1" id="rcS-Tm-e6b"/>
+                                                                    </constraints>
+                                                                </imageView>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="oe2-R7-SOV">
+                                                                    <rect key="frame" x="119" y="0.0" width="239" height="42.5"/>
+                                                                    <subviews>
+                                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="5Gv-ZH-1bh">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="54" height="42.5"/>
+                                                                            <subviews>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Jj-eE-iOC">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="54" height="23.5"/>
+                                                                                    <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="20"/>
+                                                                                    <color key="textColor" name="TitleColor"/>
+                                                                                    <nil key="highlightedColor"/>
+                                                                                </label>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-----" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G8S-ko-Udw">
+                                                                                    <rect key="frame" x="0.0" y="23.5" width="31.5" height="19"/>
+                                                                                    <fontDescription key="fontDescription" name="Oxygen-Bold" family="Oxygen" pointSize="16"/>
+                                                                                    <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                                                    <nil key="highlightedColor"/>
+                                                                                </label>
+                                                                            </subviews>
+                                                                        </stackView>
+                                                                    </subviews>
+                                                                </stackView>
+                                                            </subviews>
+                                                        </stackView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nc4-cw-go8">
+                                                            <rect key="frame" x="361.5" y="77" width="20.5" height="42"/>
+                                                            <fontDescription key="fontDescription" name="Quicksand-Bold" family="Quicksand" pointSize="36"/>
+                                                            <color key="textColor" name="SecondaryTitleColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" name="SecondaryBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="nc4-cw-go8" secondAttribute="bottom" constant="8" id="2eW-hJ-VTW"/>
+                                                        <constraint firstItem="xOp-r3-anO" firstAttribute="top" secondItem="Nz0-pn-wGA" secondAttribute="top" constant="16" id="3cn-Gu-dqD"/>
+                                                        <constraint firstAttribute="trailing" secondItem="xOp-r3-anO" secondAttribute="trailing" constant="16" id="FD0-jW-pg1"/>
+                                                        <constraint firstItem="xOp-r3-anO" firstAttribute="leading" secondItem="Nz0-pn-wGA" secondAttribute="leading" constant="16" id="FHe-q2-EsI"/>
+                                                        <constraint firstAttribute="bottom" secondItem="xOp-r3-anO" secondAttribute="bottom" constant="16" id="nYd-qn-oOH"/>
+                                                        <constraint firstAttribute="trailing" secondItem="nc4-cw-go8" secondAttribute="trailing" constant="8" id="ycW-Lo-Fpt"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="16"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                            <color key="value" systemColor="tertiarySystemBackgroundColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Nz0-pn-wGA" firstAttribute="leading" secondItem="lPA-ma-5hK" secondAttribute="leading" constant="4" id="G8i-Ea-P9k"/>
+                                                <constraint firstAttribute="bottom" secondItem="Nz0-pn-wGA" secondAttribute="bottom" constant="4" id="U1J-X5-Q5p"/>
+                                                <constraint firstItem="Nz0-pn-wGA" firstAttribute="top" secondItem="lPA-ma-5hK" secondAttribute="top" constant="4" id="Whg-jt-dpf"/>
+                                                <constraint firstAttribute="trailing" secondItem="Nz0-pn-wGA" secondAttribute="trailing" constant="4" id="nhQ-vZ-uKx"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="cardView" destination="Nz0-pn-wGA" id="4bl-U9-dn3"/>
+                                            <outlet property="lblID" destination="nc4-cw-go8" id="lBO-2Z-8ry"/>
+                                            <outlet property="lblPokemonName" destination="0Jj-eE-iOC" id="ZfI-aS-wNn"/>
+                                            <outlet property="lblTypes" destination="G8S-ko-Udw" id="7rp-3X-gDl"/>
+                                            <outlet property="pokemonImage" destination="Q8p-dK-hSj" id="5rO-tz-ywD"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="T3R-Se-bgm"/>
+                        <color key="backgroundColor" name="MainBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="T3R-Se-bgm" firstAttribute="bottom" secondItem="wrM-1i-qxE" secondAttribute="bottom" id="EJn-yq-pic"/>
+                            <constraint firstItem="wrM-1i-qxE" firstAttribute="top" secondItem="T3R-Se-bgm" secondAttribute="top" id="i6E-WG-W1z"/>
+                            <constraint firstItem="T3R-Se-bgm" firstAttribute="trailing" secondItem="wrM-1i-qxE" secondAttribute="trailing" constant="8" id="lWs-5F-EfD"/>
+                            <constraint firstItem="wrM-1i-qxE" firstAttribute="leading" secondItem="T3R-Se-bgm" secondAttribute="leading" constant="8" id="u2x-YI-jbA"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Home" id="vDj-8J-986"/>
+                    <connections>
+                        <outlet property="tableView" destination="wrM-1i-qxE" id="4o4-1Q-aYv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8sB-uF-g9s" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2923" y="64"/>
         </scene>
     </scenes>
     <color key="tintColor" name="TitleColor"/>
