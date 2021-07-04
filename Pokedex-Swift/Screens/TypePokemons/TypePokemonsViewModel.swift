@@ -14,10 +14,12 @@ class TypePokemonsViewModel{
     var pokemonSpecies: BehaviorRelay<[Species?]> = BehaviorRelay<[Species?]>.init(value: [])
     var pokemonType: Species?
     
+    var errorHasOccurred: BehaviorRelay<Bool> = BehaviorRelay<Bool>.init(value: false)
+    
     var disposeBag = DisposeBag()
     
     func getType() {
-        TypeService.getType(fromURL: pokemonType?.url ?? "").subscribe(onNext: {pokemonType in
+        TypeService.getType(fromURL: pokemonType?.url ?? "", errorBinder: self.errorHasOccurred).subscribe(onNext: {pokemonType in
             self.pokemonSpecies.accept(pokemonType.pokemon?.compactMap({Species.init(name: $0.pokemon?.name ?? "", url: $0.pokemon?.url ?? "")}) ?? [])
         }).disposed(by: disposeBag)
         

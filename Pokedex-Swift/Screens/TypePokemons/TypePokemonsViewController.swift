@@ -22,11 +22,18 @@ class TypePokemonsViewController: UIViewController, Storyboarded{
         super.viewDidLoad()
         configureListing()
         viewModel?.getType()
+        configureErrorObserver()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         configureModelSelect()
+    }
+    
+    func configureErrorObserver(){
+        self.viewModel?.errorHasOccurred.bind(to: self.rx.showError(reloadClosure: {
+            self.viewModel?.getType()
+        })).disposed(by: disposeBag)
     }
     
     func configureModelSelect(){

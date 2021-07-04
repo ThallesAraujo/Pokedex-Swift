@@ -40,6 +40,7 @@ class PokemonDetailsViewController: UIViewController, Storyboarded{
         self.title = "(#\(pokemon?.id ?? 0)) \(pokemon?.name?.capitalized ?? "")"
         viewModel.getEvolutions(id: pokemon?.id ?? 0)
         configure()
+        configureErrorObserver()
         
     }
     
@@ -47,6 +48,11 @@ class PokemonDetailsViewController: UIViewController, Storyboarded{
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
+    func configureErrorObserver(){
+        self.viewModel.errorHasOccurred.bind(to: self.rx.showError(reloadClosure: {
+            self.viewModel.getEvolutions(id: self.pokemon?.id ?? 0)
+        })).disposed(by: disposeBag)
+    }
     
     func configure(){
         
@@ -76,8 +82,6 @@ class PokemonDetailsViewController: UIViewController, Storyboarded{
         statsDelegate.statsCollectionView = self.pokemonStatsCollectionView
         statsDelegate.stats = pokemon?.stats
         statsDelegate.reloadData()
-        
-        
         
         abilitiesDelegate.itemsList = pokemonAbilitiesCollectionView
         abilitiesDelegate.config(items: pokemon?.abilities?.compactMap({$0.ability})) {[weak self] indexPath in

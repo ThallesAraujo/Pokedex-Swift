@@ -12,7 +12,11 @@ import RxAlamofire
 
 class TypeService: Service{
     
-    static func getType(fromURL url: String) -> Observable<PokemonType>{
+    static func getType(fromURL url: String, errorBinder: BehaviorRelay<Bool>) -> Observable<PokemonType>{
+        
+        if !isConnected(){
+            errorBinder.accept(true)
+        }
         
         guard let endpoint = URL.init(string: url) else{
             return Observable.empty()
@@ -20,10 +24,12 @@ class TypeService: Service{
         let request = URLRequest.init(url: endpoint)
         return RxAlamofire.requestData(request).debug().catch { error in
             print(error)
+            errorBinder.accept(true)
             return Observable.never()
         }.map { (response, data) in
             let decoder = JSONDecoder()
             let pokemonType = try decoder.decode(PokemonType.self, from: data)
+            errorBinder.accept(false)
             return pokemonType
         }.asObservable()
         
