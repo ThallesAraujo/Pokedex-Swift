@@ -30,7 +30,7 @@ class HomeViewController: UIViewController, ReloadableViewController, UISearchBa
         super.viewDidLoad()
         self.configureSearchObservable()
         viewModel.getPokemonsList()
-        configureSearchController()
+        configureSearchStyle()
         self.configureListing()
         searchBar.rx.text.orEmpty.bind(to: viewModel.searchText).disposed(by: disposeBag)
         self.configureAutoLoading()
@@ -45,7 +45,7 @@ class HomeViewController: UIViewController, ReloadableViewController, UISearchBa
     func configureModelSelect(){
         
         self.pokemonListingTableView.rx.itemSelected.take(1).subscribe(onNext: { indexPath in
-            if let navigation = self.navigationController, let vc = UIStoryboard.init(name: "Main", bundle: .main).instantiateViewController(identifier: PokemonDetailsViewController.identifier) as? PokemonDetailsViewController, let cell = self.pokemonListingTableView.cellForRow(at: indexPath) as? PokemonListingCell{
+            if let navigation = self.navigationController, let vc = UIStoryboard.init(name: Constants.mainStoryboard, bundle: .main).instantiateViewController(identifier: PokemonDetailsViewController.identifier) as? PokemonDetailsViewController, let cell = self.pokemonListingTableView.cellForRow(at: indexPath) as? PokemonListingCell{
                 vc.pokemon = cell.pokemon
                 
                 navigation.navigationItem.largeTitleDisplayMode = .always
@@ -78,24 +78,6 @@ class HomeViewController: UIViewController, ReloadableViewController, UISearchBa
         }).disposed(by: disposeBag)
     }
     
-    func configureSearchController(){
-        searchController.obscuresBackgroundDuringPresentation = false
-        UITextField.appearance().defaultTextAttributes = [.font: UIFont.init(name: "Oxygen-Regular", size: 14)!, .foregroundColor: UIColor.init(named: "TitleColor")!]
-        UITextField.appearance().attributedPlaceholder = NSAttributedString.init(string: "Pesquisar por nome ou ID", attributes: [.font: UIFont.init(name: "Oxygen-Regular", size: 14)!, .foregroundColor: UIColor.init(named: "TitleColor")!])
-        searchBar.searchTextField.backgroundColor = UIColor.init(named: "SecondaryBackgroundColor")
-        searchBar.rx.text.bind(to: viewModel.searchText).disposed(by: disposeBag)
-        searchBar.autocapitalizationType = .none
-        if let textField = searchBar.value(forKey: "searchField") as? UITextField,
-            let iconView = textField.leftView as? UIImageView {
-
-            iconView.image = iconView.image?.withRenderingMode(.alwaysTemplate)
-            iconView.tintColor = UIColor.init(named: "TitleColor")!
-        }
-        searchController.searchBar.delegate = self;
-        navigationItem.searchController = searchController
-        definesPresentationContext = true
-    }
-    
     func configureSearchObservable(){
         self.viewModel.bindSearchText(configureClosure: {[weak self] in
             guard let weakself = self else { return }
@@ -111,7 +93,7 @@ class HomeViewController: UIViewController, ReloadableViewController, UISearchBa
         
         let hasErrorSearch = Observable.combineLatest(self.viewModel.searchData, self.viewModel.searchText).map({$0.count <= 0 && !($1?.isEmpty ?? false)})
         
-       hasErrorSearch.bind(to: self.pokemonListingTableView.rx.showError(title: "Nenhum resultado encontrado", description: "Não foi encontrado nenhum resultado para sua pesquisa", showReload: false)).disposed(by: disposeBag)
+        hasErrorSearch.bind(to: self.pokemonListingTableView.rx.showError(title: Constants.defaultErrorTitle, description: Constants.defaultErrorDescription, showReload: false)).disposed(by: disposeBag)
     }
     
     

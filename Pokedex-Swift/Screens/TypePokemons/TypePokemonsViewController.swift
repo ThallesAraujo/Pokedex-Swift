@@ -39,7 +39,7 @@ class TypePokemonsViewController: UIViewController, Storyboarded{
     func configureModelSelect(){
         
         self.tableView.rx.itemSelected.take(1).subscribe(onNext: { indexPath in
-            if let navigation = self.navigationController, let vc = UIStoryboard.init(name: "Main", bundle: .main).instantiateViewController(identifier: PokemonDetailsViewController.identifier) as? PokemonDetailsViewController, let cell = self.tableView.cellForRow(at: indexPath) as? PokemonListingCell{
+            if let navigation = self.navigationController, let vc = UIStoryboard.init(name: Constants.mainStoryboard, bundle: .main).instantiateViewController(identifier: PokemonDetailsViewController.identifier) as? PokemonDetailsViewController, let cell = self.tableView.cellForRow(at: indexPath) as? PokemonListingCell{
                 vc.pokemon = cell.pokemon
                 
                 navigation.navigationItem.largeTitleDisplayMode = .always

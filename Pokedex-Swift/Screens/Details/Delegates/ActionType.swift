@@ -20,7 +20,7 @@ enum ActionType{
             
         case .pokemonsOfSameType:
             
-            if let viewController = UIStoryboard.init(name: "Main", bundle: .main).instantiateViewController(identifier: TypePokemonsViewController.identifier) as? TypePokemonsViewController{
+            if let viewController = UIStoryboard.init(name: Constants.mainStoryboard, bundle: .main).instantiateViewController(identifier: TypePokemonsViewController.identifier) as? TypePokemonsViewController{
                 viewController.title = item.name?.capitalized
                 
                 let viewModel = TypePokemonsViewModel.init()
@@ -30,13 +30,12 @@ enum ActionType{
             }
         case .seeAbility:
             
-            
             let details = DetailsService.getAbility(fromURL: item.url ?? "")
             let keyWindow = UIApplication.shared.windows.first(where: {$0.isKeyWindow})
                 
                 details.subscribe(onNext: {detail in
                     let abilityName = item.name?.capitalized ?? ""
-                    let message = detail.flavorTextEntries?.first(where: {$0.language?.name == "en"})?.flavorText ?? ""
+                    let message = detail.flavorTextEntries?.first(where: {$0.language?.name == Constants.defaultLanguage})?.flavorText ?? ""
                     
                     if !abilityName.isEmpty && !message.isEmpty{
                         keyWindow?.rootViewController?.showAlert(title: abilityName.capitalized, message: message)
@@ -48,7 +47,7 @@ enum ActionType{
             
             let fetchedPokemonEvolution = HomeService.getPokemon(fromURL: item.url?.replacingOccurrences(of: "-species", with: "") ?? "")
                 fetchedPokemonEvolution.subscribe(onNext: {pokemon in
-                    if let viewController = UIStoryboard.init(name: "Main", bundle: .main).instantiateViewController(identifier: PokemonDetailsViewController.identifier) as? PokemonDetailsViewController{
+                    if let viewController = UIStoryboard.init(name: Constants.mainStoryboard, bundle: .main).instantiateViewController(identifier: PokemonDetailsViewController.identifier) as? PokemonDetailsViewController{
                         
                         viewController.pokemon = pokemon
                         navigation?.pushViewController(viewController, animated: true)

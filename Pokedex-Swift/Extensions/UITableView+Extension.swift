@@ -36,14 +36,11 @@ extension UITableView{
         }
         
         emptyView.retryClosure = reloadClosure
-        
-        //self.isScrollEnabled = false
         self.backgroundView = emptyView
         self.backgroundView?.isHidden = false
     }
     
     func hideEmptyView(){
-        //self.isScrollEnabled = true
         self.backgroundView = nil
         self.backgroundView?.isHidden = true
     }
