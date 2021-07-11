@@ -11,10 +11,6 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-let typesCellId = "pokemonTypesCell"
-let pokemonEvolutionsCellId = "pokemonEvolutionsCell"
-let pokemonAbilitiesCellId = "pokemonAbilitiesCell"
-//TODO: error observer
 class PokemonDetailsViewController: UIViewController, Storyboarded{
     
     var pokemon: Pokemon?
@@ -35,14 +31,13 @@ class PokemonDetailsViewController: UIViewController, Storyboarded{
     let viewModel = DetailsViewModel()
     let disposeBag = DisposeBag()
     
-    
     override func viewDidLoad() {
         self.title = "(#\(pokemon?.id ?? 0)) \(pokemon?.name?.capitalized ?? "")"
         viewModel.getEvolutions(id: pokemon?.id ?? 0)
         configure()
         configureErrorObserver()
-        
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -58,53 +53,13 @@ class PokemonDetailsViewController: UIViewController, Storyboarded{
         
         self.pokemonImage.setImage(fromURL: pokemon?.sprites?.other?.dreamWorld?.frontDefault ?? "")
         
-        imageCarrousselDelegate.imagesCollectionView = self.pokemonImageCarrousel
-        imageCarrousselDelegate.images = pokemon?.getImagesList().compactMap({$0}) ?? []
-        imageCarrousselDelegate.reloadData()
+        imageCarrousselDelegate.config(images: pokemon?.getImagesList().compactMap({$0}) ?? [], collectionView: self.pokemonImageCarrousel)
         
-        typesDelegate.itemsList = pokemonTypesCollectionView
-        typesDelegate.config(items: pokemon?.types?.compactMap({$0.type})) {[weak self] indexPath in
-            guard let weakself = self else {return}
-            
-            if let pokemonType = weakself.pokemon?.types?[indexPath.row].type, let pokemonTypeUrl = pokemonType.url{
-                if let viewController = UIStoryboard.init(name: "Main", bundle: .main).instantiateViewController(identifier: TypePokemonsViewController.identifier) as? TypePokemonsViewController{
-                    viewController.title = pokemonType.name?.capitalized
-                    
-                    let viewModel = TypePokemonsViewModel.init()
-                    viewModel.pokemonType = pokemonType
-                    viewController.viewModel = viewModel
-                    weakself.navigationController?.pushViewController(viewController, animated: true)
-                    
-                }
-            }
-        }
+        typesDelegate.config(collectionView: pokemonTypesCollectionView, items: pokemon?.types?.compactMap({$0.type}), actionType: .pokemonsOfSameType, navigation: self.navigationController)
         
-        statsDelegate.statsCollectionView = self.pokemonStatsCollectionView
-        statsDelegate.stats = pokemon?.stats
-        statsDelegate.reloadData()
+        statsDelegate.config(collectionView: pokemonStatsCollectionView, stats: pokemon?.stats)
         
-        abilitiesDelegate.itemsList = pokemonAbilitiesCollectionView
-        abilitiesDelegate.config(items: pokemon?.abilities?.compactMap({$0.ability})) {[weak self] indexPath in
-            guard let weakself = self else{return}
-            
-            if let ability = weakself.pokemon?.abilities?[indexPath.row], let abilityUrl = ability.ability?.url {
-                let details = DetailsService.getAbility(fromURL: abilityUrl)
-                let keyWindow = UIApplication.shared.windows.first(where: {$0.isKeyWindow})
-                
-                details.subscribe(onNext: {detail in
-                    let abilityName = ability.ability?.name ?? ""
-                    
-                    let message = detail.flavorTextEntries?.first(where: {$0.language?.name == "en"})?.flavorText ?? ""
-                    
-                    if !abilityName.isEmpty && !message.isEmpty{
-                        keyWindow?.rootViewController?.showAlert(title: abilityName.capitalized, message: message)
-                    }
-                    
-                }).disposed(by: weakself.disposeBag)
-            }
-        }
-        
-       
+        abilitiesDelegate.config(collectionView: pokemonAbilitiesCollectionView, items: pokemon?.abilities?.compactMap({$0.ability}), actionType: .seeAbility, navigation: self.navigationController)
         
         
         viewModel.evolution.subscribe(onNext: {[weak self] evolution in
@@ -115,41 +70,14 @@ class PokemonDetailsViewController: UIViewController, Storyboarded{
                 
                 let items = evolutionChain.compactMap({$0.species})
                 
-                print("Evolucoes do pokemon: \(items.count) | \(items.compactMap({$0.name}).joined(separator: ","))")
-                
-
-                weakself.evolutionsDelegate.itemsList = weakself.pokemonEvolutionsCollectionView
-                weakself.evolutionsDelegate.config(items: items) { [weak self] indexPath in
-                    
-                    guard let weakself = self else {return}
-                    
-                    let pokemonEvolution = evolutionChain[indexPath.row]
-                    if let pokemonEvolutionUrl = pokemonEvolution.species?.url{
-                        let fetchedPokemonEvolution = HomeService.getPokemon(fromURL: pokemonEvolutionUrl.replacingOccurrences(of: "-species", with: ""))
-                        fetchedPokemonEvolution.subscribe(onNext: {pokemon in
-                            if let viewController = UIStoryboard.init(name: "Main", bundle: .main).instantiateViewController(identifier: PokemonDetailsViewController.identifier) as? PokemonDetailsViewController{
-                                
-                                viewController.pokemon = pokemon
-                                weakself.navigationController?.pushViewController(viewController, animated: true)
-                                
-                            }
-                        }).disposed(by: weakself.disposeBag)
-                    }
-                }
-                }
-                
-               
+                weakself.evolutionsDelegate.config(collectionView: weakself.pokemonEvolutionsCollectionView, items: items, actionType: .seeEvolution, navigation: weakself.navigationController)
+            }
+            
         }).disposed(by: disposeBag)
-        
-        
     }
     
-   
-   
-
+    
     func flattenChain(chain: Chain) -> [Chain]{
-        
-        
         var chains: [Chain] = []
         
         if let evolutions = chain.evolvesTo, evolutions.count > 0{
@@ -161,10 +89,8 @@ class PokemonDetailsViewController: UIViewController, Storyboarded{
         }
         
         return chains.withoutDuplicates()
-        
     }
     
-
     
 }
 

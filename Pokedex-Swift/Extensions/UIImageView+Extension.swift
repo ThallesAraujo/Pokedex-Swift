@@ -10,7 +10,6 @@ import SDWebImageSVGCoder
 import Kingfisher
 import UIImageColors
 
-
 extension UIImageView{
     
     func setImage(fromURL url: String){

@@ -23,11 +23,6 @@ class PokemonListingCell: UITableViewCell, Storyboarded {
     
     let disposeBag = DisposeBag()
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
     private func endConfig(){
         self.lblID.text = "\(self.pokemon?.id ?? 0)"
         self.lblTypes.text = "\(self.pokemon?.types?.map({ $0.type?.name ?? ""}).joined(separator: ", ") ?? "")"
@@ -52,12 +47,6 @@ class PokemonListingCell: UITableViewCell, Storyboarded {
         })
         
         
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     private func tintWithDominantColor (){

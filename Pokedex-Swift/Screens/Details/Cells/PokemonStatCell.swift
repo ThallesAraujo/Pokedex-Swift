@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-import SwiftUI
+import RxSwift
 
 class PokemonStatCell: UICollectionViewCell, Storyboarded{
     
@@ -20,8 +20,10 @@ class PokemonStatCell: UICollectionViewCell, Storyboarded{
       
         self.lblStatName.text = statName.replacingOccurrences(of: "-", with: " ").capitalized
         self.lblStatValue.text = "\(statValue)"
-        self.statBar.setProgress(Float(Float(statValue)/510.000), animated: true)
-       
+        
+        let progress = Observable.of(Float(Float(statValue)/510.000))
+        
+        progress.bind(to: self.statBar.rx.progress).disposed(by: DisposeBag())
     }
     
 }

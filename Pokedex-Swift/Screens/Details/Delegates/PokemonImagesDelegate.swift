@@ -8,40 +8,18 @@
 import Foundation
 import UIKit
 import Kingfisher
+import RxSwift
+import RxCocoa
+import RxDataSources
 
-class PokemonImagesDelegate: NSObject, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+class PokemonImagesDelegate{
     
-    var imagesCollectionView: UICollectionView?{
-        didSet{
-            self.imagesCollectionView?.delegate = self
-            self.imagesCollectionView?.dataSource = self
-        }
-    }
+    var disposeBag = DisposeBag()
     
-    var images: [String?] = []
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return images.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize.init(width: 100, height: 100)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PokemonImageCell.identifier, for: indexPath) as? PokemonImageCell{
-            
-            if let imageUrl = images[indexPath.row]{
-                cell.imgPokemon.kf_setImage(url: imageUrl)
-            }
-            return cell
-        }else{
-          return PokemonImageCell()
-        }
-    }
-    
-    func reloadData(){
-        self.imagesCollectionView?.reloadData()
+    func config(images: [String], collectionView: UICollectionView){
+        Observable.of(images).bind(to: collectionView.rx.items(cellIdentifier: PokemonImageCell.identifier, cellType: PokemonImageCell.self)){index, model, cell in
+            cell.imgPokemon.kf_setImage(url: model)
+        }.disposed(by: disposeBag)
     }
     
 }

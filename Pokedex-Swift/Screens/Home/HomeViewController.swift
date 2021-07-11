@@ -42,8 +42,6 @@ class HomeViewController: UIViewController, ReloadableViewController, UISearchBa
         configureModelSelect()
     }
     
-  
-    
     func configureModelSelect(){
         
         self.pokemonListingTableView.rx.itemSelected.take(1).subscribe(onNext: { indexPath in
@@ -87,6 +85,12 @@ class HomeViewController: UIViewController, ReloadableViewController, UISearchBa
         searchBar.searchTextField.backgroundColor = UIColor.init(named: "SecondaryBackgroundColor")
         searchBar.rx.text.bind(to: viewModel.searchText).disposed(by: disposeBag)
         searchBar.autocapitalizationType = .none
+        if let textField = searchBar.value(forKey: "searchField") as? UITextField,
+            let iconView = textField.leftView as? UIImageView {
+
+            iconView.image = iconView.image?.withRenderingMode(.alwaysTemplate)
+            iconView.tintColor = UIColor.init(named: "TitleColor")!
+        }
         searchController.searchBar.delegate = self;
         navigationItem.searchController = searchController
         definesPresentationContext = true

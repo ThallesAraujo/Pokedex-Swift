@@ -9,48 +9,23 @@ import Foundation
 import UIKit
 import RxCocoa
 import RxSwift
+import RxDataSources
 
-class PokemonItemListDelegate: NSObject, UICollectionViewDelegate, UICollectionViewDataSource{
+class PokemonItemListDelegate{
     
-    var itemsList: UICollectionView?{
-        didSet{
-            self.itemsList?.delegate = self
-            self.itemsList?.dataSource = self
-        }
-    }
-    
-    var items: [Species]?
     
     let disposeBag = DisposeBag()
-    var didTapClosure:((IndexPath) -> Void)?
     
-    
-    func config(items: [Species]?, didTapClosure: ((IndexPath) -> Void)? = nil){
-        self.items = items
-        self.didTapClosure = didTapClosure
-        itemsList?.reloadData()
-    }
-    
-
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items?.count ?? 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func config(collectionView: UICollectionView, items: [Species]?, actionType: ActionType, navigation: UINavigationController?){
         
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PokemonItemCell.identifier, for: indexPath) as? PokemonItemCell{
-            cell.lblItemName.text = items?[indexPath.item].name?.capitalized
-            return cell
-        }else{
-            return PokemonItemCell()
-        }
-    }
-    
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let didTap = didTapClosure{
-            didTap(indexPath)
-        }
+        Observable.of(items ?? []).bind(to: collectionView.rx.items(cellIdentifier: PokemonItemCell.identifier, cellType: PokemonItemCell.self)){index, model, cell in
+            cell.lblItemName.text = model.name?.capitalized
+        }.disposed(by: disposeBag)
+        
+        
+        collectionView.rx.modelSelected(Species.self).subscribe(onNext: {[weak self] model in
+            guard let weakself = self else {return}
+            actionType.didTapAction(item: model, navigation: navigation, disposeBag: weakself.disposeBag)
+        }).disposed(by: disposeBag)
     }
 }
