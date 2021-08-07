@@ -35,6 +35,7 @@ class HomeViewController: UIViewController, ReloadableViewController, UISearchBa
         searchBar.rx.text.orEmpty.bind(to: viewModel.searchText).disposed(by: disposeBag)
         self.configureAutoLoading()
         self.configureErrorObserver()
+        self.setupUITestIdentifiers()
     }
     
     override func viewDidAppear(_ animated: Bool) {

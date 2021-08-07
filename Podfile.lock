@@ -1,6 +1,9 @@
 PODS:
   - Alamofire (5.4.1)
   - Differentiator (5.0.0)
+  - KIF (3.8.2):
+    - KIF/Core (= 3.8.2)
+  - KIF/Core (3.8.2)
   - Kingfisher (4.10.1)
   - RxAlamofire (6.1.1):
     - RxAlamofire/Core (= 6.1.1)
@@ -24,6 +27,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - KIF
   - Kingfisher (~> 4.0)
   - RxAlamofire
   - RxCocoa (= 6.2.0)
@@ -36,6 +40,7 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - Differentiator
+    - KIF
     - Kingfisher
     - RxAlamofire
     - RxCocoa
@@ -49,6 +54,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
   Differentiator: e8497ceab83c1b10ca233716d547b9af21b9344d
+  KIF: 046e792c00c407316df8a70941851decc877b124
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   RxAlamofire: beb75a1c452d0de225651db4903f5d29d034a620
   RxCocoa: 4baf94bb35f2c0ab31bc0cb9f1900155f646ba42
@@ -59,6 +65,6 @@ SPEC CHECKSUMS:
   SDWebImageSVGCoder: 020cc0f1ab0ef8ca63a9365c03421d67aa3d4a46
   UIImageColors: d2ef3b0877d203cbb06489eeb78ea8b7788caabe
 
-PODFILE CHECKSUM: 3ab74687629324a8d546064f0e233104d0884cea
+PODFILE CHECKSUM: 3c718a22a05ea9a305e59e961f1dacc999dcf2f3
 
 COCOAPODS: 1.10.1

@@ -15,3 +15,8 @@ end
 target 'Pokedex-Swift' do
   common_pods
 end
+
+target 'Pokedex-Swift-UITests' do
+  common_pods
+  pod 'KIF', :configurations => ['Debug']
+end
