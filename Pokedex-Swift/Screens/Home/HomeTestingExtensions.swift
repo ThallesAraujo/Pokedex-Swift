@@ -12,6 +12,7 @@ extension HomeViewController{
         self.pokemonListingTableView.accessibilityIdentifier = UITestConstants.HomeScreen.listingTableView.rawValue
         self.pokemonListingTableView.isAccessibilityElement = true
         
+        self.searchBar.accessibilityLabel = UITestConstants.HomeScreen.searchField.rawValue
         self.searchBar.accessibilityIdentifier = UITestConstants.HomeScreen.searchField.rawValue
         self.searchBar.isAccessibilityElement = true
     }

@@ -13,6 +13,9 @@ class UITestConstants{
         
         case listingTableView = "PokemonListingTableView"
         case searchField = "PokemonHomeSearchField"
+        case listingCellNameLabel = "PokemonListingCellNameLabel"
+        case listingCellIDLabel = "PokemonListingCellIDLabel"
+        case listingCellTypesLabel = "PokemonListingCellTypesLabel"
         
     }
     

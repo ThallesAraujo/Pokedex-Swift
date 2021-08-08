@@ -29,6 +29,7 @@ class PokemonListingCell: UITableViewCell, Storyboarded {
     }
     
     func config(_ model: Result?) {
+        self.configureTesting()
         self.lblPokemonName.text = model?.name.capitalized
         
         let pokemonFetched = HomeService.getPokemon(fromURL: model?.url ?? "")
@@ -53,6 +54,12 @@ class PokemonListingCell: UITableViewCell, Storyboarded {
         let imageUrl = pokemon?.sprites?.frontDefault ?? ""
         let imageViewTemp = UIImageView.init()
         imageViewTemp.getDominantColor(fromURL: imageUrl, toTintView: self.cardView)
+    }
+    
+    private func configureTesting(){
+        self.lblID.setTestingIdentifier(UITestConstants.HomeScreen.listingCellIDLabel.rawValue)
+        self.lblTypes.setTestingIdentifier(UITestConstants.HomeScreen.listingCellTypesLabel.rawValue)
+        self.lblPokemonName.setTestingIdentifier(UITestConstants.HomeScreen.listingCellNameLabel.rawValue)
     }
 
 }

@@ -16,7 +16,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6F45963E26BF44BC0054804E"
+               BlueprintIdentifier = "6F4EF43F26BF508F006A0B98"
                BuildableName = "Pokedex-Swift-UITests.xctest"
                BlueprintName = "Pokedex-Swift-UITests"
                ReferencedContainer = "container:Pokedex-Swift.xcodeproj">
