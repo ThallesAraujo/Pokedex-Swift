@@ -8,6 +8,7 @@
 
 
 ///Classe de testes de interface da tela inicial (Home)
+@testable import Pokedex_Swift
 import Foundation
 import KIF
 import Nimble
@@ -15,8 +16,6 @@ import Nimble
 class HomeUITests: KIFTestCase{
     
     let searchFieldIdentifier = UITestConstants.HomeScreen.searchField.rawValue
-    let listingTableViewIdentifier = UITestConstants.HomeScreen.listingTableView.rawValue
-    
     
     override func beforeEach() {
         tester().waitForView(withAccessibilityLabel: searchFieldIdentifier)
@@ -26,27 +25,30 @@ class HomeUITests: KIFTestCase{
     
     ///Testa se o nome do pokémon pesquisado por ID corresponde ao resultado esperado
     ///Pokémon utilizado nesse teste: Noctowl [https://pokeapi.co/api/v2/pokemon/164]
+    
     func testPokemonSearchName(){
         enterTextIntoCurrentFirstResponder("164")
-        let pokemonName = getPropertyFromFirstCell(named: "text", atIndex: 0)
-        expect(pokemonName == "Noctowl") == true
+        let pokemonName = getFirstCell().lblPokemonName.text!
+        expect(pokemonName).to(equal("Noctowl"))
     }
     
     /// Testa se o ID do pokemon pesquisado por nome corresponde ao resultado esperado
     /// Pokémon utilizado nesse teste: Pikachu [https://pokeapi.co/api/v2/pokemon/pikachu]
+    
     func testPokemonSearchID(){
         enterTextIntoCurrentFirstResponder("pikachu")
-        let pokemonID = getPropertyFromFirstCell(named: "text", atIndex: 2)
-        expect(pokemonID == "25") == true
+        let pokemonID = getFirstCell().lblID.text!
+        expect(pokemonID).to(equal("25"))
     }
     
     ///Testa se os tipos do pokémon pesquisado correspondem ao resultado esperado
     /// Pokémon utilizado nesse teste: Xatu [https://pokeapi.co/api/v2/pokemon/178]
+    
     func testPokemonSearchTypes(){
         enterTextIntoCurrentFirstResponder("178")
-        let pokemonTypes = getPropertyFromFirstCell(named: "text", atIndex: 1)
-        expect(pokemonTypes?.contains("psychic") ?? false) == true
-        expect(pokemonTypes?.contains("flying") ?? false) == true
+        viewTester().wait(forTimeInterval: TimeInterval.init(5.0))
+        let pokemonTypes = getFirstCell().lblTypes.text!
+        expect(pokemonTypes).to(contain("psychic", "flying"))
     }
     
 }

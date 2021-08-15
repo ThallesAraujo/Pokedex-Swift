@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class HomeViewController: UIViewController, ReloadableViewController, UISearchBarDelegate {
+class HomeViewController: BaseController, ReloadableViewController, UISearchBarDelegate {
     var retryView: ErrorView?
     
     @IBOutlet weak var pokemonListingTableView: UITableView!
@@ -35,7 +35,6 @@ class HomeViewController: UIViewController, ReloadableViewController, UISearchBa
         searchBar.rx.text.orEmpty.bind(to: viewModel.searchText).disposed(by: disposeBag)
         self.configureAutoLoading()
         self.configureErrorObserver()
-        self.setupUITestIdentifiers()
     }
     
     override func viewDidAppear(_ animated: Bool) {

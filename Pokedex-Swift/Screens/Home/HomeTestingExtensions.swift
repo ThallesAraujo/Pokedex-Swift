@@ -6,7 +6,7 @@
 //
 
 import Foundation
-extension HomeViewController{
+extension HomeViewController: UITestableViewController{
     
     func setupUITestIdentifiers(){
         self.pokemonListingTableView.accessibilityIdentifier = UITestConstants.HomeScreen.listingTableView.rawValue

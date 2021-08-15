@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-class PokemonDetailsViewController: UIViewController, Storyboarded{
+class PokemonDetailsViewController: BaseController, Storyboarded{
     
     var pokemon: Pokemon?
     
@@ -32,6 +32,7 @@ class PokemonDetailsViewController: UIViewController, Storyboarded{
     let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         self.title = "(#\(pokemon?.id ?? 0)) \(pokemon?.name?.capitalized ?? "")"
         viewModel.getEvolutions(id: pokemon?.id ?? 0)
         configure()

@@ -12,6 +12,8 @@ extension UIViewController{
     
     func showAlert(title: String, message: String){
         let alert = UIAlertController.init(title: title, message: message, preferredStyle: .alert)
+        alert.isAccessibilityElement = true
+        alert.accessibilityLabel = message
         alert.view.tintColor = UIColor.init(named: "TitleColor")
         alert.addAction(UIAlertAction.init(title: "Ok", style: .default, handler: {_ in alert.dismiss(animated: true, completion: nil)}))
         self.present(alert, animated: true, completion: nil)
