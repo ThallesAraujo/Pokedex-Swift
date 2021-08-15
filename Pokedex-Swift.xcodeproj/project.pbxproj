@@ -91,6 +91,8 @@
 		6F584AEF2691347D00CDE6AC /* PokemonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F584AEE2691347D00CDE6AC /* PokemonType.swift */; };
 		6F584AF1269135EA00CDE6AC /* TypeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F584AF0269135EA00CDE6AC /* TypeService.swift */; };
 		6F591635267FBEDD000D72E1 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F591634267FBEDD000D72E1 /* Service.swift */; };
+		6F8DD2B026C898560009F436 /* HomeUITestUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8DD2AF26C898550009F436 /* HomeUITestUtils.swift */; };
+		6F8DD2B526C8A4D80009F436 /* DetailsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8DD2B426C8A4D80009F436 /* DetailsUITests.swift */; };
 		6F99768B269B48C200915A57 /* ActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F99768A269B48C200915A57 /* ActionType.swift */; };
 		6F99768F269B6BFD00915A57 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F99768E269B6BFD00915A57 /* Constants.swift */; };
 		6F997691269B6E9E00915A57 /* HomeViewController+SearchStyleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F997690269B6E9E00915A57 /* HomeViewController+SearchStyleExtension.swift */; };
@@ -172,6 +174,8 @@
 		6F584AEE2691347D00CDE6AC /* PokemonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonType.swift; sourceTree = "<group>"; };
 		6F584AF0269135EA00CDE6AC /* TypeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeService.swift; sourceTree = "<group>"; };
 		6F591634267FBEDD000D72E1 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		6F8DD2AF26C898550009F436 /* HomeUITestUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUITestUtils.swift; sourceTree = "<group>"; };
+		6F8DD2B426C8A4D80009F436 /* DetailsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsUITests.swift; sourceTree = "<group>"; };
 		6F99768A269B48C200915A57 /* ActionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionType.swift; sourceTree = "<group>"; };
 		6F99768E269B6BFD00915A57 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		6F997690269B6E9E00915A57 /* HomeViewController+SearchStyleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+SearchStyleExtension.swift"; sourceTree = "<group>"; };
@@ -330,6 +334,8 @@
 				6F45967E26BF48820054804E /* UITestConstants.swift */,
 				6F4EF44426BF508F006A0B98 /* Info.plist */,
 				6F2A5E4E26C033770085B1A3 /* HomeUITests.swift */,
+				6F8DD2AF26C898550009F436 /* HomeUITestUtils.swift */,
+				6F8DD2B426C8A4D80009F436 /* DetailsUITests.swift */,
 			);
 			path = "Pokedex-Swift-UITests";
 			sourceTree = "<group>";
@@ -723,6 +729,7 @@
 				6F4EF46526BF5134006A0B98 /* HomeViewController.swift in Sources */,
 				6F4EF45C26BF512F006A0B98 /* Evolution.swift in Sources */,
 				6F4EF45A26BF512B006A0B98 /* ActionType.swift in Sources */,
+				6F8DD2B526C8A4D80009F436 /* DetailsUITests.swift in Sources */,
 				6F4EF47526BF5154006A0B98 /* HomeViewController+SearchStyleExtension.swift in Sources */,
 				6F4EF46626BF5134006A0B98 /* Pokemon.swift in Sources */,
 				6F4EF46026BF5134006A0B98 /* PokemonListingViewModel.swift in Sources */,
@@ -735,6 +742,7 @@
 				6F4EF46126BF5134006A0B98 /* PokemonListingCell.swift in Sources */,
 				6F4EF47E26BF515B006A0B98 /* SceneDelegate.swift in Sources */,
 				6F4EF47226BF514A006A0B98 /* ReloadableViewController.swift in Sources */,
+				6F8DD2B026C898560009F436 /* HomeUITestUtils.swift in Sources */,
 				6F2A5E4F26C033770085B1A3 /* HomeUITests.swift in Sources */,
 				6F4EF47626BF5154006A0B98 /* ReactiveEmptyTableView+Extension.swift in Sources */,
 				6F4EF45126BF511E006A0B98 /* TypePokemonsViewController.swift in Sources */,

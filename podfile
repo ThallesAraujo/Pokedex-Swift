@@ -19,4 +19,5 @@ end
 target 'Pokedex-Swift-UITests' do
   common_pods
   pod 'KIF', :configurations => ['Debug']
+  pod 'Nimble'
 end
