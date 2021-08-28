@@ -10,6 +10,7 @@ extension HomeViewController: UITestableViewController{
     
     func setupUITestIdentifiers(){
         self.pokemonListingTableView.accessibilityIdentifier = UITestConstants.HomeScreen.listingTableView.rawValue
+        self.pokemonListingTableView.accessibilityLabel = UITestConstants.HomeScreen.listingTableView.rawValue
         self.pokemonListingTableView.isAccessibilityElement = true
         
         self.searchBar.accessibilityLabel = UITestConstants.HomeScreen.searchField.rawValue

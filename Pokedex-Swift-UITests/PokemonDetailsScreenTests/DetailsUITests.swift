@@ -23,6 +23,12 @@ class DetailsUITests: KIFTestCase{
     let statsIdentifier = UITestConstants.DetailsScreen.statsCollectionView.rawValue
     let alertIdentifier = UITestConstants.Global.alert.rawValue
 
+    override func beforeEach() {
+        popToRootViewController()
+        turnSearchBarIntoFirstResponder()
+    }
+    
+    
     func testFirstPokemon(){
         viewTester().tapRowInTableView(at: IndexPath.init(row: 0, section: 0))
         let cell = tester().waitForCell(at: IndexPath.init(row: 0, section: 0), inCollectionViewWithAccessibilityIdentifier: statsIdentifier) as! PokemonStatCell

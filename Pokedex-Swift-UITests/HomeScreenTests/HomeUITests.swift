@@ -18,6 +18,8 @@ class HomeUITests: KIFTestCase{
     let searchFieldIdentifier = UITestConstants.HomeScreen.searchField.rawValue
     
     override func beforeEach() {
+        popToRootViewController()
+        turnSearchBarIntoFirstResponder()
         tester().waitForView(withAccessibilityLabel: searchFieldIdentifier)
         tester().tapView(withAccessibilityLabel: searchFieldIdentifier)
         tester().clearTextFromFirstResponder()

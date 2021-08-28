@@ -21,11 +21,6 @@
                BlueprintName = "Pokedex-Swift-UITests"
                ReferencedContainer = "container:Pokedex-Swift.xcodeproj">
             </BuildableReference>
-            <SkippedTests>
-               <Test
-                  Identifier = "HomeUITests">
-               </Test>
-            </SkippedTests>
          </TestableReference>
       </Testables>
    </TestAction>

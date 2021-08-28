@@ -19,5 +19,4 @@ extension HomeUITests{
         return viewTester().waitForCellInTableView(at: IndexPath.init(row: 0, section: 0)) as! PokemonListingCell
     }
     
-    
 }

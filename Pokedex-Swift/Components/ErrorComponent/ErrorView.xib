@@ -41,19 +41,19 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ops!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ypl-lL-6Ex">
-                    <rect key="frame" x="24" y="250" width="376" height="28"/>
+                    <rect key="frame" x="24" y="250" width="376" height="30"/>
                     <fontDescription key="fontDescription" name="Quicksand-Medium" family="Quicksand" pointSize="24"/>
                     <color key="textColor" name="TitleColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ocorreu um erro inesperado. Tente novamente mais tarde." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQp-8Q-3Zp">
-                    <rect key="frame" x="24" y="302" width="376" height="42"/>
+                    <rect key="frame" x="24" y="304" width="376" height="45.5"/>
                     <fontDescription key="fontDescription" name="Oxygen-Regular" family="Oxygen" pointSize="18"/>
                     <color key="textColor" systemColor="secondaryLabelColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="12I-mT-a18">
-                    <rect key="frame" x="24" y="376" width="376" height="52"/>
+                    <rect key="frame" x="24" y="381.5" width="376" height="52"/>
                     <color key="backgroundColor" name="TitleColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="52" id="M96-ZL-P2H"/>
