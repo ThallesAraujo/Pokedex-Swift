@@ -11,10 +11,9 @@ import KIF
 
 extension HomeUITests{
     
-    func enterTextIntoCurrentFirstResponder(_ text: String) -> Void{
-        tester().enterText(intoCurrentFirstResponder: text)
-    }
-    
+    /**
+     Retorna a primeira célula da listagem
+     */
     func getFirstCell() -> PokemonListingCell{
         return viewTester().waitForCellInTableView(at: IndexPath.init(row: 0, section: 0)) as! PokemonListingCell
     }
