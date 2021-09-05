@@ -7,12 +7,17 @@
 		<key>Pokedex-Swift-UITests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>15</integer>
+			<integer>1</integer>
+		</dict>
+		<key>Pokedex-Swift-UnitTests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>17</integer>
 		</dict>
 		<key>Pokedex-Swift.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>14</integer>
+			<integer>0</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -23,6 +28,11 @@
 			<true/>
 		</dict>
 		<key>6F48391626750E9500EA7760</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6FD061F626E51BC200549E8A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
