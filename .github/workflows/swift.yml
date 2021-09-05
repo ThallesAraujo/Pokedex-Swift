@@ -12,7 +12,8 @@ jobs:
     steps:
     - name: Repository checkout
       uses: actions/checkout@v2
-    - name: Build for iOS
-      run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild build-for-testing -scheme IndexedDataStore -destination "platform=iOS Simulator,OS=latest,name=iPhone 12" | xcpretty
-    - name: Run iOS tests
-      run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild test-without-building -scheme IndexedDataStore -destination "platform=iOS Simulator,OS=latest,name=iPhone 12" | xcpretty
+    - name: Build
+      run: xcodebuild clean build -workspace "Pokedex-Swift.xcworkspace" -scheme "Pokedex-Swift-UnitTests" -destination "platform=iOS Simulator,name=iPhone 12 Pro,OS=latest" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
+    - name: Run tests
+      run: xcodebuild clean test -workspace "Pokedex-Swift.xcworkspace" -scheme "Pokedex-Swift-UnitTests" -destination "platform=iOS Simulator,name=iPhone 12 Pro,OS=latest" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
+
