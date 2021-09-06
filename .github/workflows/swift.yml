@@ -9,6 +9,25 @@ on:
     branches:
       - main
 jobs:
+
+  Install CocoaPods:
+    name: Setup Cocoapods based on provided version
+    runs-on: macOS-11.0
+    steps:
+    - name: setup-cocoapods
+      uses: maxim-lobanov/setup-cocoapods@v1
+      with:
+        version: 1.9.0
+
+  build:
+    name: Setup Cocoapods based on Podfile.lock
+    runs-on: macOS-11.0
+    steps:
+    - name: setup-cocoapods
+      uses: maxim-lobanov/setup-cocoapods@v1
+      with:
+        podfile-path: Pokedex-Swift/Podfile.lock
+
   Run_workspace_Tests:
     runs-on: macOS-11.0
     steps:
