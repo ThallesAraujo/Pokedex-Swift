@@ -10,7 +10,7 @@ on:
       - main
 jobs:
 
-  Install CocoaPods:
+  Install_CocoaPods:
     name: Setup Cocoapods based on provided version
     runs-on: macOS-11.0
     steps:
