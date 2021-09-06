@@ -10,7 +10,7 @@ on:
       - main
 jobs:
   Run_workspace_Tests:
-    runs-on: macos-11.0
+    runs-on: macos-11.1
     steps:
     - uses: actions/checkout@v1
     - name: List available Xcode versions
