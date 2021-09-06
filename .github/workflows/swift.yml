@@ -17,6 +17,8 @@ jobs:
       uses: maxim-lobanov/setup-cocoapods@v1
       with:
         version: 1.10.1
+    - name: Pod Install
+      run: pod install
     - name: List available Xcode versions
       run: ls /Applications | grep Xcode
     - name: Select Xcode
