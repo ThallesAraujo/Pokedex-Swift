@@ -26,7 +26,7 @@ jobs:
     - name: setup-cocoapods
       uses: maxim-lobanov/setup-cocoapods@v1
       with:
-        podfile-path: Podfile.lock
+        podfile-path: /Podfile.lock
 
   Run_workspace_Tests:
     runs-on: macOS-11.0
