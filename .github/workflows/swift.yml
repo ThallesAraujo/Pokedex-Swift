@@ -23,6 +23,8 @@ jobs:
     name: Setup Cocoapods based on Podfile.lock
     runs-on: macOS-11.0
     steps:
+    - name: list_folder
+      run: ls -la
     - name: setup-cocoapods
       uses: maxim-lobanov/setup-cocoapods@v1
       with:
