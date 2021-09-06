@@ -23,12 +23,10 @@ jobs:
     name: Setup Cocoapods based on Podfile.lock
     runs-on: macOS-11.0
     steps:
-    - name: list_folder
-      run: ls
     - name: setup-cocoapods
       uses: maxim-lobanov/setup-cocoapods@v1
       with:
-        podfile-path: /Podfile.lock
+        podfile-path: Pokedex-Swift/Pokedex-Swift/Podfile.lock
 
   Run_workspace_Tests:
     runs-on: macOS-11.0
