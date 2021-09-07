@@ -125,7 +125,6 @@
 		6F2F12E3267E733C001643AE /* ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		6F2F12E4267E733C001643AE /* ErrorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ErrorView.xib; sourceTree = "<group>"; };
 		6F2F12E9267E7EAD001643AE /* ReloadableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadableViewController.swift; sourceTree = "<group>"; };
-		6F45964326BF44BC0054804E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Pokedex-Swift-UITests-copy/Info.plist"; sourceTree = SOURCE_ROOT; };
 		6F45967826BF46CC0054804E /* KIF+SwiftExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KIF+SwiftExtension.swift"; sourceTree = "<group>"; };
 		6F45967E26BF48820054804E /* UITestConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestConstants.swift; sourceTree = "<group>"; };
 		6F45968026BF49680054804E /* HomeTestingExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTestingExtensions.swift; sourceTree = "<group>"; };
@@ -339,7 +338,6 @@
 			children = (
 				6F2A5E5726C04A300085B1A3 /* Utils */,
 				6F45967D26BF477B0054804E /* KIFUtils */,
-				6F45964326BF44BC0054804E /* Info.plist */,
 				6F4EF44426BF508F006A0B98 /* Info.plist */,
 				6FB7456D26C98CFB00F0EFA3 /* HomeScreenTests */,
 				6FB7457026C98D1900F0EFA3 /* PokemonDetailsScreenTests */,
