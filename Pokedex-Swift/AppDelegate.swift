@@ -7,16 +7,18 @@
 
 import UIKit
 import SDWebImageSVGCoder
+import Atlantis
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         let SVGCoder = SDImageSVGCoder.shared
         SDImageCodersManager.shared.addCoder(SVGCoder)
+        //Nota: O Atlantis pode causar lentidão nas requisições, especialmente, no caso do app
+        // nas de paginação. Idealmente, usar somente em targets de dev
+        Atlantis.start(hostName: "macbook-pro-de-thalles.local.")
         return true
     }
 

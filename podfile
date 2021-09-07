@@ -10,6 +10,7 @@ def common_pods
   pod 'RxDataSources'
   pod 'SDWebImageSVGCoder'
   pod 'UIImageColors'
+  pod 'atlantis-proxyman'
 end
 
 target 'Pokedex-Swift' do
