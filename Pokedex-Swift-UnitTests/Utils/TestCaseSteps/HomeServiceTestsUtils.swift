@@ -13,12 +13,7 @@ import XCTest
 import RxSwift
 import RxCocoa
 
-let responseFailure = APIExpectationConstants.responseFailure.rawValue
-let waitingResponse = APIExpectationConstants.waitingResponse.rawValue
-
 extension HomeServiceTests{
-    
-    
     
     func getListAndAssert(assertion: @escaping ([Result]) -> Void){
         
@@ -73,28 +68,5 @@ extension HomeServiceTests{
         
         complete()
     }
-    
-    
-    
-//MARK: - Helpers internos
-    
-    fileprivate func errorBinderSubscribe(){
-        errorBinder.subscribe(onNext: {[weak self] errorHasOccurred in
-            if errorHasOccurred{
-                XCTFail(responseFailure)
-                
-                guard let weakself = self else {return}
-                weakself.expectation.fulfill()
-            }
-        }).disposed(by: disposeBag)
-    }
-    
-    fileprivate func complete(){
-        errorBinderSubscribe()
-        wait(for: [expectation], timeout: 10.0)
-    }
-    
-    
-    
     
 }

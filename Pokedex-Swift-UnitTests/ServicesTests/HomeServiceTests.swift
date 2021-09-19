@@ -15,12 +15,7 @@ import RxCocoa
 let pokemonURL = "https://pokeapi.co/api/v2/pokemon/41"
 let urlToFail = "https://pokeapi.co/api/v2/pokemon/982"
 
-class HomeServiceTests: XCTestCase{
-    
-    let disposeBag = DisposeBag()
-    let errorBinder: BehaviorRelay<Bool> = BehaviorRelay<Bool>.init(value: false)
-    let expectation = XCTestExpectation(description: waitingResponse)
-    
+class HomeServiceTests: BaseTestCase{
     
     func testListNotEmpty(){
         getListAndAssert { pokemons in
