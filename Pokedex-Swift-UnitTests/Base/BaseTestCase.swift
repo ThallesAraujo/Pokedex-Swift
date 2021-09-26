@@ -14,7 +14,7 @@ let waitingResponse = APIExpectationConstants.waitingResponse.rawValue
 
 class BaseTestCase: XCTestCase{
     
-    let disposeBag = DisposeBag()
+    var disposeBag = DisposeBag()
     let errorBinder: BehaviorRelay<Bool> = BehaviorRelay<Bool>.init(value: false)
     let expectation = XCTestExpectation(description: waitingResponse)
     

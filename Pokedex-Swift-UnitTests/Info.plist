@@ -18,5 +18,11 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+    <key>NSLocalNetworkUsageDescription</key>
+    <string>Atlantis would use Bonjour Service to discover Proxyman app from your local network.</string>
+    <key>NSBonjourServices</key>
+    <array>
+        <string>_Proxyman._tcp</string>
+    </array>
 </dict>
 </plist>

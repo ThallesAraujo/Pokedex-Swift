@@ -78,8 +78,8 @@
             filePath = "Pokedex-Swift-UnitTests/ServicesTests/DetailsServiceTests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
             landmarkName = "testGetAbility()"
             landmarkType = "7">
          </BreakpointContent>
@@ -94,8 +94,8 @@
             filePath = "Pokedex-Swift-UnitTests/ServicesTests/DetailsServiceTests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
             landmarkName = "testGetEvolution()"
             landmarkType = "7">
          </BreakpointContent>
@@ -110,10 +110,57 @@
             filePath = "Pokedex-Swift-UnitTests/ServicesTests/TypeServiceTests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
             landmarkName = "testGetPokemonType()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "FB8714AB-5D1B-492A-9EAC-1219FB51C94C - 40ca8940c0d96acb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Pokedex_Swift.PokemonType) -&gt; () in Pokedex_Swift_UnitTests.TypeServiceTests.testGetPokemonType() -&gt; ()"
+                  moduleName = "Pokedex-Swift-UnitTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/thallesaraujo/Projetos/Pokedex-Swift/Pokedex-Swift/Pokedex-Swift-UnitTests/ServicesTests/TypeServiceTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "83">
+               </Location>
+               <Location
+                  uuid = "FB8714AB-5D1B-492A-9EAC-1219FB51C94C - 40ca8940c0d96d0d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Pokedex_Swift.PokemonType) -&gt; () in Pokedex_Swift_UnitTests.TypeServiceTests.testGetPokemonType() -&gt; ()"
+                  moduleName = "Pokedex-Swift-UnitTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/thallesaraujo/Projetos/Pokedex-Swift/Pokedex-Swift/Pokedex-Swift-UnitTests/ServicesTests/TypeServiceTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "83">
+               </Location>
+               <Location
+                  uuid = "FB8714AB-5D1B-492A-9EAC-1219FB51C94C - 40ca8940c0d96aea"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Pokedex_Swift.PokemonType) -&gt; () in Pokedex_Swift_UnitTests.TypeServiceTests.testGetPokemonType() -&gt; ()"
+                  moduleName = "Pokedex-Swift-UnitTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/thallesaraujo/Projetos/Pokedex-Swift/Pokedex-Swift/Pokedex-Swift-UnitTests/ServicesTests/TypeServiceTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "83">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -126,8 +173,8 @@
             filePath = "Pokedex-Swift-UnitTests/ServicesTests/TypeServiceTests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
             landmarkName = "testGetPokemonType()"
             landmarkType = "7">
          </BreakpointContent>

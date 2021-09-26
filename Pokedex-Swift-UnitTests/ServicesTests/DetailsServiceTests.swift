@@ -8,6 +8,7 @@
 import Foundation
 @testable import Pokedex_Swift
 import XCTest
+import RxSwift
 
 //MARK: - Ability Constants
 
@@ -23,8 +24,8 @@ let defaultLanguage = "en"
 let pokemonId = 9
 let noValidEvolutions = "Não foi encontrada nenhuma evolução"
 
+
 class DetailsServiceTests: BaseTestCase{
-    
     
     func testGetAbility(){
         
