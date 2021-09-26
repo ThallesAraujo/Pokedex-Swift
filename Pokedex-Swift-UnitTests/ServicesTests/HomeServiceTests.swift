@@ -13,7 +13,7 @@ import RxSwift
 import RxCocoa
 
 let pokemonURL = "https://pokeapi.co/api/v2/pokemon/41"
-let urlToFail = "https://pokeapi.co/api/v2/pokemon/982"
+let urlToFail =  "https://pokeapi.co/api/v2/pokemon/982"
 
 class HomeServiceTests: BaseTestCase{
     

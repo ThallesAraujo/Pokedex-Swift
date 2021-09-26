@@ -39,6 +39,7 @@ class DetailsServiceTests: BaseTestCase{
         }
     }
     
+    
     func testGetEvolution(){
         
         getEvolutions(ofPokemon: pokemonId) { evolutions in

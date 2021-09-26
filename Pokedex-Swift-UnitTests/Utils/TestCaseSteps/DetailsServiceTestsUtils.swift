@@ -7,8 +7,6 @@
 
 import Foundation
 @testable import Pokedex_Swift
-
-import Foundation
 import XCTest
 import RxSwift
 import RxCocoa
