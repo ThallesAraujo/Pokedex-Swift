@@ -11,9 +11,9 @@ import XCTest
 import RxSwift
 import RxCocoa
 
-extension TypeServiceTests{
+extension TypeServiceTests {
     
-    func getType(fromUrl url: String, andAssert assertion: @escaping (PokemonType) -> Void){
+    func getType(fromUrl url: String, andAssert assertion: @escaping (PokemonType) -> Void) {
         
         let type = TypeService.getType(fromURL: url, errorBinder: self.errorBinder)
         

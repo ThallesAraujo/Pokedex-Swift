@@ -11,9 +11,9 @@ import XCTest
 import RxSwift
 import RxCocoa
 
-extension DetailsServiceTests{
+extension DetailsServiceTests {
     
-    func getAbility(fromUrl url: String, andAssert assertion: @escaping (Ability) -> Void){
+    func getAbility(fromUrl url: String, andAssert assertion: @escaping (Ability) -> Void) {
         
         let abilityObservable = DetailsService.getAbility(fromURL: url)
         
@@ -26,8 +26,7 @@ extension DetailsServiceTests{
         wait(for: [expectation], timeout: 10.0)
     }
     
-    
-    func getEvolutions(ofPokemon id: Int, andAssert assertion: @escaping (Evolution?) -> Void){
+    func getEvolutions(ofPokemon id: Int, andAssert assertion: @escaping (Evolution?) -> Void) {
         
         let evolutionsObservable = DetailsService.getPokemonEvolution(id, errorBinder: errorBinder)
         
@@ -40,6 +39,5 @@ extension DetailsServiceTests{
         complete()
         
     }
-    
     
 }

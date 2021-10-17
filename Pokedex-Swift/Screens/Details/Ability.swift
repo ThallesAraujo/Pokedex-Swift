@@ -26,7 +26,16 @@ class Ability: Codable {
         case name, names, pokemon
     }
 
-    init(effectChanges: [EffectChange]?, effectEntries: [AbilityEffectEntry]?, flavorTextEntries: [FlavorTextEntry]?, generation: Generation?, id: Int?, isMainSeries: Bool?, name: String?, names: [Name]?, pokemon: [PokemonDTO]?) {
+    init(effectChanges: [EffectChange]?,
+         effectEntries: [AbilityEffectEntry]?,
+         flavorTextEntries: [FlavorTextEntry]?,
+         generation: Generation?,
+         id: Int?,
+         isMainSeries: Bool?,
+         name: String?,
+         names: [Name]?,
+         pokemon: [PokemonDTO]?) {
+        
         self.effectChanges = effectChanges
         self.effectEntries = effectEntries
         self.flavorTextEntries = flavorTextEntries

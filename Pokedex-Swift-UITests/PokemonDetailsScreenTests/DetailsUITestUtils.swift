@@ -10,21 +10,27 @@ import Foundation
 import KIF
 import UIKit
 
-extension DetailsUITests{
+extension DetailsUITests {
     
     /**
     Seleciona a primeira célula da lista, navega até a tela de detalhes e retorna a primeira célula de Stats
      */
-    func selectAndGetFirstStat() -> PokemonStatCell{
+    func selectAndGetFirstStat() -> PokemonStatCell {
         viewTester().tapRowInTableView(at: firstIndexPath)
-        return tester().waitForCell(at: firstIndexPath, inCollectionViewWithAccessibilityIdentifier: statsIdentifier) as! PokemonStatCell
+        
+        // swiftlint:disable:next line_length
+        guard let cell = tester().waitForCell(at: firstIndexPath, inCollectionViewWithAccessibilityIdentifier: statsIdentifier) as? PokemonStatCell else {
+            return PokemonStatCell()
+        }
+        
+        return cell
         
     }
     
     /**
      Seleciona a primeira habilidade
      */
-    func showFirstAbilityAlert(withExpectedLabel label: String) -> UIView{
+    func showFirstAbilityAlert(withExpectedLabel label: String) -> UIView {
         tester().waitForCell(at: firstIndexPath, inCollectionViewWithAccessibilityIdentifier: abilitiesIdentifier).tap()
         return tester().waitForView(withAccessibilityLabel: label)
     }
@@ -32,7 +38,7 @@ extension DetailsUITests{
     /**
      Dispensa o modal de abilidade
      */
-    func dismissAbilityAlert(){
+    func dismissAbilityAlert() {
         tester().waitForView(withAccessibilityLabel: "Ok").tap()
     }
     

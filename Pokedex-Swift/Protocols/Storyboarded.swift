@@ -6,12 +6,12 @@
 //
 
 import Foundation
-protocol Storyboarded{
+protocol Storyboarded {
     
 }
-extension Storyboarded{
+extension Storyboarded {
     
-    static var identifier: String{
+    static var identifier: String {
         
         let description = String(describing: self)
         let firstChar = description.first

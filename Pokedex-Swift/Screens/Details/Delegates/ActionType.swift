@@ -9,18 +9,22 @@ import Foundation
 import UIKit
 import RxSwift
 
-enum ActionType{
+let mainStoryboard = Constants.mainStoryboard
+let typePokemonViewController = TypePokemonsViewController.identifier
+let pokemonDetailsViewController = PokemonDetailsViewController.identifier
+
+enum ActionType {
     
     case pokemonsOfSameType
     case seeEvolution
     case seeAbility
     
-    func didTapAction(item: Species, navigation: UINavigationController?, disposeBag: DisposeBag){
-        switch self{
+    func didTapAction(item: Species, navigation: UINavigationController?, disposeBag: DisposeBag) {
+        switch self {
             
         case .pokemonsOfSameType:
             
-            if let viewController = UIStoryboard.init(name: Constants.mainStoryboard, bundle: .main).instantiateViewController(identifier: TypePokemonsViewController.identifier) as? TypePokemonsViewController{
+            if let viewController = UIStoryboard.init(name: mainStoryboard, bundle: .main).instantiateViewController(identifier: typePokemonViewController) as? TypePokemonsViewController {
                 viewController.title = item.name?.capitalized
                 
                 let viewModel = TypePokemonsViewModel.init()
@@ -37,7 +41,7 @@ enum ActionType{
                     let abilityName = item.name?.capitalized ?? ""
                     let message = detail.flavorTextEntries?.first(where: {$0.language?.name == Constants.defaultLanguage})?.flavorText ?? ""
                     
-                    if !abilityName.isEmpty && !message.isEmpty{
+                    if !abilityName.isEmpty && !message.isEmpty {
                         keyWindow?.rootViewController?.showAlert(title: abilityName.capitalized, message: message)
                     }
                     
@@ -47,14 +51,13 @@ enum ActionType{
             
             let fetchedPokemonEvolution = HomeService.getPokemon(fromURL: item.url?.replacingOccurrences(of: "-species", with: "") ?? "")
                 fetchedPokemonEvolution.subscribe(onNext: {pokemon in
-                    if let viewController = UIStoryboard.init(name: Constants.mainStoryboard, bundle: .main).instantiateViewController(identifier: PokemonDetailsViewController.identifier) as? PokemonDetailsViewController{
+                    if let viewController = UIStoryboard.init(name: mainStoryboard, bundle: .main).instantiateViewController(identifier: pokemonDetailsViewController) as? PokemonDetailsViewController {
                         
                         viewController.pokemon = pokemon
                         navigation?.pushViewController(viewController, animated: true)
                         
                     }
                 }).disposed(by: disposeBag)
-            
             
         }
         

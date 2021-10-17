@@ -8,9 +8,9 @@
 import Foundation
 import UIKit
 
-class Constants{
+class Constants {
     
-    //MARK: - UI Constants
+    // MARK: - UI Constants
     
     static let mainStoryboard = "Main"
     
@@ -24,7 +24,7 @@ class Constants{
     static let defaultErrorTitle = "Nenhum resultado encontrado"
     static let defaultErrorDescription = "Não foi encontrado nenhum resultado para sua pesquisa"
     
-    //MARK: - model comparation
+    // MARK: - model comparation
     
     static let defaultLanguage = "en"
     

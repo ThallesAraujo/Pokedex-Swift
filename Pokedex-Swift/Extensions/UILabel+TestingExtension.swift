@@ -8,9 +8,9 @@
 import Foundation
 import UIKit
 
-extension UILabel{
+extension UILabel {
     
-    func setTestingIdentifier(_ acessibilityIdentifier: String){
+    func setTestingIdentifier(_ acessibilityIdentifier: String) {
         self.accessibilityLabel = accessibilityIdentifier
         self.accessibilityIdentifier = accessibilityIdentifier
         self.isAccessibilityElement = true

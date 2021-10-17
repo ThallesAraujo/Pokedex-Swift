@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class PokemonItemCell: UICollectionViewCell, Storyboarded{
+class PokemonItemCell: UICollectionViewCell, Storyboarded {
     
     @IBOutlet weak var lblItemName: UILabel!
     

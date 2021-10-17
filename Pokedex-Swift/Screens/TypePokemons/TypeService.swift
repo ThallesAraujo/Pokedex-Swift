@@ -10,15 +10,15 @@ import RxSwift
 import RxCocoa
 import RxAlamofire
 
-class TypeService: Service{
+class TypeService: Service {
     
-    static func getType(fromURL url: String, errorBinder: BehaviorRelay<Bool>) -> Observable<PokemonType>{
+    static func getType(fromURL url: String, errorBinder: BehaviorRelay<Bool>) -> Observable<PokemonType> {
         
-        if !isConnected(){
+        if !isConnected() {
             errorBinder.accept(true)
         }
         
-        guard let endpoint = URL.init(string: url) else{
+        guard let endpoint = URL.init(string: url) else {
             return Observable.empty()
         }
         let request = URLRequest.init(url: endpoint)
@@ -26,7 +26,7 @@ class TypeService: Service{
             print(error)
             errorBinder.accept(true)
             return Observable.never()
-        }.map { (response, data) in
+        }.map { (_, data) in
             let decoder = JSONDecoder()
             let pokemonType = try decoder.decode(PokemonType.self, from: data)
             errorBinder.accept(false)
@@ -34,6 +34,5 @@ class TypeService: Service{
         }.asObservable()
         
     }
-    
    
 }

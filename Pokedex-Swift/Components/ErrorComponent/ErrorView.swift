@@ -26,7 +26,7 @@ class ErrorView: UIView {
         commonInit()
     }
     
-    private func commonInit(){
+    private func commonInit() {
         Bundle.main.loadNibNamed("ErrorView", owner: self, options: nil)
         addSubview(contentView)
         contentView.frame = self.bounds
@@ -34,7 +34,7 @@ class ErrorView: UIView {
     }
     
     @IBAction func didTapRetry(_ sender: Any) {
-        if let retry = self.retryClosure{
+        if let retry = self.retryClosure {
             retry()
         }
     }

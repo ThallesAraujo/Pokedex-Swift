@@ -21,7 +21,6 @@ enum APIUrls: URLRequestConvertible {
     var method: Alamofire.HTTPMethod {
         return .get
     }
-    
 
     var path: String {
         switch self {
@@ -29,7 +28,7 @@ enum APIUrls: URLRequestConvertible {
             return "/pokemon"
         case .getPokemon(let idOrName):
             return "/pokemon/\(idOrName)"
-        case .getNextPage(_, _):
+        case .getNextPage:
             return "/pokemon"
         case .getEvolutions(let id):
             return "/evolution-chain/\(id)"
@@ -53,4 +52,3 @@ enum APIUrls: URLRequestConvertible {
         return urlRequest
     }
 }
-

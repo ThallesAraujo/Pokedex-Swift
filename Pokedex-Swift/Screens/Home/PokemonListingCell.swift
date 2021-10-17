@@ -23,7 +23,7 @@ class PokemonListingCell: UITableViewCell, Storyboarded {
     
     let disposeBag = DisposeBag()
     
-    private func endConfig(){
+    private func endConfig() {
         self.lblID.text = "\(self.pokemon?.id ?? 0)"
         self.lblTypes.text = "\(self.pokemon?.types?.map({ $0.type?.name ?? ""}).joined(separator: ", ") ?? "")"
     }
@@ -47,16 +47,15 @@ class PokemonListingCell: UITableViewCell, Storyboarded {
             self.endConfig()
         })
         
-        
     }
     
-    private func tintWithDominantColor (){
+    private func tintWithDominantColor () {
         let imageUrl = pokemon?.sprites?.frontDefault ?? ""
         let imageViewTemp = UIImageView.init()
         imageViewTemp.getDominantColor(fromURL: imageUrl, toTintView: self.cardView)
     }
     
-    private func configureTesting(){
+    private func configureTesting() {
         self.lblID.setTestingIdentifier(UITestConstants.HomeScreen.listingCellIDLabel.rawValue)
         self.lblTypes.setTestingIdentifier(UITestConstants.HomeScreen.listingCellTypesLabel.rawValue)
         self.lblPokemonName.setTestingIdentifier(UITestConstants.HomeScreen.listingCellNameLabel.rawValue)

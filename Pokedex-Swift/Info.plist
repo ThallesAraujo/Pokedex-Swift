@@ -20,12 +20,12 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-    <key>NSLocalNetworkUsageDescription</key>
-    <string>Atlantis would use Bonjour Service to discover Proxyman app from your local network.</string>
-    <key>NSBonjourServices</key>
-    <array>
-        <string>_Proxyman._tcp</string>
-    </array>
+	<key>NSBonjourServices</key>
+	<array>
+		<string>_Proxyman._tcp</string>
+	</array>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>Atlantis would use Bonjour Service to discover Proxyman app from your local network.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Oxygen-Bold.ttf</string>

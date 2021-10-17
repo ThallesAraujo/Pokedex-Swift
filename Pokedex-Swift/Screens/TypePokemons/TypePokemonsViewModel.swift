@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class TypePokemonsViewModel{
+class TypePokemonsViewModel {
     
     var pokemonSpecies: BehaviorRelay<[Species?]> = BehaviorRelay<[Species?]>.init(value: [])
     var pokemonType: Species?

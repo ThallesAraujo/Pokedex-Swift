@@ -12,16 +12,15 @@ import RxCocoa
 let responseFailure = APIExpectationConstants.responseFailure.rawValue
 let waitingResponse = APIExpectationConstants.waitingResponse.rawValue
 
-class BaseTestCase: XCTestCase{
+class BaseTestCase: XCTestCase {
     
     var disposeBag = DisposeBag()
     let errorBinder: BehaviorRelay<Bool> = BehaviorRelay<Bool>.init(value: false)
     let expectation = XCTestExpectation(description: waitingResponse)
     
-    
-    func errorBinderSubscribe(){
+    func errorBinderSubscribe() {
         errorBinder.subscribe(onNext: {[weak self] errorHasOccurred in
-            if errorHasOccurred{
+            if errorHasOccurred {
                 XCTFail(responseFailure)
                 guard let weakself = self else {return}
                 weakself.expectation.fulfill()
@@ -29,7 +28,7 @@ class BaseTestCase: XCTestCase{
         }).disposed(by: disposeBag)
     }
     
-    func complete(){
+    func complete() {
         errorBinderSubscribe()
         wait(for: [expectation], timeout: 10.0)
     }

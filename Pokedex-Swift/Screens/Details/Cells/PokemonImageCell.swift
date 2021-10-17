@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class PokemonImageCell: UICollectionViewCell, Storyboarded{
+class PokemonImageCell: UICollectionViewCell, Storyboarded {
     
     @IBOutlet weak var imgPokemon: UIImageView!
     

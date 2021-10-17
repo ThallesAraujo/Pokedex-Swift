@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class DetailsViewModel{
+class DetailsViewModel {
     
     var evolution: BehaviorRelay<Evolution?> = BehaviorRelay.init(value: nil)
     
@@ -17,7 +17,7 @@ class DetailsViewModel{
     
     let disposeBag = DisposeBag()
     
-    func getEvolutions(id: Int){
+    func getEvolutions(id: Int) {
         DetailsService.getPokemonEvolution(id, errorBinder: errorHasOccurred).subscribe(onNext: {evolution in
             self.evolution.accept(evolution)
         }).disposed(by: disposeBag)

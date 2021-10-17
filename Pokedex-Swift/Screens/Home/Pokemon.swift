@@ -41,7 +41,25 @@ class Pokemon: Codable {
         case species, sprites, stats, types, weight
     }
 
-    init(abilities: [AbilityDTO]?, baseExperience: Int?, forms: [Species]?, gameIndices: [GameIndex]?, height: Int?, heldItems: [HeldItem]?, id: Int?, isDefault: Bool?, locationAreaEncounters: String?, moves: [Move]?, name: String?, order: Int?, pastTypes: [JSONAny]?, species: Species?, sprites: Sprites?, stats: [Stat]?, types: [TypeElement]?, weight: Int?) {
+    init(abilities: [AbilityDTO]?,
+         baseExperience: Int?,
+         forms: [Species]?,
+         gameIndices: [GameIndex]?,
+         height: Int?,
+         heldItems: [HeldItem]?,
+         id: Int?,
+         isDefault: Bool?,
+         locationAreaEncounters: String?,
+         moves: [Move]?,
+         name: String?,
+         order: Int?,
+         pastTypes: [JSONAny]?,
+         species: Species?,
+         sprites: Sprites?,
+         stats: [Stat]?,
+         types: [TypeElement]?,
+         weight: Int?) {
+        
         self.abilities = abilities
         self.baseExperience = baseExperience
         self.forms = forms
@@ -63,9 +81,9 @@ class Pokemon: Codable {
     }
 }
 
-extension Pokemon{
+extension Pokemon {
     
-    func getImagesList() -> [String?]{
+    func getImagesList() -> [String?] {
 
         return [
             self.sprites?.frontDefault,
@@ -81,7 +99,6 @@ extension Pokemon{
     }
     
 }
-
 
 // MARK: - Ability
 class AbilityDTO: Codable {
@@ -113,9 +130,9 @@ class Species: Codable {
     }
 }
 
-extension Species{
+extension Species {
     
-    func asResult() -> Result{
+    func asResult() -> Result {
         return Result.init(name: self.name ?? "", url: self.url ?? "")
     }
     
@@ -250,7 +267,15 @@ class Versions: Codable {
         case generationViii = "generation-viii"
     }
 
-    init(generationI: GenerationI?, generationIi: GenerationIi?, generationIii: GenerationIii?, generationIv: GenerationIv?, generationV: GenerationV?, generationVi: [String: GenerationVi]?, generationVii: GenerationVii?, generationViii: GenerationViii?) {
+    init(generationI: GenerationI?,
+         generationIi: GenerationIi?,
+         generationIii: GenerationIii?,
+         generationIv: GenerationIv?,
+         generationV: GenerationV?,
+         generationVi: [String: GenerationVi]?,
+         generationVii: GenerationVii?,
+         generationViii: GenerationViii?) {
+        
         self.generationI = generationI
         self.generationIi = generationIi
         self.generationIii = generationIii
@@ -282,7 +307,18 @@ class Sprites: Codable {
         case other, versions, animated
     }
 
-    init(backDefault: String?, backFemale: String?, backShiny: String?, backShinyFemale: String?, frontDefault: String?, frontFemale: String?, frontShiny: String?, frontShinyFemale: String?, other: Other?, versions: Versions?, animated: Sprites?) {
+    init(backDefault: String?,
+         backFemale: String?,
+         backShiny: String?,
+         backShinyFemale: String?,
+         frontDefault: String?,
+         frontFemale: String?,
+         frontShiny: String?,
+         frontShinyFemale: String?,
+         other: Other?,
+         versions: Versions?,
+         animated: Sprites?) {
+        
         self.backDefault = backDefault
         self.backFemale = backFemale
         self.backShiny = backShiny
@@ -752,4 +788,3 @@ class JSONAny: Codable {
         }
     }
 }
-

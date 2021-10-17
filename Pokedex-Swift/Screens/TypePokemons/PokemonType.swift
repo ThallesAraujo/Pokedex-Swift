@@ -25,7 +25,16 @@ class PokemonType: Codable {
         case moves, name, names, pokemon
     }
 
-    init(damageRelations: DamageRelations?, gameIndices: [GameIndex]?, generation: Generation?, id: Int?, moveDamageClass: Generation?, moves: [Generation]?, name: String?, names: [Name]?, pokemon: [PokemonTypeDTO]?) {
+    init(damageRelations: DamageRelations?,
+         gameIndices: [GameIndex]?,
+         generation: Generation?,
+         id: Int?,
+         moveDamageClass: Generation?,
+         moves: [Generation]?,
+         name: String?,
+         names: [Name]?,
+         pokemon: [PokemonTypeDTO]?) {
+        
         self.damageRelations = damageRelations
         self.gameIndices = gameIndices
         self.generation = generation
@@ -73,5 +82,3 @@ class PokemonTypeDTO: Codable {
         self.slot = slot
     }
 }
-
-

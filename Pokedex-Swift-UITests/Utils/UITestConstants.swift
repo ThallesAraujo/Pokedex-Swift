@@ -6,14 +6,13 @@
 //
 
 import Foundation
-class UITestConstants{
+class UITestConstants {
     
-    
-    enum Global: String{
+    enum Global: String {
         case alert = "PokemonUIAlertController"
     }
     
-    enum HomeScreen: String{
+    enum HomeScreen: String {
         
         case listingTableView = "PokemonListingTableView"
         case searchField = "PokemonHomeSearchField"
@@ -23,7 +22,7 @@ class UITestConstants{
         
     }
     
-    enum DetailsScreen: String{
+    enum DetailsScreen: String {
         case statsCollectionView = "PokemonStatsCollectionView"
         case abilitiesCollectionView = "PokemonAbilitiesCollectionView"
     }

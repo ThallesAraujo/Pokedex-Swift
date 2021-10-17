@@ -7,11 +7,11 @@
 
 import Foundation
 import SystemConfiguration
-protocol Service{
+protocol Service {
     
 }
 
-extension Service{
+extension Service {
     
     static func isConnected() -> Bool {
             

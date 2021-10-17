@@ -10,7 +10,7 @@ import Foundation
 import XCTest
 import RxSwift
 
-//MARK: - Ability Constants
+// MARK: - Ability Constants
 
 let abilityUrl = "https://pokeapi.co/api/v2/ability/4/"
 let expectedAbilityName = "battle-armor"
@@ -18,16 +18,15 @@ let pokemonExpectedToHaveAbility = "cubone"
 let expectedAbilityDescription = "Blocks critical hits."
 let defaultLanguage = "en"
 
-//MARK: - Evolutions Constants
+// MARK: - Evolutions Constants
 
-//Pokémon: Blastoise
+// Pokémon: Blastoise
 let pokemonId = 9
 let noValidEvolutions = "Não foi encontrada nenhuma evolução"
 
-
-class DetailsServiceTests: BaseTestCase{
+class DetailsServiceTests: BaseTestCase {
     
-    func testGetAbility(){
+    func testGetAbility() {
         
         getAbility(fromUrl: abilityUrl) { ability in
             
@@ -35,16 +34,15 @@ class DetailsServiceTests: BaseTestCase{
             
             XCTAssertTrue(abilityDescription == expectedAbilityDescription)
             XCTAssertTrue(ability.name == expectedAbilityName)
-            XCTAssertTrue(ability.pokemon?.filter( {$0.pokemon?.name == pokemonExpectedToHaveAbility}).count ?? 0 > 0)
+            XCTAssertTrue(ability.pokemon?.filter({$0.pokemon?.name == pokemonExpectedToHaveAbility}).count ?? 0 > 0)
             
         }
     }
     
-    
-    func testGetEvolution(){
+    func testGetEvolution() {
         
         getEvolutions(ofPokemon: pokemonId) { evolutions in
-            guard let evs = evolutions else{
+            guard let evs = evolutions else {
                 XCTFail(noValidEvolutions)
                 return
             }

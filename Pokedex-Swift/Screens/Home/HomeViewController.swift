@@ -10,17 +10,17 @@ import RxSwift
 import RxCocoa
 
 class HomeViewController: BaseController, ReloadableViewController, UISearchBarDelegate {
+    
     var retryView: ErrorView?
     
     @IBOutlet weak var pokemonListingTableView: UITableView!
     let searchController = UISearchController(searchResultsController: nil)
-    var searchBar: UISearchBar{
+    var searchBar: UISearchBar {
         return searchController.searchBar
     }
     
     var viewModel = PokemonListingViewModel()
     let disposeBag = DisposeBag()
-    
     
     func reload() {
         viewModel.getPokemonsList()
@@ -42,24 +42,37 @@ class HomeViewController: BaseController, ReloadableViewController, UISearchBarD
         configureModelSelect()
     }
     
-    func configureModelSelect(){
+    func configureModelSelect() {
         
         self.pokemonListingTableView.rx.itemSelected.take(1).subscribe(onNext: { indexPath in
-            if let navigation = self.navigationController, let vc = UIStoryboard.init(name: Constants.mainStoryboard, bundle: .main).instantiateViewController(identifier: PokemonDetailsViewController.identifier) as? PokemonDetailsViewController, let cell = self.pokemonListingTableView.cellForRow(at: indexPath) as? PokemonListingCell{
-                vc.pokemon = cell.pokemon
-                
-                navigation.navigationItem.largeTitleDisplayMode = .always
-                navigation.pushViewController(vc, animated: true)
-                
+            
+            guard let navigation = self.navigationController else {
+                return
             }
+            
+            guard let vc = UIStoryboard.init(name: mainStoryboard, bundle: .main).instantiateViewController(identifier: pokemonDetailsViewController) as? PokemonDetailsViewController else {
+                return
+            }
+            
+            guard let cell = self.pokemonListingTableView.cellForRow(at: indexPath) as? PokemonListingCell else {
+                return
+            }
+            
+            vc.pokemon = cell.pokemon
+            
+            navigation.navigationItem.largeTitleDisplayMode = .always
+            navigation.pushViewController(vc, animated: true)
+            
         }).disposed(by: disposeBag)
         
     }
     
-    func configureErrorObserver(){
+    func configureErrorObserver() {
+        
         self.viewModel.errorHasOccurred.bind(to: self.pokemonListingTableView.rx.showError(reloadClosure: {
             self.viewModel.getPokemonsList()
         })).disposed(by: disposeBag)
+        
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -71,14 +84,14 @@ class HomeViewController: BaseController, ReloadableViewController, UISearchBarD
     
     func configureAutoLoading() {
         self.pokemonListingTableView.rx_hasReachedTheBottom().bind(onNext: {[weak self] hasReached in
-            if hasReached{
-                guard let weakself = self else{return}
+            if hasReached {
+                guard let weakself = self else {return}
                 weakself.viewModel.getNextPage()
             }
         }).disposed(by: disposeBag)
     }
     
-    func configureSearchObservable(){
+    func configureSearchObservable() {
         self.viewModel.bindSearchText(configureClosure: {[weak self] in
             guard let weakself = self else { return }
             weakself.configureLoadSearchData()
@@ -86,23 +99,26 @@ class HomeViewController: BaseController, ReloadableViewController, UISearchBarD
         
     }
     
-    func configureLoadSearchData(){
-        self.viewModel.searchData.distinctUntilChanged().asDriver(onErrorJustReturn: []).drive(self.pokemonListingTableView.disconnect().rx.items(cellIdentifier: PokemonListingCell.identifier, cellType: PokemonListingCell.self)){ _, element, cell in
+    func configureLoadSearchData() {
+        
+        // swiftlint:disable:next line_length
+        self.viewModel.searchData.distinctUntilChanged().asDriver(onErrorJustReturn: []).drive(self.pokemonListingTableView.disconnect().rx.items(cellIdentifier: PokemonListingCell.identifier, cellType: PokemonListingCell.self)) { _, element, cell in
             cell.config(element)
         }.disposed(by: self.disposeBag)
         
         let hasErrorSearch = Observable.combineLatest(self.viewModel.searchData, self.viewModel.searchText).map({$0.count <= 0 && !($1?.isEmpty ?? false)})
         
+        // swiftlint:disable:next line_length
         hasErrorSearch.bind(to: self.pokemonListingTableView.rx.showError(title: Constants.defaultErrorTitle, description: Constants.defaultErrorDescription, showReload: false)).disposed(by: disposeBag)
     }
     
-    
-    func configureListing(){
-        viewModel.listData.asDriver(onErrorJustReturn: []).drive(pokemonListingTableView.disconnect().rx.items(cellIdentifier: PokemonListingCell.identifier, cellType: PokemonListingCell.self)){index, element, cell in
+    func configureListing() {
+        
+        // swiftlint:disable:next line_length
+        viewModel.listData.asDriver(onErrorJustReturn: []).drive(pokemonListingTableView.disconnect().rx.items(cellIdentifier: PokemonListingCell.identifier, cellType: PokemonListingCell.self)) {_, element, cell in
             cell.config(element)
         }.disposed(by: disposeBag)
         
     }
-    
     
 }

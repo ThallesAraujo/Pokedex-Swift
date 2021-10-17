@@ -9,29 +9,29 @@ import Foundation
 import UIKit
 import RxSwift
 
-extension UITableView{
+extension UITableView {
     
-    ///Função destinada para uso com outro Driver RXSwift
-    func disconnect() -> UITableView{
+    /// Função destinada para uso com outro Driver RXSwift
+    func disconnect() -> UITableView {
         self.delegate = nil
         self.dataSource = nil
         return self
     }
     
-    //Baseado em https://blog.kulman.sk/simple-bindable-no-data-placeholder/
-    func showEmptyView(title: String? = "", description: String? = "", showReload: Bool? = true, reloadClosure: (() -> Void)? = nil){
+    // Baseado em https://blog.kulman.sk/simple-bindable-no-data-placeholder/
+    func showEmptyView(title: String? = "", description: String? = "", showReload: Bool? = true, reloadClosure: (() -> Void)? = nil) {
         let emptyView = ErrorView.init(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
         emptyView.sizeToFit()
         
-        if let title = title, !title.isEmpty{
+        if let title = title, !title.isEmpty {
             emptyView.lblTitle.text = title
         }
         
-        if let description = description, !description.isEmpty{
+        if let description = description, !description.isEmpty {
             emptyView.lblDescription.text = description
         }
         
-        if let showReload = showReload, !showReload{
+        if let showReload = showReload, !showReload {
             emptyView.btnRetry.isHidden = true
         }
         
@@ -40,12 +40,12 @@ extension UITableView{
         self.backgroundView?.isHidden = false
     }
     
-    func hideEmptyView(){
+    func hideEmptyView() {
         self.backgroundView = nil
         self.backgroundView?.isHidden = true
     }
     
-    func rx_hasReachedTheBottom() -> Observable<Bool>{
+    func rx_hasReachedTheBottom() -> Observable<Bool> {
         return self.rx.contentOffset.distinctUntilChanged()
             .map({totalOffset -> Bool in
                 let offset = totalOffset.y
@@ -53,7 +53,6 @@ extension UITableView{
                 return (contentSize > 0) && (contentSize - offset <= 450)
             })
             
-        
     }
     
 }

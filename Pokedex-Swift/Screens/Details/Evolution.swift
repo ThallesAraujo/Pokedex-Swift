@@ -3,7 +3,6 @@
 //
 //   let evolution = try? newJSONDecoder().decode(Evolution.self, from: jsonData)
 
-
 import Foundation
 // MARK: - Evolution
 class Evolution: Codable {
@@ -88,7 +87,25 @@ class EvolutionDetail: Codable {
         case turnUpsideDown = "turn_upside_down"
     }
 
-    init(gender: JSONNull?, heldItem: Species?, item: Species?, knownMove: JSONNull?, knownMoveType: JSONNull?, location: JSONNull?, minAffection: JSONNull?, minBeauty: JSONNull?, minHappiness: Int?, minLevel: Int?, needsOverworldRain: Bool?, partySpecies: JSONNull?, partyType: JSONNull?, relativePhysicalStats: JSONNull?, timeOfDay: String?, tradeSpecies: JSONNull?, trigger: Species?, turnUpsideDown: Bool?) {
+    init(gender: JSONNull?,
+         heldItem: Species?,
+         item: Species?,
+         knownMove: JSONNull?,
+         knownMoveType: JSONNull?,
+         location: JSONNull?,
+         minAffection: JSONNull?,
+         minBeauty: JSONNull?,
+         minHappiness: Int?,
+         minLevel: Int?,
+         needsOverworldRain: Bool?,
+         partySpecies: JSONNull?,
+         partyType: JSONNull?,
+         relativePhysicalStats: JSONNull?,
+         timeOfDay: String?,
+         tradeSpecies: JSONNull?,
+         trigger: Species?,
+         turnUpsideDown: Bool?) {
+        
         self.gender = gender
         self.heldItem = heldItem
         self.item = item

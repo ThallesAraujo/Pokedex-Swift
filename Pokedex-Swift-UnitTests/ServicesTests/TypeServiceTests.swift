@@ -10,18 +10,17 @@ import Foundation
 import XCTest
 import RxSwift
 
-
-//Tipo testado: fighting
+// Tipo testado: fighting
 let pokemonTypeURL = "https://pokeapi.co/api/v2/type/2"
 let firstPokemon = "mankey"
 let secondPokemon = "poliwrath"
 
-class TypeServiceTests: BaseTestCase{
+class TypeServiceTests: BaseTestCase {
     
-    func testGetPokemonType(){
+    func testGetPokemonType() {
         getType(fromUrl: pokemonTypeURL) { pokemonType in
             
-            guard let pokemons = pokemonType.pokemon else{
+            guard let pokemons = pokemonType.pokemon else {
                 XCTFail()
                 return
             }
@@ -30,8 +29,6 @@ class TypeServiceTests: BaseTestCase{
             
             XCTAssertTrue(pokemonNames.contains(firstPokemon))
             XCTAssertTrue(pokemonNames.contains(secondPokemon))
-            
-            
             
         }
     }

@@ -1,0 +1,14 @@
+disabled_rules:
+  - trailing_whitespace
+  - identifier_name
+  #Algumas funções reativas causam falso-positivo. 
+  #Desabilitar por hora e colocar exceções depois com
+  # //swiftlint:disable:next line_length
+  - line_length
+
+excluded:
+  - Pods
+
+whitelist_autocorrect:
+  - opening_brace
+  - vertical_whitespace

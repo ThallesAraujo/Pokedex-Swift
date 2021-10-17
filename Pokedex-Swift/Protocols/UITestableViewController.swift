@@ -13,11 +13,11 @@ protocol UITestableViewController {
     func setupUITestIdentifiers()
 }
 
-class BaseController: UIViewController{
+class BaseController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        (self as! UITestableViewController).setupUITestIdentifiers()
+        (self as? UITestableViewController)?.setupUITestIdentifiers()
     }
     
 }

@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-class PokemonDetailsViewController: BaseController, Storyboarded{
+class PokemonDetailsViewController: BaseController, Storyboarded {
     
     var pokemon: Pokemon?
     
@@ -22,11 +22,11 @@ class PokemonDetailsViewController: BaseController, Storyboarded{
     @IBOutlet weak var pokemonAbilitiesCollectionView: UICollectionView!
     @IBOutlet weak var pokemonEvolutionsCollectionView: UICollectionView!
     
-    let imageCarrousselDelegate = PokemonImagesDelegate()
-    let typesDelegate = PokemonItemListDelegate()
-    let statsDelegate = PokemonStatsDelegate()
-    let abilitiesDelegate = PokemonItemListDelegate()
-    let evolutionsDelegate = PokemonItemListDelegate()
+    var imageCarrousselDelegate = PokemonImagesDelegate()
+    var typesDelegate = PokemonItemListDelegate()
+    var statsDelegate = PokemonStatsDelegate()
+    var abilitiesDelegate = PokemonItemListDelegate()
+    var evolutionsDelegate = PokemonItemListDelegate()
     
     let viewModel = DetailsViewModel()
     let disposeBag = DisposeBag()
@@ -39,18 +39,17 @@ class PokemonDetailsViewController: BaseController, Storyboarded{
         configureErrorObserver()
     }
     
-    
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
-    func configureErrorObserver(){
+    func configureErrorObserver() {
         self.viewModel.errorHasOccurred.bind(to: self.rx.showError(reloadClosure: {
             self.viewModel.getEvolutions(id: self.pokemon?.id ?? 0)
         })).disposed(by: disposeBag)
     }
     
-    func configure(){
+    func configure() {
         
         self.pokemonImage.setImage(fromURL: pokemon?.sprites?.other?.dreamWorld?.frontDefault ?? "")
         
@@ -62,9 +61,8 @@ class PokemonDetailsViewController: BaseController, Storyboarded{
         
         abilitiesDelegate.config(collectionView: pokemonAbilitiesCollectionView, items: pokemon?.abilities?.compactMap({$0.ability}), actionType: .seeAbility, navigation: self.navigationController)
         
-        
         viewModel.evolution.subscribe(onNext: {[weak self] evolution in
-            if let chain = evolution?.chain{
+            if let chain = evolution?.chain {
                 guard let weakself = self else {return}
                 var evolutionChain = weakself.flattenChain(chain: chain)
                 evolutionChain.removeAll(where: {$0.species?.name == weakself.pokemon?.name})
@@ -77,22 +75,18 @@ class PokemonDetailsViewController: BaseController, Storyboarded{
         }).disposed(by: disposeBag)
     }
     
-    
-    func flattenChain(chain: Chain) -> [Chain]{
+    func flattenChain(chain: Chain) -> [Chain] {
         var chains: [Chain] = []
         
-        if let evolutions = chain.evolvesTo, evolutions.count > 0{
+        if let evolutions = chain.evolvesTo, evolutions.count > 0 {
             chains.append(chain)
             chains.append(contentsOf: flattenChain(chain: evolutions[0]))
             chains.append(contentsOf: evolutions[0].evolvesTo ?? [])
-        }else{
+        } else {
             chains.append(chain)
         }
         
         return chains.withoutDuplicates()
     }
     
-    
 }
-
-

@@ -5,19 +5,22 @@
 //  Created by Thalles Araújo on 28/08/21.
 //
 
-//Baseado em: https://github.com/appcoda/SimpleNote/blob/master/SimpleNoteTakingAppTests/Steps/CommonSteps.swift
+// Baseado em: https://github.com/appcoda/SimpleNote/blob/master/SimpleNoteTakingAppTests/Steps/CommonSteps.swift
 
 import Foundation
 @testable import Pokedex_Swift
 import KIF
 
-extension KIFTestCase{
+extension KIFTestCase {
     
     /**
     Retorna para a tela Home
      */
     func popToRootViewController() {
-        let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) ?? UIApplication.shared.windows.first
+        
+        let appWindows = UIApplication.shared.windows
+        
+        let keyWindow = appWindows.first(where: { $0.isKeyWindow }) ?? appWindows.first
         let topController = keyWindow?.rootViewController as? UINavigationController
         topController?.popViewController(animated: true)
     }
@@ -28,17 +31,18 @@ extension KIFTestCase{
      ao retornar para a tela de home. Esse comportamento pode causar falsos negativos, pois o teste não conseguirá
      encontrar a Searchbar caso a mesma esteja oculta)
      */
-    func turnSearchBarIntoFirstResponder(){
-        let searchbar = tester().waitForTappableView(withAccessibilityLabel: UITestConstants.HomeScreen.searchField.rawValue)
+    func turnSearchBarIntoFirstResponder() {
+        
+        let searchBarIdentifier = UITestConstants.HomeScreen.searchField.rawValue
+        let searchbar = tester().waitForTappableView(withAccessibilityLabel: searchBarIdentifier)
         searchbar?.becomeFirstResponder()
     }
     
     /**
      Limpa o texto atual e digita um novo no First Responder atual
      */
-    func enterTextIntoCurrentFirstResponder(_ text: String) -> Void{
+    func enterTextIntoCurrentFirstResponder(_ text: String) {
         tester().clearTextFromFirstResponder()
         tester().enterText(intoCurrentFirstResponder: text)
     }
 }
-

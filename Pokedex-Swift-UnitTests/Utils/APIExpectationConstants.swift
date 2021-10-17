@@ -6,7 +6,7 @@
 //
 
 import Foundation
-enum APIExpectationConstants: String{
+enum APIExpectationConstants: String {
     
     case waitingResponse = "Aguardando resposta da API"
     case responseFailure = "Falha: ocorreu um erro de rede ou o elemento esperado não foi recebido"

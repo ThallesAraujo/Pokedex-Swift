@@ -8,12 +8,19 @@
 import Foundation
 import UIKit
 
-extension HomeViewController{
+let titleColor = Constants.titleColor
+let titleFont = Constants.titleFont
+let searchPlaceholder = Constants.searchPlaceholder
+
+extension HomeViewController {
     
-    func configureSearchStyle(){
+    func configureSearchStyle() {
+        
+        let defaultAttributes: [NSAttributedString.Key: Any] = [.font: titleFont, .foregroundColor: titleColor]
+        
         searchController.obscuresBackgroundDuringPresentation = false
-        UITextField.appearance().defaultTextAttributes = [.font: Constants.titleFont, .foregroundColor: Constants.titleColor]
-        UITextField.appearance().attributedPlaceholder = NSAttributedString.init(string: Constants.searchPlaceholder, attributes: [.font: Constants.titleFont, .foregroundColor: Constants.titleColor])
+        UITextField.appearance().defaultTextAttributes = defaultAttributes
+        UITextField.appearance().attributedPlaceholder = NSAttributedString.init(string: searchPlaceholder, attributes: defaultAttributes)
         searchBar.searchTextField.backgroundColor = Constants.secondaryBackgroundColor
         searchBar.rx.text.bind(to: viewModel.searchText).disposed(by: disposeBag)
         searchBar.autocapitalizationType = .none
@@ -23,7 +30,8 @@ extension HomeViewController{
             iconView.image = iconView.image?.withRenderingMode(.alwaysTemplate)
             iconView.tintColor = Constants.titleColor
         }
-        searchController.searchBar.delegate = self;
+        
+        searchController.searchBar.delegate = self
         navigationItem.searchController = searchController
         definesPresentationContext = true
     }

@@ -12,12 +12,12 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-class PokemonImagesDelegate{
+class PokemonImagesDelegate {
     
     var disposeBag = DisposeBag()
     
-    func config(images: [String], collectionView: UICollectionView){
-        Observable.of(images).bind(to: collectionView.rx.items(cellIdentifier: PokemonImageCell.identifier, cellType: PokemonImageCell.self)){index, model, cell in
+    func config(images: [String], collectionView: UICollectionView) {
+        Observable.of(images).bind(to: collectionView.rx.items(cellIdentifier: PokemonImageCell.identifier, cellType: PokemonImageCell.self)) {_, model, cell in
             cell.imgPokemon.kf_setImage(url: model)
         }.disposed(by: disposeBag)
     }

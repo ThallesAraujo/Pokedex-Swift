@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-protocol ReloadableViewController: UIViewController{
+protocol ReloadableViewController: UIViewController {
     
     var retryView: ErrorView? {get set}
     

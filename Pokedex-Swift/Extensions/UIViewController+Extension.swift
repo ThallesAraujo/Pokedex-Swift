@@ -8,9 +8,9 @@
 import Foundation
 import UIKit
 
-extension UIViewController{
+extension UIViewController {
     
-    func showAlert(title: String, message: String){
+    func showAlert(title: String, message: String) {
         let alert = UIAlertController.init(title: title, message: message, preferredStyle: .alert)
         alert.isAccessibilityElement = true
         alert.accessibilityLabel = message
@@ -19,20 +19,20 @@ extension UIViewController{
         self.present(alert, animated: true, completion: nil)
     }
     
-    func showEmptyView(title: String? = "", description: String? = "", showReload: Bool? = true, reloadClosure: (() -> Void)? = nil){
+    func showEmptyView(title: String? = "", description: String? = "", showReload: Bool? = true, reloadClosure: (() -> Void)? = nil) {
         let emptyView = ErrorView.init(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height))
         emptyView.sizeToFit()
         emptyView.tag = 454545
         
-        if let title = title, !title.isEmpty{
+        if let title = title, !title.isEmpty {
             emptyView.lblTitle.text = title
         }
         
-        if let description = description, !description.isEmpty{
+        if let description = description, !description.isEmpty {
             emptyView.lblDescription.text = description
         }
         
-        if let showReload = showReload, !showReload{
+        if let showReload = showReload, !showReload {
             emptyView.btnRetry.isHidden = true
         }
         
@@ -41,12 +41,9 @@ extension UIViewController{
         self.view.addSubview(emptyView)
     }
     
-    func hideEmptyView(){
-        
-        for view in self.view.subviews{
-            if view.tag == 454545{
+    func hideEmptyView() {
+        for view in self.view.subviews where view.tag == 454545 {
                 view.removeFromSuperview()
-            }
         }
         
     }

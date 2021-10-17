@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class TypePokemonsViewController: UIViewController, Storyboarded{
+class TypePokemonsViewController: UIViewController, Storyboarded {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -30,33 +30,44 @@ class TypePokemonsViewController: UIViewController, Storyboarded{
         configureModelSelect()
     }
     
-    func configureErrorObserver(){
+    func configureErrorObserver() {
         self.viewModel?.errorHasOccurred.bind(to: self.rx.showError(reloadClosure: {
             self.viewModel?.getType()
         })).disposed(by: disposeBag)
     }
     
-    func configureModelSelect(){
+    func configureModelSelect() {
         
         self.tableView.rx.itemSelected.take(1).subscribe(onNext: { indexPath in
-            if let navigation = self.navigationController, let vc = UIStoryboard.init(name: Constants.mainStoryboard, bundle: .main).instantiateViewController(identifier: PokemonDetailsViewController.identifier) as? PokemonDetailsViewController, let cell = self.tableView.cellForRow(at: indexPath) as? PokemonListingCell{
-                vc.pokemon = cell.pokemon
-                
-                navigation.navigationItem.largeTitleDisplayMode = .always
-                navigation.pushViewController(vc, animated: true)
-                
+            
+            guard let navigation = self.navigationController else {
+                return
             }
+                    
+            guard let vc = UIStoryboard.init(name: mainStoryboard, bundle: .main).instantiateViewController(identifier: pokemonDetailsViewController) as? PokemonDetailsViewController else {
+                return
+            }
+            
+            guard let cell = self.tableView.cellForRow(at: indexPath) as? PokemonListingCell else {
+                return
+            }
+            
+            vc.pokemon = cell.pokemon
+            
+            navigation.navigationItem.largeTitleDisplayMode = .always
+            navigation.pushViewController(vc, animated: true)
+            
         }).disposed(by: disposeBag)
         
     }
     
-    func configureListing(){
-        viewModel?.pokemonSpecies.asDriver(onErrorJustReturn: []).drive(tableView.disconnect().rx.items(cellIdentifier: PokemonListingCell.identifier, cellType: PokemonListingCell.self)){index, element, cell in
+    func configureListing() {
+        
+        // swiftlint:disable:next line_length
+        viewModel?.pokemonSpecies.asDriver(onErrorJustReturn: []).drive(tableView.disconnect().rx.items(cellIdentifier: PokemonListingCell.identifier, cellType: PokemonListingCell.self)) { _, element, cell in
             cell.config(element?.asResult())
         }.disposed(by: disposeBag)
         
     }
-    
-    
     
 }

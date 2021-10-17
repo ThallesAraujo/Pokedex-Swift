@@ -8,7 +8,7 @@
 import RxSwift
 import RxCocoa
 
-class PokemonListingViewModel{
+class PokemonListingViewModel {
     
     let searchText = BehaviorRelay<String?>(value: "")
     
@@ -27,9 +27,9 @@ class PokemonListingViewModel{
         self.observeError()
     }
     
-    func bindSearchText(configureClosure: @escaping() -> Void){
+    func bindSearchText(configureClosure: @escaping() -> Void) {
         self.searchText.distinctUntilChanged().asDriver(onErrorJustReturn: "").drive(onNext: ({terms in
-            guard let terms = terms, !terms.isEmpty else{
+            guard let terms = terms, !terms.isEmpty else {
                 self.searchData.accept([])
                 return
             }
@@ -38,42 +38,39 @@ class PokemonListingViewModel{
         })).disposed(by: disposeBag)
     }
     
-    
-    func observeError(){
-        self.errorHasOccurred.subscribe(onNext:{hasError in
-            if hasError{
+    func observeError() {
+        self.errorHasOccurred.subscribe(onNext: {hasError in
+            if hasError {
                 self.listData.accept([])
                 self.searchData.accept([])
             }
         }).disposed(by: disposeBag)
     }
     
-    func getPokemonsResults(_ idOrName: String){
-        HomeService.getPokemonResults(idOrName, errorBinder: self.errorHasOccurred).subscribe(onNext:{results in
+    func getPokemonsResults(_ idOrName: String) {
+        HomeService.getPokemonResults(idOrName, errorBinder: self.errorHasOccurred).subscribe(onNext: {results in
             self.searchData.accept(results)
         }).disposed(by: disposeBag)
     }
     
     func getNextPage() {
-        HomeService.getNextPage(offset: offset, limit: limit, errorBinder: self.errorHasOccurred).subscribe(onNext:{nextResults in
+        HomeService.getNextPage(offset: offset, limit: limit, errorBinder: self.errorHasOccurred).subscribe(onNext: {nextResults in
                 var appended = self.listData.value
                 let appendedSet = Set(appended)
                 let nextSet = Set(nextResults)
                 
-                if !nextSet.isSubset(of: appendedSet){
+                if !nextSet.isSubset(of: appendedSet) {
                     appended.append(contentsOf: nextResults)
                     self.listData.accept(appended)
-                    self.offset = self.offset + 20
+                    self.offset += 20
                 }
         }).disposed(by: disposeBag)
     }
     
-    func getPokemonsList(){
+    func getPokemonsList() {
         HomeService.getPokemonsList(errorBinder: self.errorHasOccurred).subscribe(onNext: {list in
             self.listData.accept(list)
         }).disposed(by: disposeBag)
     }
-    
-    
     
 }

@@ -8,8 +8,10 @@
 import Foundation
 import RxSwift
 import UIKit
-//baseado em https://blog.kulman.sk/simple-bindable-no-data-placeholder/
-extension Reactive where Base: UITableView{
+// swiftlint:disable line_length
+
+// baseado em https://blog.kulman.sk/simple-bindable-no-data-placeholder/
+extension Reactive where Base: UITableView {
     
     func showError(title: String? = "", description: String? = "", showReload: Bool? = true, reloadClosure: (() -> Void)? = nil) -> Binder<Bool> {
             return Binder(base) { tableView, isEmpty in

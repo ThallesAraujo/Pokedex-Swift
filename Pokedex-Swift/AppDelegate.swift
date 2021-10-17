@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         let SVGCoder = SDImageSVGCoder.shared
         SDImageCodersManager.shared.addCoder(SVGCoder)
-        //Nota: O Atlantis pode causar lentidão nas requisições, especialmente, no caso do app
+        // Nota: O Atlantis pode causar lentidão nas requisições, especialmente, no caso do app
         // nas de paginação. Idealmente, usar somente em targets de dev
         Atlantis.start(hostName: "macbook-pro-de-thalles.local.")
         return true
@@ -36,6 +36,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
-
 }
-

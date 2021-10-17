@@ -9,7 +9,7 @@ import Foundation
 import KIF
 import Nimble
 
-class DetailsUITests: KIFTestCase{
+class DetailsUITests: KIFTestCase {
     
     let abilitiesIdentifier = UITestConstants.DetailsScreen.abilitiesCollectionView.rawValue
     let statsIdentifier = UITestConstants.DetailsScreen.statsCollectionView.rawValue
@@ -27,7 +27,7 @@ class DetailsUITests: KIFTestCase{
         Pokemon testado: Bulbasaur [https://pokeapi.co/api/v2/pokemon/1]
         Habilidade testada: https://pokeapi.co/api/v2/ability/65/
      */
-    func testFirstPokemon(){
+    func testFirstPokemon() {
         
         let cell = selectAndGetFirstStat()
         expect(cell.lblStatValue.text!).to(equal("45"))
@@ -42,7 +42,7 @@ class DetailsUITests: KIFTestCase{
         Pokemon testado: Dragonite [https://pokeapi.co/api/v2/pokemon/dragonite]
         Habilidade testada: https://pokeapi.co/api/v2/ability/39/
      */
-    func testResearchedPokemon(){
+    func testResearchedPokemon() {
         
         enterTextIntoCurrentFirstResponder("dragonite")
         let cell = selectAndGetFirstStat()
@@ -52,8 +52,5 @@ class DetailsUITests: KIFTestCase{
         dismissAbilityAlert()
         
     }
-    
-    
-    
-}
 
+}
