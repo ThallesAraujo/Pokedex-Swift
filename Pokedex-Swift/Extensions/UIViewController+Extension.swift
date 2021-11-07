@@ -10,6 +10,10 @@ import UIKit
 
 extension UIViewController {
     
+    var emptyViewTag: Int{
+        return 454545
+    }
+    
     func showAlert(title: String, message: String) {
         let alert = UIAlertController.init(title: title, message: message, preferredStyle: .alert)
         alert.isAccessibilityElement = true
@@ -22,7 +26,7 @@ extension UIViewController {
     func showEmptyView(title: String? = "", description: String? = "", showReload: Bool? = true, reloadClosure: (() -> Void)? = nil) {
         let emptyView = ErrorView.init(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height))
         emptyView.sizeToFit()
-        emptyView.tag = 454545
+        emptyView.tag = emptyViewTag
         
         if let title = title, !title.isEmpty {
             emptyView.lblTitle.text = title
@@ -42,7 +46,7 @@ extension UIViewController {
     }
     
     func hideEmptyView() {
-        for view in self.view.subviews where view.tag == 454545 {
+        for view in self.view.subviews where view.tag == emptyViewTag {
                 view.removeFromSuperview()
         }
         

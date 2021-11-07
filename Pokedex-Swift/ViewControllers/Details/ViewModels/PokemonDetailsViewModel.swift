@@ -1,5 +1,5 @@
 //
-//  EvolutionsViewModel.swift
+//  PokemonDetailsViewModel.swift
 //  Pokedex-Swift
 //
 //  Created by Thalles Araújo on 27/06/21.
@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class DetailsViewModel {
+class PokemonDetailsViewModel {
     
     var evolution: BehaviorRelay<Evolution?> = BehaviorRelay.init(value: nil)
     

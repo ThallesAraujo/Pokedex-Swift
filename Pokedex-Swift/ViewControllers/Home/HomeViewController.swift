@@ -79,7 +79,6 @@ class HomeViewController: BaseController, ReloadableViewController, UISearchBarD
         self.viewModel.getPokemonsList()
         self.configureListing()
         Observable.of(false).bind(to: self.pokemonListingTableView.rx.showError()).disposed(by: disposeBag)
-        self.viewModel.offset = 20
     }
     
     func configureAutoLoading() {

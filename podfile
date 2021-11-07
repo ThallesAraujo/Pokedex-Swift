@@ -1,6 +1,9 @@
 platform :ios, '14.5'
 use_frameworks!
 
+# ignora todos os warnings relativos aos pods no compiler
+inhibit_all_warnings!
+
 def common_pods
   pod 'Alamofire'
   pod 'RxAlamofire'

@@ -28,7 +28,7 @@ class PokemonDetailsViewController: BaseController, Storyboarded {
     var abilitiesDelegate = PokemonItemListDelegate()
     var evolutionsDelegate = PokemonItemListDelegate()
     
-    let viewModel = DetailsViewModel()
+    let viewModel = PokemonDetailsViewModel()
     let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
