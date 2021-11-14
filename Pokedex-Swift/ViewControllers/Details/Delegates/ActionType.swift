@@ -19,6 +19,7 @@ enum ActionType {
     case seeEvolution
     case seeAbility
     
+    @available(*, deprecated, message: "Utilizar strategy + cordinator")
     func didTapAction(item: Species, navigation: UINavigationController?, disposeBag: DisposeBag) {
         switch self {
             

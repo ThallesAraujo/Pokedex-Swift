@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8fo-Md-JNp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -31,32 +30,35 @@
         <!--Home-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Home" id="BYZ-38-t0r" customClass="HomeViewController" customModule="Pokedex_Swift" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <viewController storyboardIdentifier="homeViewController" title="Home" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="HomeViewController" customModule="Pokedex_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lFE-gG-fPk">
-                                <rect key="frame" x="8" y="88" width="398" height="774"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="scrollableAxes" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lFE-gG-fPk">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <edgeInsets key="layoutMargins" top="8" left="16" bottom="8" right="16"/>
+                                <color key="separatorColor" name="TitleColor"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="pokemonListingCell" focusStyle="custom" rowHeight="135" id="AW6-1g-5mh" customClass="PokemonListingCell" customModule="Pokedex_Swift" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="398" height="135"/>
+                                        <rect key="frame" x="16" y="49.5" width="382" height="135"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AW6-1g-5mh" id="7xB-t5-pXP">
-                                            <rect key="frame" x="0.0" y="0.0" width="398" height="135"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="382" height="135"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z7a-dj-Se2">
-                                                    <rect key="frame" x="4" y="4" width="390" height="127"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="382" height="135"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="iig-nt-5tZ">
-                                                            <rect key="frame" x="16" y="16" width="358" height="95"/>
+                                                            <rect key="frame" x="16" y="16" width="350" height="103"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mRc-H7-4ol">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="95" height="95"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                                     <color key="tintColor" systemColor="secondarySystemFillColor"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="100" id="f89-GO-fPu"/>
@@ -64,7 +66,7 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="HrI-UK-TpN">
-                                                                    <rect key="frame" x="119" y="0.0" width="239" height="45.5"/>
+                                                                    <rect key="frame" x="124" y="0.0" width="226" height="45.5"/>
                                                                     <subviews>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Vlt-f6-TJF">
                                                                             <rect key="frame" x="0.0" y="0.0" width="56" height="45.5"/>
@@ -88,7 +90,7 @@
                                                             </subviews>
                                                         </stackView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OkO-3g-oHK">
-                                                            <rect key="frame" x="359.5" y="74" width="22.5" height="45"/>
+                                                            <rect key="frame" x="351.5" y="82" width="22.5" height="45"/>
                                                             <fontDescription key="fontDescription" name="Quicksand-Bold" family="Quicksand" pointSize="36"/>
                                                             <color key="textColor" name="SecondaryTitleColor"/>
                                                             <nil key="highlightedColor"/>
@@ -103,24 +105,13 @@
                                                         <constraint firstAttribute="bottom" secondItem="OkO-3g-oHK" secondAttribute="bottom" constant="8" id="eyx-Nv-5o9"/>
                                                         <constraint firstItem="iig-nt-5tZ" firstAttribute="top" secondItem="Z7a-dj-Se2" secondAttribute="top" constant="16" id="ifu-ik-g8a"/>
                                                     </constraints>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="16"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                            <color key="value" systemColor="tertiarySystemBackgroundColor"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                            <real key="value" value="0.0"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="Z7a-dj-Se2" secondAttribute="trailing" constant="4" id="O0F-dB-KtH"/>
-                                                <constraint firstItem="Z7a-dj-Se2" firstAttribute="top" secondItem="7xB-t5-pXP" secondAttribute="top" constant="4" id="XGP-wu-UBx"/>
-                                                <constraint firstItem="Z7a-dj-Se2" firstAttribute="leading" secondItem="7xB-t5-pXP" secondAttribute="leading" constant="4" id="eal-Q1-ZQX"/>
-                                                <constraint firstAttribute="bottom" secondItem="Z7a-dj-Se2" secondAttribute="bottom" constant="4" id="fGT-bN-eb2"/>
+                                                <constraint firstAttribute="trailing" secondItem="Z7a-dj-Se2" secondAttribute="trailing" id="O0F-dB-KtH"/>
+                                                <constraint firstItem="Z7a-dj-Se2" firstAttribute="top" secondItem="7xB-t5-pXP" secondAttribute="top" id="XGP-wu-UBx"/>
+                                                <constraint firstItem="Z7a-dj-Se2" firstAttribute="leading" secondItem="7xB-t5-pXP" secondAttribute="leading" id="eal-Q1-ZQX"/>
+                                                <constraint firstAttribute="bottom" secondItem="Z7a-dj-Se2" secondAttribute="bottom" id="fGT-bN-eb2"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -135,81 +126,55 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="MainBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="lFE-gG-fPk" secondAttribute="trailing" constant="8" id="1p8-9i-fiA"/>
-                            <constraint firstItem="lFE-gG-fPk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Lv4-62-tuH"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="lFE-gG-fPk" secondAttribute="bottom" id="UKz-ug-8SR"/>
-                            <constraint firstItem="lFE-gG-fPk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="gRC-Nh-cAg"/>
+                            <constraint firstAttribute="trailing" secondItem="lFE-gG-fPk" secondAttribute="trailing" id="1p8-9i-fiA"/>
+                            <constraint firstItem="lFE-gG-fPk" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Lv4-62-tuH"/>
+                            <constraint firstAttribute="bottom" secondItem="lFE-gG-fPk" secondAttribute="bottom" id="UKz-ug-8SR"/>
+                            <constraint firstItem="lFE-gG-fPk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="gRC-Nh-cAg"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Home" id="le4-dc-Zfq"/>
+                    <navigationItem key="navigationItem" title="Home" largeTitleDisplayMode="always" id="le4-dc-Zfq"/>
                     <connections>
                         <outlet property="pokemonListingTableView" destination="lFE-gG-fPk" id="JHw-sw-JHy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1013" y="117"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="u82-RO-jJ9">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8fo-Md-JNp" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="zfY-Qg-KTs">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" name="MainBackgroundColor"/>
-                        <color key="barTintColor" name="MainBackgroundColor"/>
-                        <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" name="Quicksand-SemiBold" family="Quicksand" pointSize="18"/>
-                            <color key="textColor" name="TitleColor"/>
-                        </textAttributes>
-                        <textAttributes key="largeTitleTextAttributes">
-                            <fontDescription key="fontDescription" name="Quicksand-Medium" family="Quicksand" pointSize="28"/>
-                            <color key="textColor" name="TitleColor"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="peF-JZ-y2z"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dJp-kY-Pkb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="131.8840579710145" y="116.51785714285714"/>
+            <point key="canvasLocation" x="1921.7391304347827" y="116.51785714285714"/>
         </scene>
         <!--TypePokemons-->
         <scene sceneID="c3q-JR-Sw5">
             <objects>
                 <viewController storyboardIdentifier="typePokemonsViewController" title="TypePokemons" useStoryboardIdentifierAsRestorationIdentifier="YES" id="j5M-dC-I1d" customClass="TypePokemonsViewController" customModule="Pokedex_Swift" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="9N8-OW-kkb">
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9N8-OW-kkb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wrM-1i-qxE">
-                                <rect key="frame" x="8" y="44" width="398" height="818"/>
+                            <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="wrM-1i-qxE">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <edgeInsets key="layoutMargins" top="0.0" left="16" bottom="0.0" right="16"/>
+                                <color key="separatorColor" name="TitleColor"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="pokemonListingCell" rowHeight="135" id="mzK-QQ-l2B" customClass="PokemonListingCell" customModule="Pokedex_Swift" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="398" height="135"/>
+                                        <rect key="frame" x="16" y="49.5" width="382" height="135"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mzK-QQ-l2B" id="lPA-ma-5hK">
-                                            <rect key="frame" x="0.0" y="0.0" width="398" height="135"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="382" height="135"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nz0-pn-wGA">
-                                                    <rect key="frame" x="4" y="4" width="390" height="127"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="382" height="135"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="xOp-r3-anO">
-                                                            <rect key="frame" x="16" y="16" width="358" height="95"/>
+                                                            <rect key="frame" x="16" y="16" width="350" height="103"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Q8p-dK-hSj">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="95" height="95"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                                     <color key="tintColor" systemColor="secondarySystemFillColor"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="100" id="fug-GE-UiQ"/>
@@ -217,7 +182,7 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="oe2-R7-SOV">
-                                                                    <rect key="frame" x="119" y="0.0" width="239" height="45.5"/>
+                                                                    <rect key="frame" x="124" y="0.0" width="226" height="45.5"/>
                                                                     <subviews>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="5Gv-ZH-1bh">
                                                                             <rect key="frame" x="0.0" y="0.0" width="56" height="45.5"/>
@@ -241,7 +206,7 @@
                                                             </subviews>
                                                         </stackView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nc4-cw-go8">
-                                                            <rect key="frame" x="359.5" y="74" width="22.5" height="45"/>
+                                                            <rect key="frame" x="351.5" y="82" width="22.5" height="45"/>
                                                             <fontDescription key="fontDescription" name="Quicksand-Bold" family="Quicksand" pointSize="36"/>
                                                             <color key="textColor" name="SecondaryTitleColor"/>
                                                             <nil key="highlightedColor"/>
@@ -256,24 +221,13 @@
                                                         <constraint firstAttribute="bottom" secondItem="xOp-r3-anO" secondAttribute="bottom" constant="16" id="nYd-qn-oOH"/>
                                                         <constraint firstAttribute="trailing" secondItem="nc4-cw-go8" secondAttribute="trailing" constant="8" id="ycW-Lo-Fpt"/>
                                                     </constraints>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="16"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                            <color key="value" systemColor="tertiarySystemBackgroundColor"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                            <real key="value" value="0.0"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Nz0-pn-wGA" firstAttribute="leading" secondItem="lPA-ma-5hK" secondAttribute="leading" constant="4" id="G8i-Ea-P9k"/>
-                                                <constraint firstAttribute="bottom" secondItem="Nz0-pn-wGA" secondAttribute="bottom" constant="4" id="U1J-X5-Q5p"/>
-                                                <constraint firstItem="Nz0-pn-wGA" firstAttribute="top" secondItem="lPA-ma-5hK" secondAttribute="top" constant="4" id="Whg-jt-dpf"/>
-                                                <constraint firstAttribute="trailing" secondItem="Nz0-pn-wGA" secondAttribute="trailing" constant="4" id="nhQ-vZ-uKx"/>
+                                                <constraint firstItem="Nz0-pn-wGA" firstAttribute="leading" secondItem="lPA-ma-5hK" secondAttribute="leading" id="G8i-Ea-P9k"/>
+                                                <constraint firstAttribute="bottom" secondItem="Nz0-pn-wGA" secondAttribute="bottom" id="U1J-X5-Q5p"/>
+                                                <constraint firstItem="Nz0-pn-wGA" firstAttribute="top" secondItem="lPA-ma-5hK" secondAttribute="top" id="Whg-jt-dpf"/>
+                                                <constraint firstAttribute="trailing" secondItem="Nz0-pn-wGA" secondAttribute="trailing" id="nhQ-vZ-uKx"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -288,13 +242,12 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="T3R-Se-bgm"/>
                         <color key="backgroundColor" name="MainBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="T3R-Se-bgm" firstAttribute="bottom" secondItem="wrM-1i-qxE" secondAttribute="bottom" id="EJn-yq-pic"/>
-                            <constraint firstItem="wrM-1i-qxE" firstAttribute="top" secondItem="T3R-Se-bgm" secondAttribute="top" id="i6E-WG-W1z"/>
-                            <constraint firstItem="T3R-Se-bgm" firstAttribute="trailing" secondItem="wrM-1i-qxE" secondAttribute="trailing" constant="8" id="lWs-5F-EfD"/>
-                            <constraint firstItem="wrM-1i-qxE" firstAttribute="leading" secondItem="T3R-Se-bgm" secondAttribute="leading" constant="8" id="u2x-YI-jbA"/>
+                            <constraint firstAttribute="bottom" secondItem="wrM-1i-qxE" secondAttribute="bottom" id="EJn-yq-pic"/>
+                            <constraint firstItem="wrM-1i-qxE" firstAttribute="top" secondItem="9N8-OW-kkb" secondAttribute="top" id="i6E-WG-W1z"/>
+                            <constraint firstAttribute="trailing" secondItem="wrM-1i-qxE" secondAttribute="trailing" id="lWs-5F-EfD"/>
+                            <constraint firstItem="wrM-1i-qxE" firstAttribute="leading" secondItem="9N8-OW-kkb" secondAttribute="leading" id="u2x-YI-jbA"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="vDj-8J-986"/>
@@ -304,13 +257,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8sB-uF-g9s" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2625" y="117"/>
+            <point key="canvasLocation" x="3534.7826086956525" y="116.51785714285714"/>
         </scene>
         <!--Pokemon Details View Controller-->
         <scene sceneID="aUi-Jo-LDf">
             <objects>
                 <viewController storyboardIdentifier="pokemonDetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wF6-5k-ZBL" customClass="PokemonDetailsViewController" customModule="Pokedex_Swift" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="6Nf-78-hsE">
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6Nf-78-hsE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -631,7 +584,6 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="d2A-Sp-x66"/>
                             </scrollView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="Vxa-E4-f2h"/>
                         <color key="backgroundColor" name="MainBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="mMP-md-ujq" firstAttribute="bottom" secondItem="6Nf-78-hsE" secondAttribute="bottom" id="DMu-IT-p2G"/>
@@ -652,7 +604,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jcr-o7-IsQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1863.7681159420292" y="116.51785714285714"/>
+            <point key="canvasLocation" x="2773.913043478261" y="116.51785714285714"/>
         </scene>
     </scenes>
     <color key="tintColor" name="TitleColor"/>
@@ -675,9 +627,6 @@
         </systemColor>
         <systemColor name="secondarySystemFillColor">
             <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="tertiarySystemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>

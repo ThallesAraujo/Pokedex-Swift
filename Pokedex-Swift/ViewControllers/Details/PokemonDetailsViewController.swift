@@ -57,6 +57,8 @@ class PokemonDetailsViewController: BaseController, Storyboarded {
         
         typesDelegate.config(collectionView: pokemonTypesCollectionView, items: pokemon?.types?.compactMap({$0.type}), actionType: .pokemonsOfSameType, navigation: self.navigationController)
         
+        // Ideia: Coordinators com strategy de actions
+        
         statsDelegate.config(collectionView: pokemonStatsCollectionView, stats: pokemon?.stats)
         
         abilitiesDelegate.config(collectionView: pokemonAbilitiesCollectionView, items: pokemon?.abilities?.compactMap({$0.ability}), actionType: .seeAbility, navigation: self.navigationController)

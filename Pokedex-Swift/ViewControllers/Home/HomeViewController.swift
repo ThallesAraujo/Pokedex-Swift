@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class HomeViewController: BaseController, ReloadableViewController, UISearchBarDelegate {
+class HomeViewController: BaseController, Storyboarded, ReloadableViewController, UISearchBarDelegate {
     
     var retryView: ErrorView?
     
@@ -26,6 +26,8 @@ class HomeViewController: BaseController, ReloadableViewController, UISearchBarD
         viewModel.getPokemonsList()
     }
     
+    var coordinator: Coordinator?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureSearchObservable()
@@ -35,6 +37,8 @@ class HomeViewController: BaseController, ReloadableViewController, UISearchBarD
         searchBar.rx.text.orEmpty.bind(to: viewModel.searchText).disposed(by: disposeBag)
         self.configureAutoLoading()
         self.configureErrorObserver()
+        self.edgesForExtendedLayout = .all
+            
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -46,22 +50,11 @@ class HomeViewController: BaseController, ReloadableViewController, UISearchBarD
         
         self.pokemonListingTableView.rx.itemSelected.take(1).subscribe(onNext: { indexPath in
             
-            guard let navigation = self.navigationController else {
-                return
-            }
-            
-            guard let vc = UIStoryboard.init(name: mainStoryboard, bundle: .main).instantiateViewController(identifier: pokemonDetailsViewController) as? PokemonDetailsViewController else {
-                return
-            }
-            
             guard let cell = self.pokemonListingTableView.cellForRow(at: indexPath) as? PokemonListingCell else {
                 return
             }
             
-            vc.pokemon = cell.pokemon
-            
-            navigation.navigationItem.largeTitleDisplayMode = .always
-            navigation.pushViewController(vc, animated: true)
+            self.coordinator?.presentNextScreen(data: cell.pokemon)
             
         }).disposed(by: disposeBag)
         

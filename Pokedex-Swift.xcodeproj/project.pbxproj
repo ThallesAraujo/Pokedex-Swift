@@ -46,6 +46,12 @@
 		6F584AEF2691347D00CDE6AC /* PokemonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F584AEE2691347D00CDE6AC /* PokemonType.swift */; };
 		6F584AF1269135EA00CDE6AC /* TypeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F584AF0269135EA00CDE6AC /* TypeService.swift */; };
 		6F591635267FBEDD000D72E1 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F591634267FBEDD000D72E1 /* Service.swift */; };
+		6F71328A27406840009F008E /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F71328927406840009F008E /* HomeCoordinator.swift */; };
+		6F71328B27406840009F008E /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F71328927406840009F008E /* HomeCoordinator.swift */; };
+		6F71328C27406840009F008E /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F71328927406840009F008E /* HomeCoordinator.swift */; };
+		6F71328E2740685C009F008E /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F71328D2740685C009F008E /* Coordinator.swift */; };
+		6F71328F2740685C009F008E /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F71328D2740685C009F008E /* Coordinator.swift */; };
+		6F7132902740685C009F008E /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F71328D2740685C009F008E /* Coordinator.swift */; };
 		6F7B53412700F50900715E85 /* TypeServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7B53402700F50800715E85 /* TypeServiceTests.swift */; };
 		6F7B53432700F51200715E85 /* TypeServiceTestsUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7B53422700F51200715E85 /* TypeServiceTestsUtils.swift */; };
 		6F8DD2B026C898560009F436 /* HomeUITestUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8DD2AF26C898550009F436 /* HomeUITestUtils.swift */; };
@@ -149,6 +155,8 @@
 		6F584AEE2691347D00CDE6AC /* PokemonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonType.swift; sourceTree = "<group>"; };
 		6F584AF0269135EA00CDE6AC /* TypeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeService.swift; sourceTree = "<group>"; };
 		6F591634267FBEDD000D72E1 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		6F71328927406840009F008E /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		6F71328D2740685C009F008E /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		6F7B53402700F50800715E85 /* TypeServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeServiceTests.swift; sourceTree = "<group>"; };
 		6F7B53422700F51200715E85 /* TypeServiceTestsUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeServiceTestsUtils.swift; sourceTree = "<group>"; };
 		6F8DD2AF26C898550009F436 /* HomeUITestUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUITestUtils.swift; sourceTree = "<group>"; };
@@ -376,9 +384,18 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		6F71328827406826009F008E /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				6F71328927406840009F008E /* HomeCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
 		6FB4E76B26750FE1008B2414 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				6F71328827406826009F008E /* Coordinators */,
 				6FB4E76E267511E5008B2414 /* HomeViewController.swift */,
 				6FF0C8A027384EA200B2868C /* Models */,
 				6FF0C8A127384EAF00B2868C /* Cells */,
@@ -412,6 +429,7 @@
 				6F591634267FBEDD000D72E1 /* Service.swift */,
 				6F097BAD26879BC80043A128 /* Storyboarded.swift */,
 				6FB7456B26C9852200F0EFA3 /* UITestableViewController.swift */,
+				6F71328D2740685C009F008E /* Coordinator.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -935,10 +953,12 @@
 				6F48391B26750E9500EA7760 /* AppDelegate.swift in Sources */,
 				6F99768B269B48C200915A57 /* ActionType.swift in Sources */,
 				6F097BB226879FC30043A128 /* PokemonImageCell.swift in Sources */,
+				6F71328E2740685C009F008E /* Coordinator.swift in Sources */,
 				6F097BA82687992C0043A128 /* PokemonStatsDelegate.swift in Sources */,
 				6F097BA62687991C0043A128 /* PokemonImagesDelegate.swift in Sources */,
 				6F097BAA268799390043A128 /* PokemonItemListDelegate.swift in Sources */,
 				6F99768F269B6BFD00915A57 /* Constants.swift in Sources */,
+				6F71328A27406840009F008E /* HomeCoordinator.swift in Sources */,
 				6F584AED26912F8800CDE6AC /* TypePokemonsViewModel.swift in Sources */,
 				6FB4E78026751F85008B2414 /* APIURLS.swift in Sources */,
 				6F097BAC268799570043A128 /* PokemonDetailsViewController.swift in Sources */,
@@ -973,8 +993,10 @@
 				6F4EF44F26BF5107006A0B98 /* KIF+SwiftExtension.swift in Sources */,
 				6F4EF44B26BF5098006A0B98 /* UITestConstants.swift in Sources */,
 				6F8DD2B026C898560009F436 /* HomeUITestUtils.swift in Sources */,
+				6F71328B27406840009F008E /* HomeCoordinator.swift in Sources */,
 				6FA76CA526DACE450086F500 /* CommonSteps.swift in Sources */,
 				6F2A5E4F26C033770085B1A3 /* HomeUITests.swift in Sources */,
+				6F71328F2740685C009F008E /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -988,7 +1010,9 @@
 				6F7B53432700F51200715E85 /* TypeServiceTestsUtils.swift in Sources */,
 				6FCA14D826F7A5B700127548 /* DetailsServiceTests.swift in Sources */,
 				6FCA14DB26F7A62500127548 /* DetailsServiceTestsUtils.swift in Sources */,
+				6F7132902740685C009F008E /* Coordinator.swift in Sources */,
 				6F0029BB26E526CE00D56B64 /* HomeServiceTestsUtils.swift in Sources */,
+				6F71328C27406840009F008E /* HomeCoordinator.swift in Sources */,
 				6F7B53412700F50900715E85 /* TypeServiceTests.swift in Sources */,
 				6F0029BF26E5322700D56B64 /* APIExpectationConstants.swift in Sources */,
 			);
@@ -1153,7 +1177,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TQ452L5YSH;
-				INFOPLIST_FILE = "Pokedex-Swift/Info.plist";
+				INFOPLIST_FILE = "Pokedex-Swift/SupportFiles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1173,7 +1197,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TQ452L5YSH;
-				INFOPLIST_FILE = "Pokedex-Swift/Info.plist";
+				INFOPLIST_FILE = "Pokedex-Swift/SupportFiles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

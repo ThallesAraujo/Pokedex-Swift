@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 protocol Storyboarded {
     
 }
@@ -17,6 +18,18 @@ extension Storyboarded {
         let firstChar = description.first
         
         return String(describing: self).replacingCharacters(in: description.indices.first!...description.indices.first!, with: (firstChar?.lowercased())!)
+    }
+    
+}
+
+extension Storyboarded where Self: UIViewController {
+    
+    static func instantiate () -> Self {
+        
+        let storyboard = UIStoryboard.init(name: "Main", bundle: .main)
+        // swiftlint:disable:next force_cast
+        return storyboard.instantiateViewController(withIdentifier: self.identifier) as! Self
+        
     }
     
 }

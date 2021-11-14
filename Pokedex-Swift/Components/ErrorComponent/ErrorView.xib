@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -29,31 +29,34 @@
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="424" height="619"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="error" translatesAutoresizingMaskIntoConstraints="NO" id="1Pt-PS-pxG">
-                    <rect key="frame" x="87" y="76" width="250" height="150"/>
+                    <rect key="frame" x="87" y="105.5" width="250" height="150"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="150" id="TuK-2D-4tJ"/>
                         <constraint firstAttribute="width" constant="250" id="sa2-0t-a3Y"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ops!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ypl-lL-6Ex">
-                    <rect key="frame" x="24" y="250" width="376" height="30"/>
+                    <rect key="frame" x="24" y="279.5" width="376" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="mXg-h9-75w"/>
+                    </constraints>
                     <fontDescription key="fontDescription" name="Quicksand-Medium" family="Quicksand" pointSize="24"/>
                     <color key="textColor" name="TitleColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ocorreu um erro inesperado. Tente novamente mais tarde." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQp-8Q-3Zp">
-                    <rect key="frame" x="24" y="304" width="376" height="45.5"/>
+                    <rect key="frame" x="24" y="363.5" width="376" height="45.5"/>
                     <fontDescription key="fontDescription" name="Oxygen-Regular" family="Oxygen" pointSize="18"/>
                     <color key="textColor" systemColor="secondaryLabelColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="12I-mT-a18">
-                    <rect key="frame" x="24" y="381.5" width="376" height="52"/>
+                    <rect key="frame" x="24" y="441" width="376" height="52"/>
                     <color key="backgroundColor" name="TitleColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="52" id="M96-ZL-P2H"/>
@@ -73,23 +76,22 @@
                     </connections>
                 </button>
             </subviews>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" name="MainBackgroundColor"/>
             <color key="tintColor" name="TitleColor"/>
             <constraints>
                 <constraint firstItem="12I-mT-a18" firstAttribute="centerX" secondItem="gQp-8Q-3Zp" secondAttribute="centerX" id="0EN-G2-jmO"/>
-                <constraint firstItem="12I-mT-a18" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="0gL-Ca-ehg"/>
-                <constraint firstItem="Ypl-lL-6Ex" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="Aiz-gD-BNE"/>
-                <constraint firstItem="1Pt-PS-pxG" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="32" id="BxY-T0-Wg8"/>
+                <constraint firstItem="12I-mT-a18" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="24" id="0gL-Ca-ehg"/>
+                <constraint firstItem="Ypl-lL-6Ex" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="24" id="Aiz-gD-BNE"/>
                 <constraint firstItem="12I-mT-a18" firstAttribute="top" secondItem="gQp-8Q-3Zp" secondAttribute="bottom" constant="32" id="Ce6-8Y-X02"/>
                 <constraint firstItem="Ypl-lL-6Ex" firstAttribute="top" secondItem="1Pt-PS-pxG" secondAttribute="bottom" constant="24" id="W3h-vY-ckh"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Ypl-lL-6Ex" secondAttribute="trailing" constant="24" id="Yh5-fM-Q7F"/>
+                <constraint firstAttribute="trailing" secondItem="Ypl-lL-6Ex" secondAttribute="trailing" constant="24" id="Yh5-fM-Q7F"/>
                 <constraint firstItem="gQp-8Q-3Zp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="24" id="Ypn-ZK-6x0"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="12I-mT-a18" secondAttribute="trailing" constant="24" id="ZvK-9w-KKK"/>
-                <constraint firstItem="gQp-8Q-3Zp" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="eh1-Or-iu0"/>
+                <constraint firstAttribute="trailing" secondItem="12I-mT-a18" secondAttribute="trailing" constant="24" id="ZvK-9w-KKK"/>
+                <constraint firstItem="gQp-8Q-3Zp" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="eh1-Or-iu0"/>
                 <constraint firstItem="gQp-8Q-3Zp" firstAttribute="top" secondItem="Ypl-lL-6Ex" secondAttribute="bottom" constant="24" id="hKL-e6-Pl5"/>
                 <constraint firstAttribute="trailing" secondItem="gQp-8Q-3Zp" secondAttribute="trailing" constant="24" id="iz8-Wz-v19"/>
-                <constraint firstItem="1Pt-PS-pxG" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="nik-i8-gcZ"/>
+                <constraint firstItem="1Pt-PS-pxG" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="nik-i8-gcZ"/>
+                <constraint firstItem="Ypl-lL-6Ex" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="uCK-cl-jtP"/>
                 <constraint firstItem="Ypl-lL-6Ex" firstAttribute="centerX" secondItem="1Pt-PS-pxG" secondAttribute="centerX" id="uE8-uY-egY"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
