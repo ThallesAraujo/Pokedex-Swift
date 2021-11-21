@@ -7,10 +7,11 @@
 
 import Foundation
 import UIKit
-protocol Coordinator{
+protocol Coordinator {
     
     var navigation: UINavigationController? {get set}
     
     func presentNextScreen(data: Any?)
     
+    init(navigation: UINavigationController?)
 }

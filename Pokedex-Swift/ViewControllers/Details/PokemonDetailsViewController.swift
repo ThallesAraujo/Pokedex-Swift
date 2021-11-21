@@ -31,6 +31,8 @@ class PokemonDetailsViewController: BaseController, Storyboarded {
     let viewModel = PokemonDetailsViewModel()
     let disposeBag = DisposeBag()
     
+    var coordinator: Coordinator?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "(#\(pokemon?.id ?? 0)) \(pokemon?.name?.capitalized ?? "")"
@@ -54,14 +56,12 @@ class PokemonDetailsViewController: BaseController, Storyboarded {
         self.pokemonImage.setImage(fromURL: pokemon?.sprites?.other?.dreamWorld?.frontDefault ?? "")
         
         imageCarrousselDelegate.config(images: pokemon?.getImagesList().compactMap({$0}) ?? [], collectionView: self.pokemonImageCarrousel)
-        
-        typesDelegate.config(collectionView: pokemonTypesCollectionView, items: pokemon?.types?.compactMap({$0.type}), actionType: .pokemonsOfSameType, navigation: self.navigationController)
-        
-        // Ideia: Coordinators com strategy de actions
+    
+        typesDelegate.config(collectionView: pokemonTypesCollectionView, items: pokemon?.types?.compactMap({$0.type}), coordinator: PokemonsOfSameTypeCoordinator(navigation: self.coordinator?.navigation))
         
         statsDelegate.config(collectionView: pokemonStatsCollectionView, stats: pokemon?.stats)
         
-        abilitiesDelegate.config(collectionView: pokemonAbilitiesCollectionView, items: pokemon?.abilities?.compactMap({$0.ability}), actionType: .seeAbility, navigation: self.navigationController)
+        abilitiesDelegate.config(collectionView: pokemonAbilitiesCollectionView, items: pokemon?.abilities?.compactMap({$0.ability}), coordinator: PokemonAbilityCoordinator(navigation: self.coordinator?.navigation))
         
         viewModel.evolution.subscribe(onNext: {[weak self] evolution in
             if let chain = evolution?.chain {
@@ -71,7 +71,7 @@ class PokemonDetailsViewController: BaseController, Storyboarded {
                 
                 let items = evolutionChain.compactMap({$0.species})
                 
-                weakself.evolutionsDelegate.config(collectionView: weakself.pokemonEvolutionsCollectionView, items: items, actionType: .seeEvolution, navigation: weakself.navigationController)
+                weakself.evolutionsDelegate.config(collectionView: weakself.pokemonEvolutionsCollectionView, items: items, coordinator: PokemonEvolutionCoordinator(navigation: weakself.coordinator?.navigation))
             }
             
         }).disposed(by: disposeBag)

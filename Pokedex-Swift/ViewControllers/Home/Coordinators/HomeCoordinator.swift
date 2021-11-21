@@ -11,7 +11,7 @@ class HomeCoordinator: Coordinator {
    
     var navigation: UINavigationController?
     
-    init(navigation: UINavigationController?) {
+    required init(navigation: UINavigationController?) {
         self.navigation = navigation
     }
     
@@ -30,6 +30,7 @@ class HomeCoordinator: Coordinator {
         }
         
         vc.pokemon = pokemon
+        vc.coordinator = PokemonDetailsCoordinator(navigation: self.navigation)
         
         navigationController.navigationItem.largeTitleDisplayMode = .always
         navigationController.pushViewController(vc, animated: true)

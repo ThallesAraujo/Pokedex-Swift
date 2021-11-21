@@ -7,9 +7,14 @@
 
 import Foundation
 import UIKit
+
+///Define um protocolo para instanciação de itens desenvolvidos no Storyboard, via ID
+///não estando limitado somente a ViewControllers
+
 protocol Storyboarded {
     
 }
+
 extension Storyboarded {
     
     static var identifier: String {

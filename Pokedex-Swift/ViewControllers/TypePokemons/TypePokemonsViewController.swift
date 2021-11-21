@@ -18,6 +18,8 @@ class TypePokemonsViewController: UIViewController, Storyboarded {
     
     var viewModel: TypePokemonsViewModel?
     
+    var coordinator: Coordinator?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureListing()
@@ -40,22 +42,11 @@ class TypePokemonsViewController: UIViewController, Storyboarded {
         
         self.tableView.rx.itemSelected.take(1).subscribe(onNext: { indexPath in
             
-            guard let navigation = self.navigationController else {
-                return
-            }
-                    
-            guard let vc = UIStoryboard.init(name: mainStoryboard, bundle: .main).instantiateViewController(identifier: pokemonDetailsViewController) as? PokemonDetailsViewController else {
-                return
-            }
-            
             guard let cell = self.tableView.cellForRow(at: indexPath) as? PokemonListingCell else {
                 return
             }
             
-            vc.pokemon = cell.pokemon
-            
-            navigation.navigationItem.largeTitleDisplayMode = .always
-            navigation.pushViewController(vc, animated: true)
+            self.coordinator?.presentNextScreen(data: cell.pokemon)
             
         }).disposed(by: disposeBag)
         

@@ -6,3 +6,28 @@
 //
 
 import Foundation
+import UIKit
+
+class PokemonsOfSameTypeCoordinator: Coordinator {
+    
+    var navigation: UINavigationController?
+    
+    required init(navigation: UINavigationController?) {
+        self.navigation = navigation
+    }
+    
+    func presentNextScreen(data: Any?) {
+        
+        if let viewController = UIStoryboard.init(name: mainStoryboard, bundle: .main).instantiateViewController(identifier: typePokemonViewController) as? TypePokemonsViewController, let item = data as? Species {
+            viewController.title = item.name?.capitalized
+            
+            let viewModel = TypePokemonsViewModel.init()
+            viewModel.pokemonType = item
+            viewController.viewModel = viewModel
+            viewController.coordinator = PokemonTypeCoordinator.init(navigation: self.navigation)
+            
+            navigation?.pushViewController(viewController, animated: true)
+        }
+    }
+    
+}

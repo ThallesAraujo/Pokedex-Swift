@@ -7,7 +7,6 @@
 
 import UIKit
 
-// TODO: refatorar esse cabaré
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
@@ -18,50 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         
         let viewController = HomeViewController.instantiate()
-        let navigation = UINavigationController(rootViewController: viewController)
-        
-        navigation.navigationBar.prefersLargeTitles = true
-        
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithTransparentBackground()
-        
-        let foregroundColor = UIColor.init(named: "TitleColor")
-        
-        let titleTextAttributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.init(name: "Quicksand-SemiBold", size: 18.0),
-            .foregroundColor: foregroundColor
-        ]
-        
-        let largeTitleTextAttributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.init(name: "Quicksand-Medium", size: 28.0),
-            .foregroundColor: foregroundColor
-        ]
-        
-        appearance.titleTextAttributes = titleTextAttributes
-        appearance.largeTitleTextAttributes = largeTitleTextAttributes
-        
-        
-        let buttonAppearance = UIBarButtonItemAppearance()
-        buttonAppearance.normal.titleTextAttributes = titleTextAttributes
-        
-        appearance.buttonAppearance = buttonAppearance
-        
-        navigation.navigationBar.scrollEdgeAppearance = appearance
-        
-        let standardAppearance = UINavigationBarAppearance()
-        standardAppearance.titleTextAttributes = titleTextAttributes
-        standardAppearance.largeTitleTextAttributes = largeTitleTextAttributes
-        standardAppearance.configureWithDefaultBackground()
-        
-        navigation.navigationBar.standardAppearance = standardAppearance
-        
-        if #available(iOS 15.0, *) {
-            navigation.navigationBar.compactScrollEdgeAppearance = appearance
-        }
-        
-        navigation.navigationBar.largeTitleTextAttributes = largeTitleTextAttributes
-        navigation.navigationBar.titleTextAttributes = titleTextAttributes
-        navigation.navigationBar.tintColor = foregroundColor
+        let navigation = configureAppearance(rootViewController: viewController)
         
         let coordinator = HomeCoordinator.init(navigation: navigation)
         viewController.coordinator = coordinator
@@ -69,6 +25,42 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         self.window = window
         window.makeKeyAndVisible()
+    }
+    
+    private func configureAppearance(rootViewController: UIViewController) -> UINavigationController {
+        
+        let navigation = UINavigationController(rootViewController: rootViewController)
+        navigation.navigationBar.prefersLargeTitles = true
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithTransparentBackground()
+       
+        appearance.titleTextAttributes = AppNavigationBarTitleAttributes().standardTitleTextAttributes
+        appearance.largeTitleTextAttributes = AppNavigationBarTitleAttributes().largeTitleTextAttributes
+        
+        let buttonAppearance = UIBarButtonItemAppearance()
+        buttonAppearance.normal.titleTextAttributes = AppNavigationBarTitleAttributes().standardTitleTextAttributes
+        
+        appearance.buttonAppearance = buttonAppearance
+        navigation.navigationBar.scrollEdgeAppearance = appearance
+        
+        let standardAppearance = UINavigationBarAppearance()
+        standardAppearance.titleTextAttributes = AppNavigationBarTitleAttributes().standardTitleTextAttributes
+        standardAppearance.largeTitleTextAttributes = AppNavigationBarTitleAttributes().largeTitleTextAttributes
+        standardAppearance.configureWithDefaultBackground()
+        standardAppearance.buttonAppearance = buttonAppearance
+        
+        navigation.navigationBar.standardAppearance = standardAppearance
+        
+        if #available(iOS 15.0, *) {
+            navigation.navigationBar.compactScrollEdgeAppearance = appearance
+        }
+        
+        navigation.navigationBar.largeTitleTextAttributes = AppNavigationBarTitleAttributes().largeTitleTextAttributes
+        navigation.navigationBar.titleTextAttributes = AppNavigationBarTitleAttributes().standardTitleTextAttributes
+        navigation.navigationBar.tintColor = AppDefaultColors().standardForegroundColor
+        
+        return navigation
     }
     
 }
