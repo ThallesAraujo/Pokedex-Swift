@@ -22,7 +22,8 @@ enum ActionType {
     @available(*, deprecated, message: "Utilizar strategy + cordinator")
     func didTapAction(item: Species, navigation: UINavigationController?, disposeBag: DisposeBag) {
         switch self {
-            
+       
+            // PokemonsOfSameTypeCoordinator
         case .pokemonsOfSameType:
             
             if let viewController = UIStoryboard.init(name: mainStoryboard, bundle: .main).instantiateViewController(identifier: typePokemonViewController) as? TypePokemonsViewController {
@@ -33,6 +34,7 @@ enum ActionType {
                 viewController.viewModel = viewModel
                 navigation?.pushViewController(viewController, animated: true)
             }
+            //PokemonAbilityCoordinator
         case .seeAbility:
             
             let details = DetailsService.getAbility(fromURL: item.url ?? "")
@@ -48,6 +50,7 @@ enum ActionType {
                     
                 }).disposed(by: disposeBag)
             
+            //PokemonEvolutionCoordinator
         case .seeEvolution:
             
             let fetchedPokemonEvolution = HomeService.getPokemon(fromURL: item.url?.replacingOccurrences(of: "-species", with: "") ?? "")
