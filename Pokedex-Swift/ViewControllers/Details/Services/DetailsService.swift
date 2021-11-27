@@ -12,7 +12,7 @@ import RxAlamofire
 
 class DetailsService: Service {
     
-    static func getPokemonEvolution (_ id: Int, errorBinder: BehaviorRelay<Bool>) -> Observable<Evolution?> {
+    func getPokemonEvolution (_ id: Int, errorBinder: BehaviorRelay<Bool>) -> Observable<Evolution?> {
         guard id > 0 else {
             return Observable.empty()
         }
@@ -43,7 +43,7 @@ class DetailsService: Service {
         }.asObservable()
     }
     
-    static func getAbility(fromURL url: String) -> Observable<Ability> {
+    func getAbility(fromURL url: String) -> Observable<Ability> {
         
         guard let endpoint = URL.init(string: url) else {
             return Observable.empty()

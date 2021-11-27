@@ -75,12 +75,15 @@ class HomeViewController: BaseController, Storyboarded, ReloadableViewController
     }
     
     func configureAutoLoading() {
-        self.pokemonListingTableView.rx_hasReachedTheBottom().bind(onNext: {[weak self] hasReached in
-            if hasReached {
-                guard let weakself = self else {return}
-                weakself.viewModel.getNextPage()
+        
+        self.pokemonListingTableView.rx.willDisplayCell.bind(onNext: { cell in
+            
+            if cell.indexPath.row + 1 == self.pokemonListingTableView.numberOfRows(inSection: 0) {
+                self.viewModel.getNextPage()
             }
+            
         }).disposed(by: disposeBag)
+
     }
     
     func configureSearchObservable() {
@@ -107,7 +110,7 @@ class HomeViewController: BaseController, Storyboarded, ReloadableViewController
     func configureListing() {
         
         // swiftlint:disable:next line_length
-        viewModel.listData.asDriver(onErrorJustReturn: []).drive(pokemonListingTableView.disconnect().rx.items(cellIdentifier: PokemonListingCell.identifier, cellType: PokemonListingCell.self)) {_, element, cell in
+        self.viewModel.listData.asDriver(onErrorJustReturn: []).drive(pokemonListingTableView.disconnect().rx.items(cellIdentifier: PokemonListingCell.identifier, cellType: PokemonListingCell.self)) {_, element, cell in
             cell.config(element)
         }.disposed(by: disposeBag)
         

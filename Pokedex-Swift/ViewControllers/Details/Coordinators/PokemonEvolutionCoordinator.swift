@@ -15,6 +15,8 @@ class PokemonEvolutionCoordinator: Coordinator {
     
     var disposeBag = DisposeBag()
     
+    var service = HomeService()
+    
     required init(navigation: UINavigationController?) {
         self.navigation = navigation
     }
@@ -22,7 +24,7 @@ class PokemonEvolutionCoordinator: Coordinator {
     func presentNextScreen(data: Any?) {
         if let item = data as? Species {
             
-            let fetchedPokemonEvolution = HomeService.getPokemon(fromURL: item.url?.replacingOccurrences(of: "-species", with: "") ?? "")
+            let fetchedPokemonEvolution = service.getPokemon(fromURL: item.url?.replacingOccurrences(of: "-species", with: "") ?? "")
                 fetchedPokemonEvolution.subscribe(onNext: {pokemon in
                     if let viewController = UIStoryboard.init(name: mainStoryboard, bundle: .main).instantiateViewController(identifier: pokemonDetailsViewController) as? PokemonDetailsViewController {
                         

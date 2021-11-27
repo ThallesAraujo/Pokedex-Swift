@@ -17,8 +17,10 @@ class PokemonDetailsViewModel {
     
     let disposeBag = DisposeBag()
     
+    let service = DetailsService()
+    
     func getEvolutions(id: Int) {
-        DetailsService.getPokemonEvolution(id, errorBinder: errorHasOccurred).subscribe(onNext: {evolution in
+        service.getPokemonEvolution(id, errorBinder: errorHasOccurred).subscribe(onNext: {evolution in
             self.evolution.accept(evolution)
         }).disposed(by: disposeBag)
     }

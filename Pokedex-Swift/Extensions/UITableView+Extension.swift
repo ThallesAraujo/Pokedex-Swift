@@ -45,6 +45,7 @@ extension UITableView {
         self.backgroundView?.isHidden = true
     }
     
+    @available(*, deprecated, message: "Usar rx.willDisplayCell(onNext:) no lugar")
     func rx_hasReachedTheBottom() -> Observable<Bool> {
         return self.rx.contentOffset.distinctUntilChanged()
             .map({totalOffset -> Bool in

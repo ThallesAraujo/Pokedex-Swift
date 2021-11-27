@@ -12,7 +12,7 @@ import RxAlamofire
 
 class HomeService: Service {
     
-    static func getPokemonResults (_ idOrName: String, errorBinder: BehaviorRelay<Bool>) -> Observable<[Result]> {
+    func getPokemonResults (_ idOrName: String, errorBinder: BehaviorRelay<Bool>) -> Observable<[Result]> {
         guard !idOrName.isEmpty else {
             return Observable.empty()
         }
@@ -41,7 +41,7 @@ class HomeService: Service {
         }.asObservable()
     }
     
-    static func getPokemonsList(errorBinder: BehaviorRelay<Bool>) -> Observable<[Result]> {
+    func getPokemonsList(errorBinder: BehaviorRelay<Bool>) -> Observable<[Result]> {
         
         if !isConnected() {
             errorBinder.accept(true)
@@ -60,7 +60,7 @@ class HomeService: Service {
         
     }
     
-    static func getNextPage(offset: Int, limit: Int, errorBinder: BehaviorRelay<Bool>) -> Observable<[Result]> {
+    func getNextPage(offset: Int, limit: Int, errorBinder: BehaviorRelay<Bool>) -> Observable<[Result]> {
         
         if !isConnected() {
             errorBinder.accept(true)
@@ -79,7 +79,7 @@ class HomeService: Service {
         
     }
     
-    static func getPokemon(fromURL url: String) -> Observable<Pokemon> {
+    func getPokemon(fromURL url: String) -> Observable<Pokemon> {
         
         guard let endpoint = URL.init(string: url) else {
             return Observable.empty()

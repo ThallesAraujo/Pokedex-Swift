@@ -23,6 +23,8 @@ class PokemonListingCell: UITableViewCell, Storyboarded {
     
     let disposeBag = DisposeBag()
     
+    let service = HomeService()
+    
     private func endConfig() {
         self.lblID.text = "\(self.pokemon?.id ?? 0)"
         self.lblTypes.text = "\(self.pokemon?.types?.map({ $0.type?.name ?? ""}).joined(separator: ", ") ?? "")"
@@ -32,7 +34,7 @@ class PokemonListingCell: UITableViewCell, Storyboarded {
         self.configureTesting()
         self.lblPokemonName.text = model?.name.capitalized
         
-        let pokemonFetched = HomeService.getPokemon(fromURL: model?.url ?? "")
+        let pokemonFetched = service.getPokemon(fromURL: model?.url ?? "")
         
         let dispatcher = DispatchGroup()
         dispatcher.enter()

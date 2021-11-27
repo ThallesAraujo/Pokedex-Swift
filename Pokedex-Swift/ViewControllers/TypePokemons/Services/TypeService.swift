@@ -12,7 +12,7 @@ import RxAlamofire
 
 class TypeService: Service {
     
-    static func getType(fromURL url: String, errorBinder: BehaviorRelay<Bool>) -> Observable<PokemonType> {
+    func getType(fromURL url: String, errorBinder: BehaviorRelay<Bool>) -> Observable<PokemonType> {
         
         if !isConnected() {
             errorBinder.accept(true)

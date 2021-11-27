@@ -15,6 +15,8 @@ class PokemonAbilityCoordinator: Coordinator {
     
     var disposeBag = DisposeBag()
     
+    let service = DetailsService()
+    
     required init(navigation: UINavigationController?) {
         self.navigation = navigation
     }
@@ -22,7 +24,7 @@ class PokemonAbilityCoordinator: Coordinator {
     func presentNextScreen(data: Any?) {
         if let item = data as? Species {
             
-            let details = DetailsService.getAbility(fromURL: item.url ?? "")
+            let details = service.getAbility(fromURL: item.url ?? "")
             let keyWindow = UIApplication.shared.windows.first(where: {$0.isKeyWindow})
                 
                 details.subscribe(onNext: {detail in

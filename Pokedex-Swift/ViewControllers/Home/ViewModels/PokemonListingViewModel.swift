@@ -10,6 +10,8 @@ import RxCocoa
 
 class PokemonListingViewModel {
     
+    let service = HomeService()
+    
     let searchText = BehaviorRelay<String?>(value: "")
     
     var searchData: BehaviorRelay<[Result]> = BehaviorRelay<[Result]>.init(value: [])
@@ -48,13 +50,13 @@ class PokemonListingViewModel {
     }
     
     func getPokemonsResults(_ idOrName: String) {
-        HomeService.getPokemonResults(idOrName, errorBinder: self.errorHasOccurred).subscribe(onNext: {results in
+        service.getPokemonResults(idOrName, errorBinder: self.errorHasOccurred).subscribe(onNext: {results in
             self.searchData.accept(results)
         }).disposed(by: disposeBag)
     }
     
     func getNextPage() {
-        HomeService.getNextPage(offset: offset, limit: limit, errorBinder: self.errorHasOccurred).subscribe(onNext: {nextResults in
+        service.getNextPage(offset: offset, limit: limit, errorBinder: self.errorHasOccurred).subscribe(onNext: {nextResults in
                 var appended = self.listData.value
                 let appendedSet = Set(appended)
                 let nextSet = Set(nextResults)
@@ -68,7 +70,7 @@ class PokemonListingViewModel {
     }
     
     func getPokemonsList() {
-        HomeService.getPokemonsList(errorBinder: self.errorHasOccurred).subscribe(onNext: {list in
+        service.getPokemonsList(errorBinder: self.errorHasOccurred).subscribe(onNext: {list in
             self.listData.accept(list)
         }).disposed(by: disposeBag)
     }
