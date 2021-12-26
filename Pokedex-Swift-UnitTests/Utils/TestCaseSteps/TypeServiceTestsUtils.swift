@@ -15,7 +15,9 @@ extension TypeServiceTests {
     
     func getType(fromUrl url: String, andAssert assertion: @escaping (PokemonType) -> Void) {
         
-        let type = TypeService.getType(fromURL: url, errorBinder: self.errorBinder)
+        TypeServiceStubs.mockSuccessResponseStub()
+        
+        let type = TypeService().getType(fromURL: url, errorBinder: self.errorBinder)
         
         type.subscribe(onNext: {[weak self] pokemonType in
             assertion(pokemonType)

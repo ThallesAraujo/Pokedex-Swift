@@ -16,7 +16,7 @@ extension HomeServiceTests {
     
     func getListAndAssert(assertion: @escaping ([Result]) -> Void) {
         
-        let pokemonsObservable = HomeService.getPokemonsList(errorBinder: errorBinder)
+        let pokemonsObservable = HomeService().getPokemonsList(errorBinder: errorBinder)
         
         pokemonsObservable.subscribe(onNext: {[weak self] pokemons in
             assertion(pokemons)
@@ -29,7 +29,7 @@ extension HomeServiceTests {
     
     func getPokemonAndAssert(url: String, assertions: @escaping (Pokemon) -> Void) {
         
-        let pokemonObservable = HomeService.getPokemon(fromURL: url)
+        let pokemonObservable = HomeService().getPokemon(fromURL: url)
         
         pokemonObservable.subscribe(onNext: {[weak self] pokemon in
             assertions(pokemon)
@@ -42,7 +42,7 @@ extension HomeServiceTests {
     
     func getPokemonResultsAndAssert(idOrName: String, assertions: @escaping ([Result]) -> Void) {
         
-        let pokemonObservable = HomeService.getPokemonResults(idOrName, errorBinder: errorBinder)
+        let pokemonObservable = HomeService().getPokemonResults(idOrName, errorBinder: errorBinder)
         
         pokemonObservable.subscribe(onNext: {[weak self] pokemons in
             assertions(pokemons)
@@ -55,7 +55,7 @@ extension HomeServiceTests {
     
     func getPageAndAssert(offset: Int, assertions: @escaping ([Result]) -> Void) {
         
-        let pageObservable = HomeService.getNextPage(offset: offset, limit: 20, errorBinder: errorBinder)
+        let pageObservable = HomeService().getNextPage(offset: offset, limit: 20, errorBinder: errorBinder)
         
         pageObservable.subscribe(onNext: {[weak self] page in
             assertions(page)

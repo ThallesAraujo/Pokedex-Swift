@@ -1,12 +1,28 @@
 PODS:
   - Alamofire (5.4.1)
   - atlantis-proxyman (1.10.0)
+  - Cuckoo (1.5.1):
+    - Cuckoo/Swift (= 1.5.1)
+  - Cuckoo/Swift (1.5.1)
   - Differentiator (5.0.0)
   - KIF (3.8.2):
     - KIF/Core (= 3.8.2)
   - KIF/Core (3.8.2)
   - Kingfisher (4.10.1)
   - Nimble (9.2.0)
+  - OHHTTPStubs/Core (9.1.0)
+  - OHHTTPStubs/Default (9.1.0):
+    - OHHTTPStubs/Core
+    - OHHTTPStubs/JSON
+    - OHHTTPStubs/NSURLSession
+    - OHHTTPStubs/OHPathHelpers
+  - OHHTTPStubs/JSON (9.1.0):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/NSURLSession (9.1.0):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/OHPathHelpers (9.1.0)
+  - OHHTTPStubs/Swift (9.1.0):
+    - OHHTTPStubs/Default
   - RxAlamofire (6.1.1):
     - RxAlamofire/Core (= 6.1.1)
   - RxAlamofire/Core (6.1.1):
@@ -31,9 +47,11 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - atlantis-proxyman
+  - Cuckoo
   - KIF
   - Kingfisher (~> 4.0)
   - Nimble
+  - OHHTTPStubs/Swift
   - RxAlamofire
   - RxCocoa (= 6.2.0)
   - RxDataSources
@@ -46,10 +64,12 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - atlantis-proxyman
+    - Cuckoo
     - Differentiator
     - KIF
     - Kingfisher
     - Nimble
+    - OHHTTPStubs
     - RxAlamofire
     - RxCocoa
     - RxDataSources
@@ -63,10 +83,12 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
   atlantis-proxyman: b548baae0c6b704a4d8a28994b7fd65fd9d471a6
+  Cuckoo: 9124fe138270854903483c270370e6e7658fbc9b
   Differentiator: e8497ceab83c1b10ca233716d547b9af21b9344d
   KIF: 046e792c00c407316df8a70941851decc877b124
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   Nimble: 4f4a345c80b503b3ea13606a4f98405974ee4d0b
+  OHHTTPStubs: 90eac6d8f2c18317baeca36698523dc67c513831
   RxAlamofire: beb75a1c452d0de225651db4903f5d29d034a620
   RxCocoa: 4baf94bb35f2c0ab31bc0cb9f1900155f646ba42
   RxDataSources: aa47cc1ed6c500fa0dfecac5c979b723542d79cf
@@ -77,6 +99,6 @@ SPEC CHECKSUMS:
   SwiftLint: e96c0a8c770c7ebbc4d36c55baf9096bb65c4584
   UIImageColors: d2ef3b0877d203cbb06489eeb78ea8b7788caabe
 
-PODFILE CHECKSUM: a9c57eb6fda7e9248e86ff4df4035c759cef44cc
+PODFILE CHECKSUM: d6a53f5f16da843e01b2fe8fa938cb0d97b36b30
 
 COCOAPODS: 1.10.1

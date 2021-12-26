@@ -17,16 +17,22 @@ def common_pods
   pod 'SwiftLint'
 end
 
+def test_pods
+  pod 'Nimble'
+end
+
 target 'Pokedex-Swift' do
   common_pods
 end
 
 target 'Pokedex-Swift-UnitTests' do
   common_pods
+  test_pods
+  pod 'OHHTTPStubs/Swift'
 end
 
 target 'Pokedex-Swift-UITests' do
   common_pods
+  test_pods
   pod 'KIF', :configurations => ['Debug']
-  pod 'Nimble'
 end

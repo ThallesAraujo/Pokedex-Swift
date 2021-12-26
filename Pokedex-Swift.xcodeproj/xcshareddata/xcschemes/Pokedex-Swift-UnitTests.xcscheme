@@ -32,6 +32,17 @@
                BlueprintName = "Pokedex-Swift-UnitTests"
                ReferencedContainer = "container:Pokedex-Swift.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "BaseTestCase">
+               </Test>
+               <Test
+                  Identifier = "DetailsServiceTests">
+               </Test>
+               <Test
+                  Identifier = "HomeServiceTests">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
    </TestAction>

@@ -8,6 +8,7 @@ disabled_rules:
 
 excluded:
   - Pods
+  - Pokedex-Swift-UnitTests/Mocks/GeneratedMocks.swift
 
 whitelist_autocorrect:
   - opening_brace
