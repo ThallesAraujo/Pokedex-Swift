@@ -38,6 +38,7 @@ class HomeViewController: BaseController, Storyboarded, ReloadableViewController
         self.configureAutoLoading()
         self.configureErrorObserver()
         self.edgesForExtendedLayout = .all
+        configureMacCatalyst()
             
     }
     
@@ -48,7 +49,7 @@ class HomeViewController: BaseController, Storyboarded, ReloadableViewController
     
     func configureModelSelect() {
         
-        self.pokemonListingTableView.rx.itemSelected.take(1).subscribe(onNext: { indexPath in
+        self.pokemonListingTableView.rx.itemSelected.subscribe(onNext: { indexPath in
             
             guard let cell = self.pokemonListingTableView.cellForRow(at: indexPath) as? PokemonListingCell else {
                 return

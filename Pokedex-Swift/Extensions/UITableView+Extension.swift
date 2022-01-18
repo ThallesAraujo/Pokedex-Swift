@@ -20,8 +20,9 @@ extension UITableView {
     
     // Baseado em https://blog.kulman.sk/simple-bindable-no-data-placeholder/
     func showEmptyView(title: String? = "", description: String? = "", showReload: Bool? = true, reloadClosure: (() -> Void)? = nil) {
-        let emptyView = ErrorView.init(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
-        emptyView.sizeToFit()
+        self.setNeedsLayout()
+        self.setNeedsDisplay()
+        let emptyView = ErrorView.init(frame: self.frame)
         
         if let title = title, !title.isEmpty {
             emptyView.lblTitle.text = title
@@ -37,6 +38,13 @@ extension UITableView {
         
         emptyView.retryClosure = reloadClosure
         self.backgroundView = emptyView
+        emptyView.sizeToFit()
+        emptyView.center = self.center
+        emptyView.contentView.center = self.center
+        
+        emptyView.contentView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        emptyView.contentView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        
         self.backgroundView?.isHidden = false
     }
     

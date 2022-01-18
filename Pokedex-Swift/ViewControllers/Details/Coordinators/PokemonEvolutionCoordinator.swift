@@ -11,13 +11,13 @@ import RxSwift
 
 class PokemonEvolutionCoordinator: Coordinator {
     
-    var navigation: UINavigationController?
+    var navigation: Navigation?
     
     var disposeBag = DisposeBag()
     
     var service = HomeService()
     
-    required init(navigation: UINavigationController?) {
+    required init(navigation: Navigation?) {
         self.navigation = navigation
     }
     

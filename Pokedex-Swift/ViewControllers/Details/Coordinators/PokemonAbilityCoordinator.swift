@@ -11,13 +11,13 @@ import RxSwift
 
 class PokemonAbilityCoordinator: Coordinator {
     
-    var navigation: UINavigationController?
+    var navigation: Navigation?
     
     var disposeBag = DisposeBag()
     
     let service = DetailsService()
     
-    required init(navigation: UINavigationController?) {
+    required init(navigation: Navigation?) {
         self.navigation = navigation
     }
     

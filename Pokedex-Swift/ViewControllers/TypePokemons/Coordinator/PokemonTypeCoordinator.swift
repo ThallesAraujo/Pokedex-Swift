@@ -10,7 +10,7 @@ import UIKit
 
 class PokemonTypeCoordinator: Coordinator {
     
-    var navigation: UINavigationController?
+    var navigation: Navigation?
     
     func presentNextScreen(data: Any?) {
         
@@ -23,14 +23,14 @@ class PokemonTypeCoordinator: Coordinator {
             vc.pokemon = pokemon
             vc.coordinator = PokemonDetailsCoordinator.init(navigation: self.navigation)
             
-            navigation?.navigationItem.largeTitleDisplayMode = .always
+            (navigation as? UINavigationController)?.navigationItem.largeTitleDisplayMode = .always
             navigation?.pushViewController(vc, animated: true)
             
         }
         
     }
     
-    required init(navigation: UINavigationController?) {
+    required init(navigation: Navigation?) {
         self.navigation = navigation
     }
     

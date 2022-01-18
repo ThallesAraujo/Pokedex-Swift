@@ -17,11 +17,9 @@ extension HomeViewController {
     func configureSearchStyle() {
         
         let defaultAttributes: [NSAttributedString.Key: Any] = [.font: titleFont, .foregroundColor: titleColor]
-        
         searchController.obscuresBackgroundDuringPresentation = false
         UITextField.appearance().defaultTextAttributes = defaultAttributes
         UITextField.appearance().attributedPlaceholder = NSAttributedString.init(string: searchPlaceholder, attributes: defaultAttributes)
-        searchBar.searchTextField.backgroundColor = Constants.secondaryBackgroundColor
         searchBar.rx.text.bind(to: viewModel.searchText).disposed(by: disposeBag)
         searchBar.autocapitalizationType = .none
         if let textField = searchBar.value(forKey: Constants.searchFieldKey) as? UITextField,
@@ -34,6 +32,11 @@ extension HomeViewController {
         searchController.searchBar.delegate = self
         navigationItem.searchController = searchController
         definesPresentationContext = true
+        
+        #if !targetEnvironment(macCatalyst)
+        searchBar.searchTextField.backgroundColor = Constants.secondaryBackgroundColor
+        #endif
+        
     }
     
 }

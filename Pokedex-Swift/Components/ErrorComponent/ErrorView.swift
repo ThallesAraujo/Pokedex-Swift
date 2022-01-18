@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreGraphics
 
 class ErrorView: UIView {
 
@@ -28,9 +29,14 @@ class ErrorView: UIView {
     
     private func commonInit() {
         Bundle.main.loadNibNamed("ErrorView", owner: self, options: nil)
+        contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         addSubview(contentView)
-        contentView.frame = self.bounds
-        contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        contentView.center = self.center
+        
+    #if targetEnvironment(macCatalyst)
+        contentView.backgroundColor = .clear
+    #endif
+        
     }
     
     @IBAction func didTapRetry(_ sender: Any) {
@@ -38,5 +44,7 @@ class ErrorView: UIView {
             retry()
         }
     }
+    
+   
     
 }

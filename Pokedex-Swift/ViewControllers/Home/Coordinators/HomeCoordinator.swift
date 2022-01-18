@@ -9,9 +9,9 @@ import Foundation
 import UIKit
 class HomeCoordinator: Coordinator {
    
-    var navigation: UINavigationController?
+    var navigation: Navigation?
     
-    required init(navigation: UINavigationController?) {
+    required init(navigation: Navigation?) {
         self.navigation = navigation
     }
     
@@ -32,7 +32,7 @@ class HomeCoordinator: Coordinator {
         vc.pokemon = pokemon
         vc.coordinator = PokemonDetailsCoordinator(navigation: self.navigation)
         
-        navigationController.navigationItem.largeTitleDisplayMode = .always
+        (navigationController as? UINavigationController)?.navigationItem.largeTitleDisplayMode = .always
         navigationController.pushViewController(vc, animated: true)
         
     }

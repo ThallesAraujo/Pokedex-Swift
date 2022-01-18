@@ -1,9 +1,6 @@
 PODS:
   - Alamofire (5.4.1)
   - atlantis-proxyman (1.10.0)
-  - Cuckoo (1.5.1):
-    - Cuckoo/Swift (= 1.5.1)
-  - Cuckoo/Swift (1.5.1)
   - Differentiator (5.0.0)
   - KIF (3.8.2):
     - KIF/Core (= 3.8.2)
@@ -47,7 +44,6 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - atlantis-proxyman
-  - Cuckoo
   - KIF
   - Kingfisher (~> 4.0)
   - Nimble
@@ -64,7 +60,6 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - atlantis-proxyman
-    - Cuckoo
     - Differentiator
     - KIF
     - Kingfisher
@@ -83,7 +78,6 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
   atlantis-proxyman: b548baae0c6b704a4d8a28994b7fd65fd9d471a6
-  Cuckoo: 9124fe138270854903483c270370e6e7658fbc9b
   Differentiator: e8497ceab83c1b10ca233716d547b9af21b9344d
   KIF: 046e792c00c407316df8a70941851decc877b124
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
@@ -99,6 +93,6 @@ SPEC CHECKSUMS:
   SwiftLint: e96c0a8c770c7ebbc4d36c55baf9096bb65c4584
   UIImageColors: d2ef3b0877d203cbb06489eeb78ea8b7788caabe
 
-PODFILE CHECKSUM: d6a53f5f16da843e01b2fe8fa938cb0d97b36b30
+PODFILE CHECKSUM: 187de0003c5b0b5f18b2c1b6c2c6c0a6917c3049
 
 COCOAPODS: 1.10.1

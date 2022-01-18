@@ -9,9 +9,9 @@ import Foundation
 import UIKit
 protocol Coordinator {
     
-    var navigation: UINavigationController? {get set}
+    var navigation: Navigation? {get set}
     
     func presentNextScreen(data: Any?)
     
-    init(navigation: UINavigationController?)
+    init(navigation: Navigation?)
 }

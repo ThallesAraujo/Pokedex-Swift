@@ -24,8 +24,10 @@ extension UIViewController {
     }
     
     func showEmptyView(title: String? = "", description: String? = "", showReload: Bool? = true, reloadClosure: (() -> Void)? = nil) {
-        let emptyView = ErrorView.init(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height))
+        let emptyView = ErrorView.init(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.size.height))
+        
         emptyView.sizeToFit()
+        
         emptyView.tag = emptyViewTag
         
         if let title = title, !title.isEmpty {
@@ -43,6 +45,8 @@ extension UIViewController {
         emptyView.retryClosure = reloadClosure
         
         self.view.addSubview(emptyView)
+        
+        
     }
     
     func hideEmptyView() {

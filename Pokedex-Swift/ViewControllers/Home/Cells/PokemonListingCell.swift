@@ -49,6 +49,10 @@ class PokemonListingCell: UITableViewCell, Storyboarded {
             self.endConfig()
         })
         
+        #if targetEnvironment(macCatalyst)
+            self.backgroundColor = .clear
+            self.cardView.backgroundColor = .clear
+        #endif
     }
     
     private func tintWithDominantColor () {

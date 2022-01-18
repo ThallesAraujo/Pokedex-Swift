@@ -10,9 +10,9 @@ import UIKit
 
 class PokemonDetailsCoordinator: Coordinator {
     
-    var navigation: UINavigationController?
+    var navigation: Navigation?
     
-    required init(navigation: UINavigationController?) {
+    required init(navigation: Navigation?) {
         self.navigation = navigation
     }
     
