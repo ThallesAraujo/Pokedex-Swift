@@ -11,12 +11,18 @@ import UIKit
 /// Define um protocolo para instanciação de itens desenvolvidos no Storyboard, via ID
 /// não estando limitado somente a ViewControllers
 
+
+//TODO: Ao mover o código inteiro para ViewCode, renomear o protocolo
 protocol Storyboarded {
     
 }
 
 extension Storyboarded {
     
+    /**Define um identificador automático para itens que necessitam do mesmo
+        Por padrão, todos os identificadores do app devem ser o nome da classe com
+        primeira letra minúscula
+     */
     static var identifier: String {
         
         let description = String(describing: self)

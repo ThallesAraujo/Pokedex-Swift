@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
         
-        let viewController = HomeViewController.instantiate()
+        let viewController = HomeViewController()
         
         
         let splitViewController: UISplitViewController = configureAppearance(rootViewController: viewController)
@@ -90,38 +90,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         navigation.navigationController?.navigationBar.prefersLargeTitles = true
         
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithTransparentBackground()
-       
-        appearance.titleTextAttributes = AppNavigationBarTitleAttributes().standardTitleTextAttributes
-        appearance.largeTitleTextAttributes = AppNavigationBarTitleAttributes().largeTitleTextAttributes
-        
-        let buttonAppearance = UIBarButtonItemAppearance()
-        buttonAppearance.normal.titleTextAttributes = AppNavigationBarTitleAttributes().standardTitleTextAttributes
-        
-        appearance.buttonAppearance = buttonAppearance
-        navigation.navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        
-        let standardAppearance = UINavigationBarAppearance()
-        standardAppearance.titleTextAttributes = AppNavigationBarTitleAttributes().standardTitleTextAttributes
-        standardAppearance.largeTitleTextAttributes = AppNavigationBarTitleAttributes().largeTitleTextAttributes
-        standardAppearance.configureWithDefaultBackground()
-        standardAppearance.buttonAppearance = buttonAppearance
-        
-        navigation.navigationController?.navigationBar.standardAppearance = standardAppearance
-        
-        if #available(iOS 15.0, *) {
-            navigation.navigationController?.navigationBar.compactAppearance = appearance
-        }
-        
-        navigation.navigationController?.navigationBar.largeTitleTextAttributes = AppNavigationBarTitleAttributes().largeTitleTextAttributes
-        navigation.navigationController?.navigationBar.titleTextAttributes = AppNavigationBarTitleAttributes().standardTitleTextAttributes
-        navigation.navigationController?.navigationBar.tintColor = AppDefaultColors().standardForegroundColor
-        navigation.displayModeButtonItem.tintColor = AppDefaultColors().standardForegroundColor
-        
-        navigation.navigationController?.navigationBar.barTintColor = AppDefaultColors().standardForegroundColor
-        
-        navigation.displayModeButtonItem.tintColor = AppDefaultColors().standardForegroundColor
         
         navigation.view.tintColor = AppDefaultColors().standardForegroundColor
         

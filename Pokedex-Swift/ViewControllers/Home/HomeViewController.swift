@@ -13,7 +13,8 @@ class HomeViewController: BaseController, Storyboarded, ReloadableViewController
     
     var retryView: ErrorView?
     
-    @IBOutlet weak var pokemonListingTableView: UITableView!
+    var pokemonListingTableView = UITableView.init(frame: CGRect.zero, style: .insetGrouped)
+    
     let searchController = UISearchController(searchResultsController: nil)
     var searchBar: UISearchBar {
         return searchController.searchBar
@@ -29,7 +30,15 @@ class HomeViewController: BaseController, Storyboarded, ReloadableViewController
     var coordinator: Coordinator?
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
+        configureConstraints()
+        
+        pokemonListingTableView.rowHeight = 150
+        pokemonListingTableView.register(PokemonListingCell.self, forCellReuseIdentifier: PokemonListingCell.identifier)
+        
+        
         self.configureSearchObservable()
         viewModel.getPokemonsList()
         configureSearchStyle()
@@ -37,14 +46,35 @@ class HomeViewController: BaseController, Storyboarded, ReloadableViewController
         searchBar.rx.text.orEmpty.bind(to: viewModel.searchText).disposed(by: disposeBag)
         self.configureAutoLoading()
         self.configureErrorObserver()
-        self.edgesForExtendedLayout = .all
+       
         configureMacCatalyst()
+        self.view.backgroundColor = UIColor.init(named: "MainBackgroundColor")
+        self.view.tintColor = UIColor.init(named: "TitleColor")
+        self.title = "Home"
+        
+        self.pokemonListingTableView.backgroundColor = .clear
             
     }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         configureModelSelect()
+    }
+    
+    func configureConstraints() {
+        
+        self.pokemonListingTableView.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.view.addSubview(self.pokemonListingTableView)
+        
+        NSLayoutConstraint.activate([
+            self.pokemonListingTableView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            self.pokemonListingTableView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
+            self.pokemonListingTableView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
+            self.pokemonListingTableView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor)
+        ])
+        
     }
     
     func configureModelSelect() {
